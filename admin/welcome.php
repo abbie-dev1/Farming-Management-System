@@ -114,7 +114,8 @@ if($_SESSION['user'] == 'farmer'){
 
             e.preventDefault();
             var id = this.id;
-            approve(id);
+            editUser(id);
+            $('#edit').modal('show');
         });
         $(document).on('click', '.delete', function (e) {
 
@@ -130,43 +131,51 @@ if($_SESSION['user'] == 'farmer'){
             $('#add').modal('show');
         });
 
-
-        $(document).on('click', '.add-course', function (e) {
-
-            e.preventDefault();
-            $('.add-btn').attr('disabled',false);
-            $('.input-course').html(
-                '<div class="form-group">\n' +
-                '                    <label for="photo" class="col-sm-3 control-label">Course Name</label>\n' +
-                '\n' +
-                '                    <div class="col-sm-9">\n' +
-                '                      <input type="text" id="course_name" placeholder="Enter Course Name" name="course_name" onkeypress="return /[a-z]/i.test(event.key)" required>\n' +
-                '                    </div>\n' +
-                '                </div>'+
-
-
-                '<div class="form-group">\n' +
-                '                    <label for="photo" class="col-sm-3 control-label">Fee Amount</label>\n' +
-                '\n' +
-                '                    <div class="col-sm-9">\n' +
-                '                      <input type="text" id="fee" placeholder="Enter Fee Amount In Integer Format" name="fee" onkeypress="return /[0-9]/i.test(event.key)" required>\n' +
-                '                    </div>\n' +
-                '                </div>'
-            )
-        });
+        //
+        // $(document).on('click', '.add-course', function (e) {
+        //
+        //     e.preventDefault();
+        //     $('.add-btn').attr('disabled',false);
+        //     $('.input-course').html(
+        //         '<div class="form-group">\n' +
+        //         '                    <label for="photo" class="col-sm-3 control-label">Course Name</label>\n' +
+        //         '\n' +
+        //         '                    <div class="col-sm-9">\n' +
+        //         '                      <input type="text" id="course_name" placeholder="Enter Course Name" name="course_name" onkeypress="return /[a-z]/i.test(event.key)" required>\n' +
+        //         '                    </div>\n' +
+        //         '                </div>'+
+        //
+        //
+        //         '<div class="form-group">\n' +
+        //         '                    <label for="photo" class="col-sm-3 control-label">Fee Amount</label>\n' +
+        //         '\n' +
+        //         '                    <div class="col-sm-9">\n' +
+        //         '                      <input type="text" id="fee" placeholder="Enter Fee Amount In Integer Format" name="fee" onkeypress="return /[0-9]/i.test(event.key)" required>\n' +
+        //         '                    </div>\n' +
+        //         '                </div>'
+        //     )
+        // });
     });
 
-    function approve(id){
+    function editUser(id){
         $.ajax({
             type: 'POST',
             url: './../admin/admin_handle.php',
-            data: {approve:id},
+            data: {user_id:id},
             dataType: 'json',
             success: function(response){
+
+                $('input[name=edit_id]').val(response.farmer_id);
+                $('input[name=firstname]').val(response.farmer_fname);
+                $('input[name=lastname]').val(response.farmer_lname);
+                $('input[name=email]').val(response.farmer_email);
+                $('input[name=gender]').val(response.farmer_sex);
+                $('input[name=mobile]').val(response.mobile);
+                $('input[name=address]').val(response.farmer_address);
+
             }
         });
 
-        location.reload();
     }
 
     function deleteUser(id){

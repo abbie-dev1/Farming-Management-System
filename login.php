@@ -27,7 +27,7 @@
 <?php
   if(isset($_SESSION['user'])){
       if($_SESSION['user'] == 'farmer'){
-          header('location: lessor/welcome.php');
+          header('location: farmer/welcome.php');
       }elseif ($_SESSION['user'] == 'admin'){
           header('location: admin/welcome.php');
       }

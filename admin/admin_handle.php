@@ -67,14 +67,15 @@ if (isset($_FILES['file'])) {
 
 if (isset($_POST['edit_id'])) {
     $id = $_POST['edit_id'];
+    $email = $_POST['email'];
     $password = $_POST['password'];
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
-    $course_name =$_POST['course_name'];
-    $email = $_POST['email'];
-    $mark = $_POST['mark'];
+    $gender = $_POST['gender'];
+    $mobile = $_POST['mobile'];
+    $address = $_POST['address'];
 
-    $stmt = $conn->prepare("SELECT COUNT(*) AS numrows FROM lessor WHERE email=:email AND id <>:id");
+    $stmt = $conn->prepare("SELECT COUNT(*) AS numrows FROM farmer WHERE farmer_email=:email AND farmer_id <>:id");
     $stmt->execute(['email'=>$email, 'id'=>$id]);
     $row = $stmt->fetch();
     if($row['numrows'] > 0){
@@ -82,14 +83,15 @@ if (isset($_POST['edit_id'])) {
     }
     else {
 
-        $stmt = $conn->prepare("UPDATE lessor SET email=:email,
-    password=:password, first_name=:first_name, last_name=:last_name,course_name=:course_name,mark=:mark WHERE id=:id");
-        $stmt->execute(['email' => $email, 'password' => $password, 'first_name' =>
-            $firstname, 'last_name' => $lastname, 'course_name' => $course_name,'mark'=>$mark, 'id' => $id]);
+        $stmt = $conn->prepare("UPDATE farmer SET farmer_email=:email, password=:password, farmer_fname=:firstname,
+                                         farmer_lname=:lastname,farmer_sex=:gender,mobile=:mobile,farmer_address=:address
+                                         WHERE farmer_id=:id");
+        $stmt->execute(['email' => $email, 'password' => $password, 'firstname' =>
+            $firstname, 'lastname' => $lastname, 'gender' => $gender,'mobile' => $mobile, 'address' => $address,'id'=>$id]);
 
-        $_SESSION['success'] = 'Student updated successfully';
+        $_SESSION['success'] = 'Record updated successfully';
     }
-    header('location: students.php');
+    header('location: welcome.php');
 }
 
 if (isset($_POST['course_id'])) {

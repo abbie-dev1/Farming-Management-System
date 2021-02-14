@@ -40,8 +40,8 @@ if($_SESSION['user'] == 'admin'){
 <body>
 <div class="page-header">
 
-    <h1>Lessor Dashboard</h1>
-    <button class="btn btn-warning addnew">Add Space</button>
+    <h1>Farmer Dashboard</h1>
+    <button class="btn btn-warning addnew">Add Tracker</button>
 </div>
 
     <div class="row" style="padding: 10px" align="center">
@@ -49,8 +49,7 @@ if($_SESSION['user'] == 'admin'){
         $conn = $pdo->open();
 
         try {
-            $stmt = $conn->prepare("SELECT *, booking.status_id AS bStatus_id FROM booking,type,space WHERE type.type_id=booking.type_id AND
-                                    space.type_id=booking.type_id AND booking.status_id=1 OR booking.status_id=3 GROUP BY booking.book_id");
+            $stmt = $conn->prepare("SELECT * FROM farmer where farmer_id=100");
             $stmt->execute();
         }
         catch (Exception $e){
@@ -102,7 +101,7 @@ if($_SESSION['user'] == 'admin'){
 </body>
 </html>
 
-<?php include('./../lessor/files/lessor_modal.php') ?>
+<?php include('./../farmer/files/lessor_modal.php') ?>
 <?php include('./../includes/scripts.php') ?>
 
 <script>
