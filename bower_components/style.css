@@ -1,0 +1,15 @@
+.fa-trash-o {
+    padding: inherit;
+    color: red;
+    font-size: larger;
+}
+.fa-edit {
+    padding: inherit;
+    color: orange;
+    font-size: larger;
+}
+.fa-plus-square {
+    padding: inherit;
+    color: green;
+    font-size: larger;
+}
