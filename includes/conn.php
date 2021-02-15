@@ -2,9 +2,9 @@
 
 Class Database{
  
-	private $server = "mysql:host=localhost;dbname=farm";
-	private $username = "root";
-	private $password = "";
+	private $server = "mysql:host=sql11.freemysqlhosting.net;dbname=sql11393059";
+	private $username = "sql11393059";
+	private $password = "diUa6Ag4VF";
 	private $options  = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,);
 	protected $conn;
  	

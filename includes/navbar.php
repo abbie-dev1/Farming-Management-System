@@ -49,7 +49,7 @@ echo '
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="./../index.html">Farming Management System </a>
+            <a class="navbar-brand" href="index.php">Farming Management System </a>
         </div>
       
         <ul class="nav navbar-nav navbar-right" style="display: contents;">
