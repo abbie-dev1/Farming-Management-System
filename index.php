@@ -37,7 +37,7 @@
             <a class="navbar-brand" href="index.php" style="font-family: 'Montserrat';font-style: oblique;font-weight: initial;">Farming Management System</a>
             <div class="collapse navbar-collapse justify-content-end" id="navbar-wd">
                 <ul class="navbar-nav">
-                    <li><a class="nav-link"  href="#about">About</a></li>
+                    <li><a class="nav-link" href="#about">About</a></li>
                     <li><a class="nav-link" href="#services">Services</a></li>
                     <li><a class="nav-link" href="#teams">Teams</a></li>
                     <li><a class="nav-link" href="#contacts">Contact us</a></li>
