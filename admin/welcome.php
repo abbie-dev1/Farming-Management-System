@@ -64,12 +64,10 @@ if($_SESSION['user'] == 'farmer'){
                                     <table class="table" id="orderTable">
                                          <tr style="background: dimgrey;">
                                             <th>No #</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                             <th>Gender</th>
+                                            <th>Name</th>
+                                            <th>Gender</th>
                                             <th>Email</th>
                                             <th>Mobile</th>
-                                            <th>Address</th>
                                             <th>Action</th>
                                         </tr>
                                         ';
@@ -77,16 +75,14 @@ if($_SESSION['user'] == 'farmer'){
 
              echo '<tr>
                                  <td>' . $key . '</td>
-                                 <td>' . $row['farmer_fname'] . '</td>
-                                 <td>' . $row['farmer_lname'] . '</td>
-                                 <td>' . $row['farmer_sex'] . '</td>
-                                 <td>' . $row['farmer_email'] . '</td>
-                                  <td>' . $row['mobile'] . '</td>
-                                 <td>' . $row['farmer_address'] . '</td>
+                                 <td>'.$row['firstName'].' '. $row['lastName'] .'</td>
+                                 <td>'. $row['gender'] .'</td>
+                                 <td>' . $row['email'] . '</td>
+                                 <td>' . $row['mobile'] . '</td>
                                      <td>
                                          
-                                         <button class="btn-warning edit" id="'.$row['farmer_id'].'"><i class="fa fa-check-circle-o"></i> Edit</button>
-                                         <button class="btn-danger delete" id="'.$row['farmer_id'].'"><i class="fa fa-trash-o"></i> Delete</button>
+                                         <button class="btn-warning edit" id="'.$row['id'].'"><i class="fa fa-check-circle-o"></i> Edit</button>
+                                         <button class="btn-danger delete" id="'.$row['id'].'"><i class="fa fa-trash-o"></i> Delete</button>
                                      </td>
                                 </tr>
                                 </tr>';
@@ -165,13 +161,13 @@ if($_SESSION['user'] == 'farmer'){
             dataType: 'json',
             success: function(response){
 
-                $('input[name=edit_id]').val(response.farmer_id);
-                $('input[name=firstname]').val(response.farmer_fname);
-                $('input[name=lastname]').val(response.farmer_lname);
-                $('input[name=email]').val(response.farmer_email);
-                $('input[name=gender]').val(response.farmer_sex);
+                $('input[name=edit_id]').val(response.id);
+                $('input[name=firstname]').val(response.firstName);
+                $('input[name=lastname]').val(response.lastName);
+                $('input[name=email]').val(response.email);
+                $('input[name=gender]').val(response.gender);
                 $('input[name=mobile]').val(response.mobile);
-                $('input[name=address]').val(response.farmer_address);
+                $('input[name=address]').val(response.address);
 
             }
         });
@@ -188,7 +184,7 @@ if($_SESSION['user'] == 'farmer'){
             success: function(response){
 
                 $('input[name=id_delete]').val(id);
-                $('.fullname').html(response.farmer_fname+' '+response.farmer_lname);
+                $('.fullname').html(response.firstName+' '+response.lastName);
             }
         });
     }

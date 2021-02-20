@@ -6,7 +6,7 @@ $conn = $pdo->open();
 if (isset($_POST['user_id'])) {
     $id = $_POST['user_id'];
 
-    $stmt = $conn->prepare("SELECT * FROM farmer WHERE farmer_id=:id");
+    $stmt = $conn->prepare("SELECT * FROM farmer WHERE id=:id");
     $stmt->execute(['id' => $id]);
     $row = $stmt->fetch();
 
@@ -75,7 +75,7 @@ if (isset($_POST['edit_id'])) {
     $mobile = $_POST['mobile'];
     $address = $_POST['address'];
 
-    $stmt = $conn->prepare("SELECT COUNT(*) AS numrows FROM farmer WHERE farmer_email=:email AND farmer_id <>:id");
+    $stmt = $conn->prepare("SELECT COUNT(*) AS numrows FROM farmer WHERE email=:email AND id <>:id");
     $stmt->execute(['email'=>$email, 'id'=>$id]);
     $row = $stmt->fetch();
     if($row['numrows'] > 0){
@@ -83,9 +83,9 @@ if (isset($_POST['edit_id'])) {
     }
     else {
 
-        $stmt = $conn->prepare("UPDATE farmer SET farmer_email=:email, password=:password, farmer_fname=:firstname,
-                                         farmer_lname=:lastname,farmer_sex=:gender,mobile=:mobile,farmer_address=:address
-                                         WHERE farmer_id=:id");
+        $stmt = $conn->prepare("UPDATE farmer SET email=:email, password=:password, firstName=:firstname,
+                                         lastName=:lastname,gender=:gender,mobile=:mobile,address=:address
+                                         WHERE id=:id");
         $stmt->execute(['email' => $email, 'password' => $password, 'firstname' =>
             $firstname, 'lastname' => $lastname, 'gender' => $gender,'mobile' => $mobile, 'address' => $address,'id'=>$id]);
 
