@@ -11,16 +11,16 @@ if(isset($_POST['login'])){
 
     try{
 
-        $stmt = $conn->prepare("SELECT *, COUNT(*) AS numrows1 FROM admin WHERE admin_email = :email");
+        $stmt = $conn->prepare("SELECT *, COUNT(*) AS numrows1 FROM admin WHERE email = :email");
         $stmt->execute(['email'=>$email]);
         $row = $stmt->fetch();
 
         if($row['numrows1'] > 0){
             if($password == $row['password']){
                 $_SESSION['user'] = 'admin';
-                $_SESSION['admin'] = $row['admin_id'];
+                $_SESSION['admin'] = $row['id'];
                 $_SESSION["loggedin"] = true;
-                $_SESSION["email"] = $row['admin_email'];
+                $_SESSION["email"] = $row['email'];
             }
             else{
                 $_SESSION['error'] = 'Incorrect Password';
@@ -28,18 +28,18 @@ if(isset($_POST['login'])){
             }
         }
 
-        $stmt = $conn->prepare("SELECT *, COUNT(*) AS numrows1 FROM farmer WHERE farmer_email = :email");
+        $stmt = $conn->prepare("SELECT *, COUNT(*) AS numrows1 FROM farmer WHERE email = :email");
         $stmt->execute(['email'=>$email]);
         $row = $stmt->fetch();
 
         if($row['numrows1'] > 0){
             if($password == $row['password']){
                 $_SESSION['user'] = 'farmer';
-                $_SESSION['admin'] = $row['farmer_id'];
+                $_SESSION['admin'] = $row['id'];
                 $_SESSION["loggedin"] = true;
-                $_SESSION["email"] = $row['farmer_email'];
-                $_SESSION['name'] = $row['farmer_fname'];
-                $_SESSION['surname'] = $row['farmer_lname'];
+                $_SESSION["email"] = $row['email'];
+                $_SESSION['name'] = $row['firstName'];
+                $_SESSION['surname'] = $row['lastName'];
             }
             else{
                 $_SESSION['error'] = 'Incorrect Password';

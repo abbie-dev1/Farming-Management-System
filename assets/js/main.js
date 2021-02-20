@@ -7,7 +7,7 @@ let contactValidated = false;
 function ValueKeyPress(trigger) {
 
     if (trigger === 'mobile') {
-        var contact = $('input[name=pNumber]').val();
+        var contact = $('input[name=mobile]').val();
 
         if (contact.length === 0) {
             $('#verify').html('');
@@ -120,6 +120,7 @@ function CheckPassword()
         }
     }else{
         $('#strongPassword').html('');
+        $('.tooltiptext label').css('color','black');
         strongpassword = false;
     }
 
