@@ -5,59 +5,30 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"><b>Upload Space</b></h4>
+                <h4 class="modal-title"><b>Add New Tracker</b></h4>
             </div>
             <div class="modal-body">
 
-                <form class="form-horizontal" method="POST" action="./../lessor/lessor_handle.php" enctype="multipart/form-data">
-                    <input type="hidden" class="userid" name="lease">
-                    <div class="form-group">
-                        <label for="address" class="col-sm-3 control-label">Address/ Location</label>
-
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="address" name="address" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="photo" class="col-sm-3 control-label">Upload Image</label>
-
-                        <div class="col-sm-9">
-                            <input type="file" class="form-control" id="photo" name="photo" required>
-                        </div>
-                    </div>
+                <form class="form-horizontal" method="POST" action="./../farmer/farmer_handle.php" enctype="multipart/form-data">
+                    <input class="userid" name="user_id" value="<?php echo $_SESSION['admin']?>" hidden>
                 <div class="form-group">
                     <label for="type" class="col-sm-3 control-label">Type</label>
 
                     <div class="col-sm-9">
                         <select name="type" class="form-control" required>
-                            <option value="">Select Event Type ...</option>
-                            <option value="1">Hot Desk</option>
-                            <option value="2">Boardroom</option>
-                            <option value="3">Meeting</option>
-                            <option value="4">Events Area</option>
+                            <option value="" disabled selected>Select Animal Type ...</option>
+                            <option value="Cow">Cow</option>
+                            <option value="Goat">Goat</option>
+                            <option value="Chicken">Chicken</option>
+                            <option value="Horse">Horse</option>
                         </select>
                     </div>
                 </div>
-                    <div class="form-group">
-                        <label for="size" class="col-sm-3 control-label">Size</label>
-
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="size" name="size" onkeypress="return /[0-9]/i.test(event.key)" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="salary" class="col-sm-3 control-label">Price</label>
-
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="salary" name="salary" onkeypress="return /[0-9]/i.test(event.key)" required>
-                        </div>
-                    </div>
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
-                <button type="submit" class="btn btn-success btn-flat" ><i class="fa fa-check-square-o"></i> Book</button>
+                <button type="submit" class="btn btn-success btn-flat" ><i class="fa fa-check-square-o"></i> Add</button>
                 </form>
             </div>
         </div>

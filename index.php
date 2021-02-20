@@ -225,6 +225,8 @@
         </div>
     </section>
 
+<?php include("includes/footer.php")?>
+
     <div class="modal fade portfolio-modal text-center" role="dialog" tabindex="-1" id="portfolioModal6">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">

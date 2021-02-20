@@ -142,14 +142,15 @@ if(isset($_POST['lease'])) {
     header('Location: '.$_SERVER['HTTP_REFERER']);
 }
 
-if(isset($_POST['decline'])){
-    $id = $_POST['decline'];
+if(isset($_POST['user_id'])){
+    $id = $_POST['user_id'];
+    $type = $_POST['type'];
 
     try{
-        $stmt = $conn->prepare("UPDATE booking SET status_id=2 WHERE book_id=:id");
-        $stmt->execute(['booking_id'=>$id]);
+        $stmt = $conn->prepare("INSERT INTO tracker(type,farmer_id) VALUES(:type,:id)");
+        $stmt->execute(['type'=>$type,'id'=>$id]);
 
-        $_SESSION['success'] = 'Application removed successfully';
+        $_SESSION['success'] = 'Tracker added successfully';
     }
     catch(PDOException $e){
         $_SESSION['error'] = $e->getMessage();
