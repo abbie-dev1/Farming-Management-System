@@ -7,15 +7,18 @@ if($_SESSION['user'] == 'farmer'){
 ?>
 
 
-     <!DOCTYPE html>
-     <html lang="en">
-     <head>
-      <meta charset="UTF-8">
-      <title>Welcome</title>
-       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-       <style type="text/css"> body{ font: 14px sans-serif;text-align: center; }</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Welcome</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+<style type="text/css"> body{ font: 14px sans-serif;text-align: center; }</style>
 </head>
-<body>
+ <body style="display: flex">
+ <?php include("../includes/side-menu.php")?>
+ <div class="body-content">
 <div class="intro-text" style="padding-top: 50px">
     <?php
     if(isset($_SESSION['error'])){
@@ -48,62 +51,91 @@ if($_SESSION['user'] == 'farmer'){
 
      <?php
      $conn = $pdo->open();
-
+     echo '
+            <table class="table" id="orderTable">
+                 <tr style="background: dimgrey;">
+                    <th>No #</th>
+                    <th>Name</th>
+                    <th>Role</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Action</th>
+                </tr>
+                ';
      try {
-         $stmt = $conn->prepare("SELECT * from farmer");
+         $stmt = $conn->prepare("SELECT * from admin");
          $stmt->execute();
+
+         $stmts = $conn->prepare("SELECT * from farmer");
+         $stmts->execute();
 
      }
      catch (Exception $e){
          print_r($e->getMessage());
      }
 
-
+    $key=0;
      if($stmt->rowCount() > 0) {
-         echo '
-                                    <table class="table" id="orderTable">
-                                         <tr style="background: dimgrey;">
-                                            <th>No #</th>
-                                            <th>Name</th>
-                                            <th>Gender</th>
-                                            <th>Email</th>
-                                            <th>Mobile</th>
-                                            <th>Action</th>
-                                        </tr>
-                                        ';
-         foreach ($stmt as $key=> $row) {
+
+         foreach ($stmt as $row) {
 
              echo '<tr>
                                  <td>' . $key . '</td>
-                                 <td>'.$row['firstName'].' '. $row['lastName'] .'</td>
-                                 <td>'. $row['gender'] .'</td>
+                                 <td>' . $row['name'] . '</td>
+                                 <td>Admin</td>
                                  <td>' . $row['email'] . '</td>
                                  <td>' . $row['mobile'] . '</td>
                                      <td>
                                          
-                                         <button class="btn-warning edit" id="'.$row['id'].'"><i class="fa fa-check-circle-o"></i> Edit</button>
-                                         <button class="btn-danger delete" id="'.$row['id'].'"><i class="fa fa-trash-o"></i> Delete</button>
+                                         <button class="btn-warning edit" id="' . $row['id'] . '"><i class="fa fa-check-circle-o"></i> Edit</button>
+                                         <button class="btn-danger delete" id="' . $row['id'] . '"><i class="fa fa-trash-o"></i> Delete</button>
                                      </td>
                                 </tr>
                                 </tr>';
          }
+
+         $key++;
+
+     }
+
+     if($stmts->rowCount() > 0) {
+         foreach ($stmts as $rows) {
+
+
+             echo '<tr>
+                                 <td>' . $key. '</td>
+                                 <td>'.$rows['firstName'].' '. $rows['lastName'] .'</td>
+                                 <td>Farmer</td>
+                                 <td>' . $rows['email'] . '</td>
+                                 <td>' . $rows['mobile'] . '</td>
+                                     <td>
+                                         
+                                         <button class="btn-warning edit" id="'.$rows['id'].'"><i class="fa fa-check-circle-o"></i> Edit</button>
+                                         <button class="btn-danger delete" id="'.$rows['id'].'"><i class="fa fa-trash-o"></i> Delete</button>
+                                     </td>
+                                </tr>
+                                </tr>';
+             $key++;
+         }
+
          echo ' </table>';
          $pdo->close();
      }else{
-         echo '<tr>No Records Found ...</tr>' ;
+         if($stmt->rowCount() ==0) {
+             echo '<tr>No Records Found ...</tr>';
+         }
      }
      ?>
 
 
 
  </div>
-
+ </div>
  </body>
  </html>
 <?php include('./../includes/scripts.php') ?>
 <?php include('./files/admin_modal.php') ?>
 <script>
-    console.log('ddd');
     $(function() {
 
         $(document).on('click', '.edit', function (e) {
