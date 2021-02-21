@@ -24,8 +24,6 @@
       <change beforePath="$PROJECT_DIR$/admin/admin_handle.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_handle.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/files/admin_modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/files/admin_modal.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/welcome.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/welcome.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/side-menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/side-menu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/verify.php" beforeDir="false" afterPath="$PROJECT_DIR$/verify.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +85,7 @@
       <workItem from="1613394774290" duration="265000" />
       <workItem from="1613428075896" duration="654000" />
       <workItem from="1613474864546" duration="1790000" />
-      <workItem from="1613811022635" duration="21901000" />
+      <workItem from="1613811022635" duration="26846000" />
     </task>
     <servers />
   </component>
@@ -115,13 +113,13 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="604" y="336" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1613821145537" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1613835832507">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1613897315869">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1613835832507" />
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1613835823152">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1613897315869" />
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1613897304105">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1613835823152" />
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1613897304105" />
   </component>
 </project>

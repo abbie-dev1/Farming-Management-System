@@ -8,8 +8,20 @@
               <h4 class="modal-title"><b>Add New User</b></h4>
             </div>
             <div class="modal-body">
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <select class="form-control" name="form" onchange="changeForm()" required>
+                            <option value="" selected hidden>Select Member You Wish To Add</option>
+                            <option value="admin">Admin</option>
+                            <option value="farmer" >Farmer</option>
+                        </select>
+                </div>
+
+                <div class="farmer-form" hidden>
+                    <h3>Add Farmer</h3>
               <form class="form-horizontal" method="POST" action="./../admin/admin_handle.php" enctype="multipart/form-data">
-                <input name="addnew" hidden>
+                <input name="addFarmer" hidden>
                 <div class="form-group">
                     <label for="firstname" class="col-sm-3 control-label">Firstname</label>
 
@@ -31,13 +43,7 @@
                       <input type="email" class="form-control" id="email" name="email" required>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="password" class="col-sm-3 control-label">Password</label>
 
-                    <div class="col-sm-9">
-                      <input type="password" class="form-control" id="password" name="password" required>
-                    </div>
-                </div>
 
                   <div class="form-group">
                       <label for="mobile" class="col-sm-3 control-label">Mobile</label>
@@ -67,12 +73,66 @@
                           <input type="text" class="form-control" id="address" name="address" required>
                       </div>
                   </div>
-              
-            </div>
+                  <div class="form-group">
+                      <label for="password" class="col-sm-3 control-label">Password</label>
+
+                      <div class="col-sm-9">
+                          <input type="password" class="form-control" id="password" name="password" required>
+                      </div>
+                  </div>
+
             <div class="modal-footer">
               <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
               <button type="submit" class="btn btn-primary btn-flat" name="add"><i class="fa fa-save"></i> Save</button>
               </form>
+            </div>
+                </div>
+
+
+                <div class="admin-form" hidden>
+                    <h3>Add Admin</h3>
+                <form class="form-horizontal" method="POST" action="./../admin/admin_handle.php" enctype="multipart/form-data">
+                    <input name="addAdmin" hidden>
+                    <div class="form-group">
+                        <label for="name" class="col-sm-3 control-label">Name</label>
+
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="col-sm-3 control-label">Email</label>
+
+                        <div class="col-sm-9">
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile" class="col-sm-3 control-label">Mobile</label>
+
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="mobile" name="mobile" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="col-sm-3 control-label">Password</label>
+
+                        <div class="col-sm-9">
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                    </div>
+
+
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+                <button type="submit" class="btn btn-primary btn-flat" name="add"><i class="fa fa-save"></i> Save</button>
+                </form>
+            </div>
+                </div>
+
+            <div class="modal-footer">
             </div>
         </div>
     </div>

@@ -55,7 +55,7 @@ if (isset($_POST['course_id'])) {
 }
 
 
-if(isset($_POST['addnew'])) {
+if(isset($_POST['addFarmer'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $firstname = $_POST['firstname'];
@@ -64,7 +64,7 @@ if(isset($_POST['addnew'])) {
     $mobile = $_POST['mobile'];
     $address = $_POST['address'];
 
-    $stmt = $conn->prepare("SELECT COUNT(*) AS numrows FROM farmer WHERE email=:email");
+    $stmt = $conn->prepare("SELECT COUNT(*) AS numrows FROM farmer,admin WHERE farmer.email=:email OR admin.email=:email");
     $stmt->execute(['email' => $email]);
     $row = $stmt->fetch();
     if ($row['numrows'] > 0) {
@@ -76,6 +76,29 @@ if(isset($_POST['addnew'])) {
         $stmt->execute(['firstName'=>$firstname, 'lastName'=>$lastname, 'gender'=>$gender,'mobile'=>$mobile, 'address'=>$address, 'email'=>$email, 'password'=>$password]);
         $userid = $conn->lastInsertId();
         $_SESSION['success'] = 'Farmer added successfully';
+
+    }
+    header('Location: welcome.php');
+}
+
+if(isset($_POST['addAdmin'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $name = $_POST['name'];
+    $mobile = $_POST['mobile'];
+
+    $stmt = $conn->prepare("SELECT COUNT(*) AS numrows FROM farmer,admin WHERE farmer.email=:email OR admin.email=:email");
+    $stmt->execute(['email' => $email]);
+    $row = $stmt->fetch();
+    if ($row['numrows'] > 0) {
+        $_SESSION['error'] = 'Email already exits';
+    } else {
+
+        $stmt = $conn->prepare("INSERT INTO admin (name, mobile, email, password) 
+						VALUES (:name, :mobile, :email,:password)");
+        $stmt->execute(['name'=>$name,'mobile'=>$mobile, 'email'=>$email, 'password'=>$password]);
+        $userid = $conn->lastInsertId();
+        $_SESSION['success'] = 'Admin added successfully';
 
     }
     header('Location: welcome.php');

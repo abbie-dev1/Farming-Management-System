@@ -220,4 +220,17 @@ if($_SESSION['user'] == 'farmer'){
             }
         });
     }
+
+    function changeForm(){
+
+        var name = $('select[name=form]').val();
+        if(name =='admin'){
+            $('.admin-form').css('display','block');
+            $('.farmer-form').css('display','none');
+        }else{
+            $('.farmer-form').css('display','block');
+            $('.admin-form').css('display','none');
+        }
+        console.log(name);
+    }
 </script>
