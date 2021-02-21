@@ -47,7 +47,7 @@
             </div>
     </nav>
 </header>
-    
+
     <header class="masthead" style="background-image:url('assets/img/livestock.jpg');">
         <div class="container">
             <div class="intro-text">
@@ -92,7 +92,7 @@
                                 <h2><span>Welcome To our Farming Management System</span></h2>
                             </div>
                             <div class="full">
-                                <p>After doing our research, we have discovered that in the past months there has been an increase in livestock theft. With our livestock tracking system will serve the purpose of tracking, monitor and manage all your livestock at any given time and location. It develops innovative, state-of-the-art technology in the field of remote monitoring systems / IoT for cattle herds, pigs, sheep and goats. 
+                                <p>After doing our research, we have discovered that in the past months there has been an increase in livestock theft. With our livestock tracking system will serve the purpose of tracking, monitor and manage all your livestock at any given time and location. It develops innovative, state-of-the-art technology in the field of remote monitoring systems / IoT for cattle herds, pigs, sheep and goats.
 The purpose of the system is to prevent animal theft through GPS and Satellite tracking, provides early theft warning as well as to prevent animals straying out of the designated grazing area. The system provides an easy and automated animal counting technology that makes it even easy for farmers to count a large number of stock in a matter of minutes and is able to monitor stock. Livestock tracking system is the only operational system for monitoring animals in the market right now.
 </p>
                             </div>
@@ -166,14 +166,14 @@ The purpose of the system is to prevent animal theft through GPS and Satellite t
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="full blog_img_popular">
-                                                <img class="img-responsive" src="images/Team/11.png" alt="#" />
-                                                <h4>Team Name</h4>
+                                                <img class="img-responsive" src="back.jpg" alt="#" />
+                                                <h4>Mathebula F</h4>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="full blog_img_popular">
-                                                <img class="img-responsive" src="images/Team/11.png" alt="#" />
-                                                <h4>Team Name</h4>
+                                                <img class="img-responsive" src="mothibi1.jpeg" alt="#" />
+                                                <h4>Mothibi II</h4>
                                             </div>
                                         </div>
                                     </div>
@@ -182,14 +182,14 @@ The purpose of the system is to prevent animal theft through GPS and Satellite t
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="full blog_img_popular">
-                                                <img class="img-responsive" src="images/Team/11.png" alt="#" />
-                                                <h4>Team Name</h4>
+                                                <img class="img-responsive" src="mulaudzi1.jpeg" alt="#" />
+                                                <h4>Mulaudzi DR</h4>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="full blog_img_popular">
-                                                <img class="img-responsive" src="images/Team/11.png" alt="#" />
-                                                <h4>Team Name</h4>
+                                                <img class="img-responsive" src="gab1.jpeg" alt="#" />
+                                                <h4>Gabriel</h4>
                                             </div>
                                         </div>
                                     </div>
