@@ -85,8 +85,8 @@ if (isset($_POST['profile_farmer'])) {
     header('location: welcome.php');
 }
 
-if (isset($_POST['edit_farmer'])) {
-    $id = $_POST['edit_farmer'];
+if (isset($_POST['edit_admin'])) {
+    $id = $_POST['edit_admin'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $name = $_POST['name'];
@@ -100,7 +100,7 @@ if (isset($_POST['edit_farmer'])) {
     }
     else {
 
-        $stmt = $conn->prepare("UPDATE admin SET email=:email, password=:password, firstName=:name,
+        $stmt = $conn->prepare("UPDATE admin SET email=:email, password=:password, name=:name,
                                          mobile=:mobile
                                          WHERE id=:id");
         $stmt->execute(['email' => $email, 'password' => $password, 'name' =>
@@ -112,8 +112,8 @@ if (isset($_POST['edit_farmer'])) {
 }
 
 
-if (isset($_POST['edit_admin'])) {
-    $id = $_POST['edit_id'];
+if (isset($_POST['edit_farmer'])) {
+    $id = $_POST['edit_farmer'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $firstname = $_POST['firstname'];

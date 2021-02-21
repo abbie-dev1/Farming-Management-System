@@ -256,7 +256,7 @@ if($_SESSION['user'] == 'farmer'){
 
 
 
-                $('input[name=edit_id]').val(response.id);
+                $('input[name=edit_farmer]').val(response.id);
                 $('input[name=firstname]').val(response.firstName);
                 $('input[name=lastname]').val(response.lastName);
                 $('input[name=email]').val(response.email);
@@ -309,7 +309,7 @@ if($_SESSION['user'] == 'farmer'){
                     '                        </div>\n' +
                     '                    </div>');
 
-                $('input[name=edit_id]').val(response.id);
+                $('input[name=edit_admin]').val(response.id);
                 $('input[name=name]').val(response.name);
                 $('input[name=email]').val(response.email);
                 $('input[name=mobile]').val(response.mobile);
