@@ -13,10 +13,106 @@ if (isset($_POST['user_id'])) {
     echo json_encode($row);
 }
 
+if (isset($_POST['farmer_id'])) {
+    $id = $_POST['farmer_id'];
+
+    $stmt = $conn->prepare("SELECT * FROM farmer WHERE id=:id");
+    $stmt->execute(['id' => $id]);
+    $row = $stmt->fetch();
+
+    echo json_encode($row);
+}
+
+if (isset($_POST['admin_id'])) {
+    $id = $_POST['admin_id'];
+
+    $stmt = $conn->prepare("SELECT * FROM admin WHERE id=:id");
+    $stmt->execute(['id' => $id]);
+    $row = $stmt->fetch();
+
+    echo json_encode($row);
+}
+
+if (isset($_POST['profile_admin'])) {
+    $id = $_SESSION['admin'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $name = $_POST['name'];
+    $mobile = $_POST['mobile'];
+
+    $stmt = $conn->prepare("SELECT COUNT(*) AS numrows FROM admin WHERE email=:email AND id <>:id");
+    $stmt->execute(['email'=>$email, 'id'=>$id]);
+    $row = $stmt->fetch();
+    if($row['numrows'] > 0){
+        $_SESSION['error'] = 'Email already exits';
+    }
+    else {
+
+        $stmt = $conn->prepare("UPDATE admin SET email=:email, password=:password, firstName=:name,
+                                         mobile=:mobile
+                                         WHERE id=:id");
+        $stmt->execute(['email' => $email, 'password' => $password, 'name' =>
+            $name, 'mobile' => $mobile,'id'=>$id]);
+
+        $_SESSION['success'] = 'Record updated successfully';
+    }
+    header('location: welcome.php');
+}
+
+if (isset($_POST['profile_farmer'])) {
+    $id = $_SESSION['admin'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $name = $_POST['name'];
+    $mobile = $_POST['mobile'];
+
+    $stmt = $conn->prepare("SELECT COUNT(*) AS numrows FROM admin WHERE email=:email AND id <>:id");
+    $stmt->execute(['email'=>$email, 'id'=>$id]);
+    $row = $stmt->fetch();
+    if($row['numrows'] > 0){
+        $_SESSION['error'] = 'Email already exits';
+    }
+    else {
+
+        $stmt = $conn->prepare("UPDATE admin SET email=:email, password=:password, firstName=:name,
+                                         mobile=:mobile
+                                         WHERE id=:id");
+        $stmt->execute(['email' => $email, 'password' => $password, 'name' =>
+            $name, 'mobile' => $mobile,'id'=>$id]);
+
+        $_SESSION['success'] = 'Record updated successfully';
+    }
+    header('location: welcome.php');
+}
+
+if (isset($_POST['edit_farmer'])) {
+    $id = $_POST['edit_farmer'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $name = $_POST['name'];
+    $mobile = $_POST['mobile'];
+
+    $stmt = $conn->prepare("SELECT COUNT(*) AS numrows FROM admin WHERE email=:email AND id <>:id");
+    $stmt->execute(['email'=>$email, 'id'=>$id]);
+    $row = $stmt->fetch();
+    if($row['numrows'] > 0){
+        $_SESSION['error'] = 'Email already exits';
+    }
+    else {
+
+        $stmt = $conn->prepare("UPDATE admin SET email=:email, password=:password, firstName=:name,
+                                         mobile=:mobile
+                                         WHERE id=:id");
+        $stmt->execute(['email' => $email, 'password' => $password, 'name' =>
+            $name, 'mobile' => $mobile,'id'=>$id]);
+
+        $_SESSION['success'] = 'Record updated successfully';
+    }
+    header('location: welcome.php');
+}
 
 
-
-if (isset($_POST['edit_id'])) {
+if (isset($_POST['edit_admin'])) {
     $id = $_POST['edit_id'];
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -136,8 +232,8 @@ if(isset($_POST['approve'])){
 
 }
 
-if(isset($_POST['id_delete'])){
-    $id = $_POST['id_delete'];
+if(isset($_POST['farmer_delete'])){
+    $id = $_POST['farmer_delete'];
 
     try{
         $stmt = $conn->prepare("DELETE FROM farmer WHERE id=:id");
@@ -151,6 +247,24 @@ if(isset($_POST['id_delete'])){
     header('Location: welcome.php');
 
 }
+
+if(isset($_POST['admin_delete'])){
+    $id = $_POST['admin_delete'];
+
+    try{
+        $stmt = $conn->prepare("DELETE FROM admin WHERE id=:id");
+        $stmt->execute(['id'=>$id]);
+
+        $_SESSION['success'] = 'Admin deleted successfully';
+    }
+    catch(PDOException $e){
+        $_SESSION['error'] = $e->getMessage();
+    }
+    header('Location: welcome.php');
+
+}
+
+
 $pdo->close();
 
 ?>

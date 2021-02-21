@@ -43,6 +43,7 @@ if($_SESSION['user'] == 'farmer'){
 
     ?>
 </div>
+     <input type="hidden" class="user_token" value="<?php echo $_SESSION['admin']?>">
 <div class="page-header">
      <h1>ADMINISTRATION DASHBOARD</h1>
  </div>
@@ -87,8 +88,8 @@ if($_SESSION['user'] == 'farmer'){
                                  <td>' . $row['mobile'] . '</td>
                                      <td>
                                          
-                                         <button class="btn-warning edit" id="' . $row['id'] . '"><i class="fa fa-check-circle-o"></i> Edit</button>
-                                         <button class="btn-danger delete" id="' . $row['id'] . '"><i class="fa fa-trash-o"></i> Delete</button>
+                                         <button class="btn-warning editAdmin" id="' . $row['id'] . '"><i class="fa fa-check-circle-o"></i> Edit</button>
+                                         <button class="btn-danger deleteAdmin" id="' . $row['id'] . '"><i class="fa fa-trash-o"></i> Delete</button>
                                      </td>
                                 </tr>
                                 </tr>';
@@ -110,8 +111,8 @@ if($_SESSION['user'] == 'farmer'){
                                  <td>' . $rows['mobile'] . '</td>
                                      <td>
                                          
-                                         <button class="btn-warning edit" id="'.$rows['id'].'"><i class="fa fa-check-circle-o"></i> Edit</button>
-                                         <button class="btn-danger delete" id="'.$rows['id'].'"><i class="fa fa-trash-o"></i> Delete</button>
+                                         <button class="btn-warning editFarmer" id="'.$rows['id'].'"><i class="fa fa-check-circle-o"></i> Edit</button>
+                                         <button class="btn-danger deleteFarmer" id="'.$rows['id'].'"><i class="fa fa-trash-o"></i> Delete</button>
                                      </td>
                                 </tr>
                                 </tr>';
@@ -138,60 +139,121 @@ if($_SESSION['user'] == 'farmer'){
 <script>
     $(function() {
 
-        $(document).on('click', '.edit', function (e) {
+        $(document).on('click', '.editAdmin', function (e) {
 
             e.preventDefault();
             var id = this.id;
-            editUser(id);
+            editAdmin(id);
             $('#edit').modal('show');
         });
-        $(document).on('click', '.delete', function (e) {
+        $(document).on('click', '.editFarmer', function (e) {
 
             e.preventDefault();
             var id = this.id;
-            deleteUser(id);
+            editFarmer(id);
+            $('#edit').modal('show');
+        });
+        $(document).on('click', '.deleteAdmin', function (e) {
+
+            e.preventDefault();
+            var id = this.id;
+            deleteAdmin(id);
+            $('#delete').modal('show');
+        });
+        $(document).on('click', '.deleteFarmer', function (e) {
+
+            e.preventDefault();
+            var id = this.id;
+            deleteFarmer(id);
             $('#delete').modal('show');
         });
         $(document).on('click', '.add', function (e) {
 
-            console.log('ss');
             e.preventDefault();
             $('#add').modal('show');
         });
 
-        //
-        // $(document).on('click', '.add-course', function (e) {
-        //
-        //     e.preventDefault();
-        //     $('.add-btn').attr('disabled',false);
-        //     $('.input-course').html(
-        //         '<div class="form-group">\n' +
-        //         '                    <label for="photo" class="col-sm-3 control-label">Course Name</label>\n' +
-        //         '\n' +
-        //         '                    <div class="col-sm-9">\n' +
-        //         '                      <input type="text" id="course_name" placeholder="Enter Course Name" name="course_name" onkeypress="return /[a-z]/i.test(event.key)" required>\n' +
-        //         '                    </div>\n' +
-        //         '                </div>'+
-        //
-        //
-        //         '<div class="form-group">\n' +
-        //         '                    <label for="photo" class="col-sm-3 control-label">Fee Amount</label>\n' +
-        //         '\n' +
-        //         '                    <div class="col-sm-9">\n' +
-        //         '                      <input type="text" id="fee" placeholder="Enter Fee Amount In Integer Format" name="fee" onkeypress="return /[0-9]/i.test(event.key)" required>\n' +
-        //         '                    </div>\n' +
-        //         '                </div>'
-        //     )
-        // });
+        $(document).on('click', '.profile', function (e) {
+
+            e.preventDefault();
+
+            var id = $('.user_token').val();
+            getUser(id);
+            $('#profile').modal('show');
+        });
+
     });
 
-    function editUser(id){
+    function editFarmer(id){
         $.ajax({
             type: 'POST',
             url: './../admin/admin_handle.php',
             data: {user_id:id},
             dataType: 'json',
             success: function(response){
+
+
+                $('.editUsers').html('      <input type="hidden" id="edit_id" name="edit_farmer">\n' +
+                '                    <div class="form-group">\n' +
+                '                        <label for="firstname" class="col-sm-3 control-label">Firstname</label>\n' +
+                '\n' +
+                '                        <div class="col-sm-9">\n' +
+                '                            <input type="text" class="form-control" id="firstname" name="firstname" required>\n' +
+                '                        </div>\n' +
+                '                    </div>\n' +
+                '                    <div class="form-group">\n' +
+                '                        <label for="lastname" class="col-sm-3 control-label">Lastname</label>\n' +
+                '\n' +
+                '                        <div class="col-sm-9">\n' +
+                '                            <input type="text" class="form-control" id="lastname" name="lastname" required>\n' +
+                '                        </div>\n' +
+                '                    </div>\n' +
+                '                    <div class="form-group">\n' +
+                '                        <label for="email" class="col-sm-3 control-label">Email</label>\n' +
+                '\n' +
+                '                        <div class="col-sm-9">\n' +
+                '                            <input type="email" class="form-control" id="email" name="email" required>\n' +
+                '                        </div>\n' +
+                '                    </div>\n' +
+                '                    <div class="form-group">\n' +
+                '                        <label for="password" class="col-sm-3 control-label">Password</label>\n' +
+                '\n' +
+                '                        <div class="col-sm-9">\n' +
+                '                            <input type="password" class="form-control" id="password" name="password" required>\n' +
+                '                        </div>\n' +
+                '                    </div>\n' +
+                '\n' +
+                '                    <div class="form-group">\n' +
+                '                        <label for="mobile" class="col-sm-3 control-label">Mobile</label>\n' +
+                '\n' +
+                '                        <div class="col-sm-9">\n' +
+                '                            <input type="text" class="form-control" id="mobile" name="mobile" required>\n' +
+                '                        </div>\n' +
+                '                    </div>\n' +
+                '\n' +
+                '                    <div class="form-group">\n' +
+                '                        <label for="gender" class="col-sm-3 control-label">Gender</label>\n' +
+                '\n' +
+                '                        <div class="col-sm-9">\n' +
+                '                            <select class="form-control" id="gender" name="gender" required>\n' +
+                '                                <option value="" selected hidden>Select Gender</option>\n' +
+                '                                <option value="male">Male</option>\n' +
+                '                                <option value="female">Female</option>\n' +
+                '                                <option value="other">Other</option>\n' +
+                '                            </select>\n' +
+                '                        </div>\n' +
+                '                    </div>\n' +
+                '\n' +
+                '                    <div class="form-group">\n' +
+                '                        <label for="address" class="col-sm-3 control-label">Home Address</label>\n' +
+                '\n' +
+                '                        <div class="col-sm-9">\n' +
+                '                            <input type="text" class="form-control" id="address" name="address" required>\n' +
+                '                        </div>\n' +
+                '                    </div>');
+
+
+
 
                 $('input[name=edit_id]').val(response.id);
                 $('input[name=firstname]').val(response.firstName);
@@ -206,20 +268,108 @@ if($_SESSION['user'] == 'farmer'){
 
     }
 
-    function deleteUser(id){
+    function editAdmin(id){
+        $.ajax({
+            type: 'POST',
+            url: './../admin/admin_handle.php',
+            data: {admin_id:id},
+            dataType: 'json',
+            success: function(response){
+
+
+                $('.editUsers').html('      <input type="hidden" id="edit_id" name="edit_admin">\n' +
+                    '                    <div class="form-group">\n' +
+                    '                        <label for="name" class="col-sm-3 control-label">Name</label>\n' +
+                    '\n' +
+                    '                        <div class="col-sm-9">\n' +
+                    '                            <input type="text" class="form-control" id="name" name="name" required>\n' +
+                    '                        </div>\n' +
+                    '                    </div>\n' +
+                    '                    <div class="form-group">\n' +
+                    '                        <label for="email" class="col-sm-3 control-label">Email</label>\n' +
+                    '\n' +
+                    '                        <div class="col-sm-9">\n' +
+                    '                            <input type="email" class="form-control" id="email" name="email" required>\n' +
+                    '                        </div>\n' +
+                    '                    </div>\n' +
+                    '                    <div class="form-group">\n' +
+                    '                        <label for="password" class="col-sm-3 control-label">Password</label>\n' +
+                    '\n' +
+                    '                        <div class="col-sm-9">\n' +
+                    '                            <input type="password" class="form-control" id="password" name="password" required>\n' +
+                    '                        </div>\n' +
+                    '                    </div>\n' +
+                    '\n' +
+                    '                    <div class="form-group">\n' +
+                    '                        <label for="mobile" class="col-sm-3 control-label">Mobile</label>\n' +
+                    '\n' +
+                    '                        <div class="col-sm-9">\n' +
+                    '                            <input type="text" class="form-control" id="mobile" name="mobile" required>\n' +
+                    '                        </div>\n' +
+                    '                    </div>');
+
+                $('input[name=edit_id]').val(response.id);
+                $('input[name=name]').val(response.name);
+                $('input[name=email]').val(response.email);
+                $('input[name=mobile]').val(response.mobile);
+                $('input[name=password]').val(response.password);
+
+            }
+        });
+
+    }
+
+    function deleteFarmer(id){
 
         $.ajax({
             type: 'POST',
             url: './../admin/admin_handle.php',
-            data: {user_id:id},
+            data: {farmer_id:id},
             dataType: 'json',
             success: function(response){
 
-                $('input[name=id_delete]').val(id);
-                $('.fullname').html(response.firstName+' '+response.lastName);
+                $('.id_delete').attr('name','farmer_delete');
+                $('.id_delete').val(id);
+                $('.fullname').html('Delete Farmer: '+response.firstName+' '+response.lastName);
             }
         });
     }
+
+    function deleteAdmin(id){
+
+        $.ajax({
+            type: 'POST',
+            url: './../admin/admin_handle.php',
+            data: {admin_id:id},
+            dataType: 'json',
+            success: function(response){
+
+                $('.id_delete').attr('name','admin_delete');
+                $('.id_delete').val(id);
+                $('.fullname').html('Delete Admin: '+response.name);
+            }
+        });
+    }
+
+    function getUser(id){
+        $.ajax({
+            type: 'POST',
+            url: './../admin/admin_handle.php',
+            data: {admin_id:id},
+            dataType: 'json',
+            success: function(response){
+
+                $('input[name=edit_id]').val(response.id);
+                $('input[name=name]').val(response.name);
+                $('input[name=email]').val(response.email);
+                $('input[name=mobile]').val(response.mobile);
+                $('input[name=password]').val(response.password);
+
+            }
+        });
+
+    }
+
 
     function changeForm(){
 
@@ -231,7 +381,7 @@ if($_SESSION['user'] == 'farmer'){
             $('.farmer-form').css('display','block');
             $('.admin-form').css('display','none');
         }
-        console.log(name);
+
     }
 </script>
 

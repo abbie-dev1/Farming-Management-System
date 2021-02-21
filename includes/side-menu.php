@@ -11,7 +11,7 @@
             
             <a href='#'><div class=side-options'>View All</div></a>
             <a href='#'><div class='side-options'>Add Tracker</div></a>
-            <a href='#'><div class='side-options'>Update Profile</div></a>
+            <a href='#'><div class='side-options profile'>Update Profile</div></a>
             <a href='#'><div class='side-options'>Logout</div></a>
             
             ";
@@ -25,7 +25,7 @@
             
             <a href='#'><div class='side-options'>Admins</div></a>
             <a href='#'><div class='side-options'>Farmers</div></a>
-            <a href='#'><div class='side-options'>Update Profile</div></a>
+            <a href='#'><div class='side-options profile'>Update Profile</div></a>
             <a href='#'><div class='side-options'>Logout</div></a>
             
             ";
