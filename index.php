@@ -37,7 +37,7 @@
             <a class="navbar-brand" href="index.php" style="font-family: 'Montserrat';font-style: oblique;font-weight: initial;">Farming Management System</a>
             <div class="collapse navbar-collapse justify-content-end" id="navbar-wd">
                 <ul class="navbar-nav">
-                    <li><a class="nav-link"  href="#about">About</a></li>
+                    <li><a class="nav-link" href="#about">About</a></li>
                     <li><a class="nav-link" href="#services">Services</a></li>
                     <li><a class="nav-link" href="#teams">Teams</a></li>
                     <li><a class="nav-link" href="#contacts">Contact us</a></li>
@@ -92,7 +92,9 @@
                                 <h2><span>Welcome To our Farming Management System</span></h2>
                             </div>
                             <div class="full">
-                                <p>To provide the best and fast ...................</p>
+                                <p>After doing our research, we have discovered that in the past months there has been an increase in livestock theft. With our livestock tracking system will serve the purpose of tracking, monitor and manage all your livestock at any given time and location. It develops innovative, state-of-the-art technology in the field of remote monitoring systems / IoT for cattle herds, pigs, sheep and goats. 
+The purpose of the system is to prevent animal theft through GPS and Satellite tracking, provides early theft warning as well as to prevent animals straying out of the designated grazing area. The system provides an easy and automated animal counting technology that makes it even easy for farmers to count a large number of stock in a matter of minutes and is able to monitor stock. Livestock tracking system is the only operational system for monitoring animals in the market right now.
+</p>
                             </div>
                             <div class="full">
                                 <a class="hvr-radial-out button-theme" href="#">About us</a>
