@@ -93,9 +93,10 @@ if($_SESSION['user'] == 'farmer'){
                                      </td>
                                 </tr>
                                 </tr>';
+             $key++;
          }
 
-         $key++;
+
 
      }
 
