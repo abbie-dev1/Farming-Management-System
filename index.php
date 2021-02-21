@@ -229,6 +229,52 @@ The purpose of the system is to prevent animal theft through GPS and Satellite t
 
 <?php include("includes/footer.php")?>
 
+<a href="#" style="display:block" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+<div class="modal fade" id="query">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 style="color: gold">Leave A Message</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" method="POST" action="verify.php?return=<?php echo basename($_SERVER['PHP_SELF']); ?>" enctype="multipart/form-data">
+
+                    <div class="form-group">
+                        <label for="name" class="col-sm-3 control-label">Name</label>
+
+                        <div class="col-sm-9">
+                            <input class="form-control" type="text" id="name" name="name" placeholder="Name"  onkeypress="return /[a-z]/i.test(event.key)" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="col-sm-3 control-label">Email</label>
+
+                        <div class="col-sm-9">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="form-group">
+                        <label for="message" class="col-sm-3 control-label">Message</label>
+
+                        <div class="col-sm-9">
+                                <textarea style="height: 150px" class="form-control" id="message" name="message" placeholder="Type your message here..." required>
+                                </textarea>
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success btn-flat" ><i class="fa fa-check-square-o"></i> Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
     <div class="modal fade portfolio-modal text-center" role="dialog" tabindex="-1" id="portfolioModal6">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">

@@ -214,3 +214,15 @@ nav a:hover {
     margin: -100px 0 0 -100px;
     /* is width and height divided by two */
 }
+
+.back-to-top{
+    position: fixed;
+    background: gray;
+    color: white;
+    padding: 6px 12px 9px 12px;
+    font-size: 16px;
+    border-radius: 50%;
+    right: 15px;
+    bottom: 15px;
+    transition: background 0.5s;
+}

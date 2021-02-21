@@ -169,7 +169,17 @@ button:focus {
 	color: #ffffff;
 	opacity: 1;
 }
-
+.back-to-top{
+	position: fixed;
+	background: gray;
+	color: white;
+	padding: 6px 12px 9px 12px;
+	font-size: 16px;
+	border-radius: 50%;
+	right: 15px;
+	bottom: 15px;
+	transition: background 0.5s;
+}
 
 /*------------------------------------------------------------------ 
    LOADER 
