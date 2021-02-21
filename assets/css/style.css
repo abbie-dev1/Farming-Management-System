@@ -1,0 +1,23 @@
+.navbar{
+    margin-bottom: 0px !important;
+    border-radius: 0px !important;
+    position: fixed;
+    width: 100%;
+}
+.sidebar-menu{
+    width: 20%;
+    background-color: lightgrey;
+    text-decoration: none;
+    text-underline: none;
+}
+.body-content{
+    padding-top: 10%;
+    width: 100%;
+    padding: 50px;
+}
+.side-options{
+    border: grey solid 2px;
+    font-size: x-large;
+    padding: 14px;
+    margin: 5px;
+}

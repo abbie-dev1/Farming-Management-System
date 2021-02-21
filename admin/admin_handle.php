@@ -13,57 +13,8 @@ if (isset($_POST['user_id'])) {
     echo json_encode($row);
 }
 
-if (isset($_POST['course_add'])) {
-
-    $course_name = $_POST['course_name'];
-    $fee =$_POST['fee'];
-
-    $stmt = $conn->prepare("SELECT COUNT(*) AS numrows FROM course WHERE course_name=:course_name");
-    $stmt->execute(['course_name'=>$course_name]);
-    $row = $stmt->fetch();
-    if($row['numrows'] > 0){
-        $_SESSION['error'] = 'Course Name Already Exits';
-    }else {
-
-        $stmt = $conn->prepare("INSERT INTO course(course_name,fee) VALUES(:course_name,:fee)");
-        $stmt->execute(['fee' => $fee, 'course_name' => $course_name]);
-        $_SESSION['success'] = 'Course added successfully';
-
-    }
-    header('location: '.$_SERVER['HTTP_REFERER']);
-}
-
-if (isset($_POST['announce'])) {
-
-    $news =$_POST['news'];
-    $date = date('Y-m-d');
-
-    $stmt = $conn->prepare("INSERT INTO announcement(news,date_created) VALUES(:news,:date_created)");
-    $stmt->execute(['news' => $news, 'date_created' => $date]);
-    $_SESSION['success'] = 'Announcement posted successfully';
 
 
-    header('location: '.$_SERVER['HTTP_REFERER']);
-}
-
-if (isset($_FILES['file'])) {
-
-    $file =$_FILES['file']['name'];
-    $tool =$_POST['tool'];
-    $date = date('Y-m-d');
-
-    try {
-
-        $stmt = $conn->prepare("INSERT INTO material(date_created,tool,file) VALUES(:date_created,:tool,:file)");
-        $stmt->execute(['date_created' => $date, 'tool' => $tool, 'file' => $file]);
-        $_SESSION['success'] = 'Material posted successfully';
-    }
-  catch(PDOException $e){
-        $_SESSION['error'] = $e->getMessage();
-    }
-
-    header('location: '.$_SERVER['HTTP_REFERER']);
-}
 
 if (isset($_POST['edit_id'])) {
     $id = $_POST['edit_id'];
@@ -104,7 +55,7 @@ if (isset($_POST['course_id'])) {
 }
 
 
-if(isset($_POST['addnew'])) {
+if(isset($_POST['addFarmer'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $firstname = $_POST['firstname'];
@@ -113,18 +64,41 @@ if(isset($_POST['addnew'])) {
     $mobile = $_POST['mobile'];
     $address = $_POST['address'];
 
-    $stmt = $conn->prepare("SELECT COUNT(*) AS numrows FROM farmer WHERE farmer_email=:email");
+    $stmt = $conn->prepare("SELECT COUNT(*) AS numrows FROM farmer,admin WHERE farmer.email=:email OR admin.email=:email");
     $stmt->execute(['email' => $email]);
     $row = $stmt->fetch();
     if ($row['numrows'] > 0) {
         $_SESSION['error'] = 'Email already exits';
     } else {
 
-        $stmt = $conn->prepare("INSERT INTO farmer(farmer_email, password, farmer_fname,farmer_lname,farmer_sex,mobile,farmer_address) 
-                                        VALUES(:email, :password, :first_name,:last_name,:gender,:mobile,:address)");
-        $stmt->execute(['email' => $email, 'password' => $password, 'first_name' =>
-            $firstname, 'last_name' => $lastname, 'gender' => $gender,'mobile' => $mobile, 'address' => $address]);
-        $_SESSION['success'] = 'Farmer updated successfully';
+        $stmt = $conn->prepare("INSERT INTO farmer (firstName, lastName,gender, mobile, address, email, password) 
+						VALUES (:firstName, :lastName,:gender, :mobile, :address, :email,:password)");
+        $stmt->execute(['firstName'=>$firstname, 'lastName'=>$lastname, 'gender'=>$gender,'mobile'=>$mobile, 'address'=>$address, 'email'=>$email, 'password'=>$password]);
+        $userid = $conn->lastInsertId();
+        $_SESSION['success'] = 'Farmer added successfully';
+
+    }
+    header('Location: welcome.php');
+}
+
+if(isset($_POST['addAdmin'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $name = $_POST['name'];
+    $mobile = $_POST['mobile'];
+
+    $stmt = $conn->prepare("SELECT COUNT(*) AS numrows FROM farmer,admin WHERE farmer.email=:email OR admin.email=:email");
+    $stmt->execute(['email' => $email]);
+    $row = $stmt->fetch();
+    if ($row['numrows'] > 0) {
+        $_SESSION['error'] = 'Email already exits';
+    } else {
+
+        $stmt = $conn->prepare("INSERT INTO admin (name, mobile, email, password) 
+						VALUES (:name, :mobile, :email,:password)");
+        $stmt->execute(['name'=>$name,'mobile'=>$mobile, 'email'=>$email, 'password'=>$password]);
+        $userid = $conn->lastInsertId();
+        $_SESSION['success'] = 'Admin added successfully';
 
     }
     header('Location: welcome.php');
@@ -166,7 +140,7 @@ if(isset($_POST['id_delete'])){
     $id = $_POST['id_delete'];
 
     try{
-        $stmt = $conn->prepare("DELETE FROM farmer WHERE farmer_id=:id");
+        $stmt = $conn->prepare("DELETE FROM farmer WHERE id=:id");
         $stmt->execute(['id'=>$id]);
 
         $_SESSION['success'] = 'Farmer deleted successfully';
