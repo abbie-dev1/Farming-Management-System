@@ -171,7 +171,7 @@ button:focus {
 }
 .back-to-top{
 	position: fixed;
-	background: gray;
+	background: orange;
 	color: white;
 	padding: 6px 12px 9px 12px;
 	font-size: 16px;
@@ -179,6 +179,45 @@ button:focus {
 	right: 15px;
 	bottom: 15px;
 	transition: background 0.5s;
+}
+
+.btn-react{
+	position: fixed;
+	margin: 80%;
+	padding: 350px 80px 0px 80px;
+	background: white;
+	z-index: 8;
+	display: none;
+}
+@media (min-width: 992px) {
+	.btn-react {
+		display: none !important;
+	}
+}
+@media (min-width: 700px) and (max-width: 850px){
+	.btn-react {
+		margin: 75%;
+	}
+}
+@media (min-width: 550px) and (max-width: 699px){
+	.btn-react {
+		margin: 70%;
+	}
+}
+@media (min-width: 450px) and (max-width: 549px){
+	.btn-react {
+		margin: 65%;
+	}
+}
+@media (min-width: 350px) and (max-width: 449px){
+	.btn-react {
+		margin: 55%;
+	}
+}
+@media (min-width: 0px) and (max-width: 349px){
+	.btn-react {
+		margin: 40%;
+	}
 }
 
 /*------------------------------------------------------------------ 

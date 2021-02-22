@@ -49,6 +49,9 @@ a.navbar-brand img {
      .top-header .navbar .navbar-collapse ul li a{
          padding: 5px 15px;
     }
+     .btn-react{
+         display: none;
+     }
      .about-img{
          margin-bottom: 30px;
          margin-top: 30px;

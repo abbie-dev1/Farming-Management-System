@@ -45,6 +45,18 @@
                     <li><a class="nav-link" href="register.php">Register</a></li>
                 </ul>
             </div>
+
+            <button data-toggle="collapse" onclick="openNav()" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" data-toogle="collapse" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="z-index: 9"><i class="fa fa-bars"></i></button>
+            <div class="btn-react" >
+                <ul class="navbar-nav">
+                    <li><a class="nav-link" href="#about">About</a></li>
+                    <li><a class="nav-link" href="#services">Services</a></li>
+                    <li><a class="nav-link" href="#teams">Teams</a></li>
+                    <li><a class="nav-link" href="#contacts">Contact us</a></li>
+                    <li><a class="nav-link" href="login.php">Login</a></li>
+                    <li><a class="nav-link" href="register.php">Register</a></li>
+                </ul>
+            </div>
     </nav>
 </header>
 
@@ -151,7 +163,7 @@ The purpose of the system is to prevent animal theft through GPS and Satellite t
                     <div class="col-md-12">
                         <div class="full">
                             <div class="heading_main text_align_center">
-                                <h2><span>The Team</span></h2>
+                                <h2><span>Our Team</span></h2>
                             </div>
                         </div>
                     </div>
@@ -166,13 +178,13 @@ The purpose of the system is to prevent animal theft through GPS and Satellite t
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="full blog_img_popular">
-                                                <img class="img-responsive" src="back.jpg" alt="#" />
+                                                <img class="img-responsive" src="assets/img/team/back.jpg" alt="#" />
                                                 <h4>Mathebula F</h4>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="full blog_img_popular">
-                                                <img class="img-responsive" src="mothibi1.jpeg" alt="#" />
+                                                <img class="img-responsive" src="assets/img/team/mothibi1.jpeg" alt="#" />
                                                 <h4>Mothibi II</h4>
                                             </div>
                                         </div>
@@ -182,13 +194,13 @@ The purpose of the system is to prevent animal theft through GPS and Satellite t
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="full blog_img_popular">
-                                                <img class="img-responsive" src="mulaudzi1.jpeg" alt="#" />
+                                                <img class="img-responsive" src="assets/img/team/mulaudzi1.jpeg" alt="#" />
                                                 <h4>Mulaudzi DR</h4>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="full blog_img_popular">
-                                                <img class="img-responsive" src="gab1.jpeg" alt="#" />
+                                                <img class="img-responsive" src="assets/img/team/gab1.jpeg" alt="#" />
                                                 <h4>Gabriel</h4>
                                             </div>
                                         </div>
@@ -212,20 +224,101 @@ The purpose of the system is to prevent animal theft through GPS and Satellite t
         </div>
         <!-- end section -->
         <!-- section -->
-        <div class="section layout_padding padding_bottom-0" id="contacts">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="full">
+    </section>
+        <section id="contacts" class="contact-area" style="background-color: white">
+            <div class="contact-inner area-padding">
+                <div class="contact-overly"></div>
+                <div class="container ">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="heading_main text_align_center">
                                 <h2><span>Contact</span></h2>
                             </div>
+
+                            <br/>
+                            <div class="contact-icon phone text-center">
+                                <a class="btn btn-primary" onclick="contactForm()" data-toggle="modal" role="button" href="#query">Leave A Message</a>
+
+                                <div>
+
+                                    <?php
+
+                                    if(isset($_SESSION['error'])){
+                                        echo "
+                        <div class='alert alert-warning beautiful' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                            <span aria-hidden='true'>&times;</span>
+                            </button>
+                           ".$_SESSION['error']."</div>
+                        ";
+                                        unset($_SESSION['error']);
+                                    }
+
+                                    if(isset($_SESSION['success'])){
+                                        echo "
+                        <div class='alert btn-success beautiful' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                            <span aria-hidden='true'>&times;</span>
+                            </button>
+                           ".$_SESSION['success']."</div>
+                        ";
+                                        unset($_SESSION['success']);
+                                    }
+
+                                    ?>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+
+                    <br/>
+                    <div class="row">
+                        <!-- Start contact icon column -->
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="contact-icon phone text-center">
+                                <a href="tel: 074 609 5074"><div class="single-icon">
+                                        <i class="fa fa-phone"></i>
+                                        <p>
+                                            Call: 074 609 5074<br>
+                                        </p>
+                                    </div></a>
+                            </div>
+                        </div>
+                        <!-- Start contact icon column -->
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="contact-icon mail text-center">
+                                <a href="mailto: fmstut@gmail.com"><div class="single-icon">
+                                        <i class="fa fa-envelope-o"></i>
+                                        <p>
+                                            Email: fmstut@gmail.com<br>
+                                        </p>
+                                    </div></a>
+                            </div>
+                        </div>
+                        <!-- Start contact icon column -->
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="contact-icon linkedin text-center">
+                                <a href="https://za.linkedin.com/in/fmstut/"><div class="single-icon">
+                                        <i class="fa fa-linkedin"></i>
+                                        <p>
+                                            LinkedIn: www.linkedin.com/fmstut
+                                        </p>
+                                    </div></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <!-- Start Google Map -->
+                        <div class="" style="width: 100%;">
+                            <!-- Start Map -->
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14399.784036214123!2d28.0968938!3d-25.5401753!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9e2de5e61f9e48e7!2sTshwane%20University%20of%20Technology%20-%20Soshanguve%20South%20Campus%20-%20TUT!5e0!3m2!1sen!2sza!4v1613979381783!5m2!1sen!2sza" width="100%" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe><!-- End Map -->
+                        </div>
+                        <!-- End Google Map -->
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
 
 <?php include("includes/footer.php")?>
 
@@ -319,6 +412,18 @@ The purpose of the system is to prevent animal theft through GPS and Satellite t
         }
 
     },5000);
+
+    function contactForm(){
+        $('#query').modal('show');
+    }
+
+    function openNav(){
+        if($('.btn-react').css('display') == 'block'){
+            $('.btn-react').hide();
+        }else{
+            $('.btn-react').show();
+        }
+    }
 </script>
 </body>
 

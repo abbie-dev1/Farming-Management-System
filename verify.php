@@ -60,9 +60,51 @@ if(isset($_POST['login'])){
     }
 
 }
-else{
-    $_SESSION['error'] = 'Input login credentials first';
+
+
+
+if(isset($_POST['message'])){
+
+//    $to_email = 'tut@gmail.com';
+//    $subject = 'Truber Query Message';
+//    $body ='Name: '.$_POST['name'].'<br> Message: '. $_POST['message'];
+//    $header = 'From: '.$_POST['email']. "\r\n" .
+//        'MIME-Version: 1.0' . "\r\n" .
+//        'Content-type: text/html; charset=utf-8';
+//
+//    if(mail($to_email,$subject,$body,$header)){
+//        $_SESSION['success'] = 'Message Successfully Submitted, We Will Respond To Your Query ASAP ...';
+//    }else{
+//        $_SESSION['error'] = 'Failed To Send Query ...';
+//    }
+
+    $to_email = $_POST['email'];
+    $subject = 'FMS Query Message';
+
+    $body = "
+                <a href='https://fmstut.000webhostapp.com/' style='color: #fed136;font-family: Kaushan Script,Helvetica Neue,Helvetica,Arial,cursive;'>FMS</a><br/>
+                <h3>Hi ".$_POST['name'].".</h3>
+                <h3>Your query was received and will be attended by one of our agency ASAP...</h3>
+                <br/>
+                
+             ";
+
+    $header = 'From: fmstut@gmail.com'. "\r\n" .
+        'MIME-Version: 1.0' . "\r\n" .
+        'Content-type: text/html; charset=utf-8';
+
+
+    if(mail($to_email,$subject,$body,$header)){
+        $_SESSION['success'] = 'Message Successfully Submitted, We Will Respond To Your Query ASAP ...';
+    }else{
+        $_SESSION['error'] = 'Failed To Send Query ...';
+    }
+
+    header('location: '.$_SERVER['HTTP_REFERER']);
+    exit(0);
+
 }
+
 
 $pdo->close();
 

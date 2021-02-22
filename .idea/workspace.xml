@@ -19,7 +19,22 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea09d5c0-4f51-4fd4-a42f-abe1522c9309" name="Default Changelist" comment="" />
+    <list default="true" id="ea09d5c0-4f51-4fd4-a42f-abe1522c9309" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/team/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/team/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/team/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/css/responsive.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/css/responsive.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fms_db.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gab1.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/session.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/session.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mothibi1.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mulaudzi1.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verify.php" beforeDir="false" afterPath="$PROJECT_DIR$/verify.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,15 +68,16 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\collage-system" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\fms\assets\img" />
       <recent name="C:\xampp\htdocs\fms\assets\js" />
       <recent name="C:\xampp\htdocs\fms\css\css" />
       <recent name="C:\xampp\htdocs\fms" />
       <recent name="C:\xampp\htdocs\farmer" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\fms\assets\img\team" />
+      <recent name="C:\xampp\htdocs\collage-system" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -80,7 +96,7 @@
       <workItem from="1613394774290" duration="265000" />
       <workItem from="1613428075896" duration="654000" />
       <workItem from="1613474864546" duration="1790000" />
-      <workItem from="1613811022635" duration="38929000" />
+      <workItem from="1613811022635" duration="46724000" />
     </task>
     <servers />
   </component>
@@ -112,9 +128,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1613948217380" />
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1613950077190">
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1613975789702">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1613950077190" />
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1613975789702" />
   </component>
 </project>
