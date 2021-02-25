@@ -2,14 +2,24 @@
 include './../includes/session.php';
 
 $conn = $pdo->open();
+$return = $_SERVER['HTTP_REFERER'];
 
-if (isset($_POST['stasus_id'])) {
+if (isset($_POST['coords'])) {
 
-    $stmt = $conn->prepare("SELECT * FROM lessor WHERE id=:id");
-    $stmt->execute(['id' => $_SESSION['admin']]);
-    $row = $stmt->fetch();
+    $serial= $_POST['coords'];
+    if($serial == 'track_all'){
+        $stmts = $conn->prepare("SELECT * FROM livestock WHERE status='online' AND farmer_id=:id");
+        $stmts->execute(['id'=>$_SESSION['admin']]);
+        $rows = $stmts->fetchAll();
+        echo json_encode($rows);
+    }else {
+        $stmt = $conn->prepare("SELECT * FROM livestock WHERE serial_no=:serial");
+        $stmt->execute(['serial' => $serial]);
+        $row = $stmt->fetchAll();
+        echo json_encode($row);
+    }
 
-    echo json_encode($row);
+
 }
 
 if (isset($_POST['userid'])) {
@@ -142,20 +152,22 @@ if(isset($_POST['lease'])) {
     header('Location: '.$_SERVER['HTTP_REFERER']);
 }
 
-if(isset($_POST['user_id'])){
-    $id = $_POST['user_id'];
-    $type = $_POST['type'];
+if(isset($_POST['animal_type'])){
+    $id = $_SESSION['admin'];
+    $type = $_POST['animal_type'];
+    $serial_no = md5(uniqid(rand(), true));
+    $serial_no= substr($serial_no,0,10);
 
     try{
-        $stmt = $conn->prepare("INSERT INTO tracker(type,farmer_id) VALUES(:type,:id)");
-        $stmt->execute(['type'=>$type,'id'=>$id]);
+        $stmt = $conn->prepare("INSERT INTO livestock(serial_no,animal_type,farmer_id,status) VALUES(:serial_no,:animal_type,:farmer_id,:status)");
+        $stmt->execute(['serial_no'=>$serial_no,'animal_type'=>$type,'farmer_id'=>$id,'status'=>'offline']);
 
         $_SESSION['success'] = 'Tracker added successfully';
     }
     catch(PDOException $e){
         $_SESSION['error'] = $e->getMessage();
     }
-    header('Location: '.$_SERVER['HTTP_REFERER']);
+    header('Location: '.$return);
 
 }
 
@@ -176,19 +188,19 @@ if(isset($_POST['approve'])){
 }
 
 
-if(isset($_POST['id_delete'])){
-    $id = $_POST['id_delete'];
+if(isset($_POST['anim_delete'])){
+    $id = $_POST['anim_delete'];
 
     try{
-        $stmt = $conn->prepare("DELETE FROM lessor WHERE id=:id");
+        $stmt = $conn->prepare("DELETE FROM livestock WHERE serial_no=:id");
         $stmt->execute(['id'=>$id]);
 
-        $_SESSION['success'] = 'Student deleted successfully';
+        $_SESSION['success'] = 'Tracker deleted successfully';
     }
     catch(PDOException $e){
         $_SESSION['error'] = $e->getMessage();
     }
-    header('Location: students.php');
+    header('Location: '.$return);
 
 }
 $pdo->close();

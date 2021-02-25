@@ -206,7 +206,7 @@
 
                         </div>
                     </div>
-                    <span id="verify"></span>
+<!--                    <span id="verify"></span>-->
                     <div class="form-group">
                         <label for="address" class="col-sm-3 control-label">Address</label>
                         <div class="col-sm-9">
@@ -229,21 +229,21 @@
                         </div>
                        <span class="fa fa-eye eyespan" style="margin-top: -30px;"></span>
                     </div>
-                    <span class="tooltiptext">
-                        <label id="miniCharacters">* 8 Characters minimum</label>
-                        <br><label class="special_character" >* Has special character</label>
-                        <br><label class="lowercase" >* Has lowercase character</label><br>
-                        <label class="uppercase" >* Has uppercase character</label><br>
-                        <label class="hasNumber" >* Has a number</label>
-                    </span>
-
-                    <div class="form-group">
-                        <label for="password" class="col-sm-3 control-label">Password</label>
-
-                        <div class="col-sm-9">
-                            <input type="password" class="form-control" id="password" name="password" required>
-                        </div>
-                    </div>
+<!--                    <span class="tooltiptext">-->
+<!--                        <label id="miniCharacters">* 8 Characters minimum</label>-->
+<!--                        <br><label class="special_character" >* Has special character</label>-->
+<!--                        <br><label class="lowercase" >* Has lowercase character</label><br>-->
+<!--                        <label class="uppercase" >* Has uppercase character</label><br>-->
+<!--                        <label class="hasNumber" >* Has a number</label>-->
+<!--                    </span>-->
+<!---->
+<!--                    <div class="form-group">-->
+<!--                        <label for="new-password" class="col-sm-3 control-label">Password</label>-->
+<!---->
+<!--                        <div class="col-sm-9">-->
+<!--                            <input type="password" class="form-control" id="new-password" name="new-password" required>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
 
 
@@ -397,7 +397,7 @@
 
     function matchPassword(){
         let password = $('#password').val();
-        let password_confirm = $('#password-input').val();
+        let password_confirm = $('#new-password').val();
         if (password_confirm.length === 0) {
             $('#passwordMatch').html('');
             validatedpassword=false;

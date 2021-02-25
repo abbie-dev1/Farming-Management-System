@@ -26,7 +26,7 @@
 
     <header class="masthead" style="background-image:url('./../images/banner_img.png');    color: gray;">
         <div class="container">
-            <div class="intro-text" style="padding-top: 20px">
+            <div class="intro-text" style="padding-top: 80px;">
             <?php
                     if(isset($_SESSION['error'])){
                         echo "

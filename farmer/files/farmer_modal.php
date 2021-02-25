@@ -10,12 +10,12 @@
             <div class="modal-body">
 
                 <form class="form-horizontal" method="POST" action="./../farmer/farmer_handle.php" enctype="multipart/form-data">
-                    <input class="userid" name="user_id" value="<?php echo $_SESSION['admin']?>" hidden>
+
                 <div class="form-group">
                     <label for="type" class="col-sm-3 control-label">Type</label>
 
                     <div class="col-sm-9">
-                        <select name="type" class="form-control" required>
+                        <select name="animal_type" class="form-control" required>
                             <option value="" disabled selected>Select Animal Type ...</option>
                             <option value="Cow">Cow</option>
                             <option value="Goat">Goat</option>
@@ -184,102 +184,40 @@
     </div>
 </div>
 
-<div class="modal fade" id="apply">
+
+<div class="modal fade" id="maps" style="height: 100%;width: 100%;">
+    <div class="modal-dialog" style="height: 100%;width: 100%;">
+        <div class="modal-content" >
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"style="font-size: -webkit-xxx-large;z-index: 999;position: fixed" >
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" label="Close" style="color: cadetblue"><b>VIEW TRACKER...</b></h4>
+            </div>
+                <div id="map"></div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="amin_delete">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <!--                <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-                <!--                    <span aria-hidden="true">&times;</span></button>-->
-                <h4 class="modal-title"><b>Secure Payment <i class="fa fa-lock"></i></b></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" style="color: red"><b>DELETING ...</b></h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" method="POST" action="./forms/application_Handle.php">
-
-                    <h2 class="text-center">Application Form</h2>
-
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="name">Name</label>
-                        <div class="col-md-4">
-                            <input id="name" name="name" type="text" placeholder="Enter your name" class="form-control input-md" required="">
-                        </div>
-                    </div>
-
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="surname">Surname</label>
-                        <div class="col-md-4">
-                            <input id="surname" name="surname" type="text" placeholder="Enter your surname" class="form-control input-md" required="">
-
-                        </div>
-                    </div>
-
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="pNumber">Contact no.</label>
-                        <div class="col-md-4">
-                            <input id="pNumber" name="pNumber" type="text" placeholder="Cellphone no." class="form-control input-md" required="">
-
-                        </div>
-                    </div>
-
-                    <!-- File Button -->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="idCopy">Attach Copy Id</label>
-                        <div class="col-md-4">
-                            <input id="idCopy" name="photo" class="input-file" type="file">
-                        </div>
-                    </div>
-
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="address">Address</label>
-                        <div class="col-md-4">
-                            <input id="address" name="address" type="text" placeholder="Physical Address" class="form-control input-md" required="">
-
-                        </div>
-                    </div>
-
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="email">Email</label>
-                        <div class="col-md-4">
-                            <input id="email" name="email" type="text" placeholder="email address" class="form-control input-md" required="">
-
-                        </div>
-                    </div>
-
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="rentFrom">Rent From</label>
-                        <div class="col-md-4">
-                            <input id="rentFrom" name="rentFrom" type="text" placeholder="Rent from(date-time)" class="form-control input-md" required="">
-                            <span class="help-block">2020-03-19 16:59:07</span>
-                        </div>
-                    </div>
-
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="rentTo">Rent To</label>
-                        <div class="col-md-4">
-                            <input id="rentTo" name="rentTo" type="text" placeholder="Rent to(date-time)" class="form-control input-md" required="">
-                            <span class="help-block">2020-03-19 16:59:07</span>
-                        </div>
-                    </div>
-
-<!--                    <!-- Button -->-->
-<!--                    <div class="form-group">-->
-<!--                      <label class="col-md-4 control-label" for="submit"></label>-->
-<!--                      <div class="col-md-4">-->
-<!--                        <button id="submit" name="submit" class="btn btn-info payment">Apply</button>-->
-<!--                      </div>-->
-<!--                    </div>-->
-
-                    <!--</fieldset>-->
+                <form class="form-horizontal" method="POST" action="./../farmer/farmer_handle.php" enctype="multipart/form-data">
+                    <input type="hidden" class="anim_delete"  name="anim_delete">
+                    <h4><span>Delete Tracker</span></h4>
+                    <h5><span class="anim_span"></span></h5>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
-                <button type="submit" class="btn btn-success btn-flat" name="apply"><i class="fa fa-check-square-o"></i> Apply Now</button>
+                <button type="submit" class="btn btn-danger btn-flat" ><i class="fa fa-trash-o"></i> DELETE</button>
                 </form>
             </div>
         </div>

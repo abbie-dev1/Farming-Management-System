@@ -3,14 +3,15 @@
 
 
         session_start();
-
-        if ($_SESSION['admin'] == 'farmer' && $_SESSION[' loggedin']) {
-            header('location: ./../farmer/welcome.php');
-        }
-
-        if ($_SESSION['admin'] == 'admin' && $_SESSION[' loggedin']) {
-            header('location: ./../admin/welcome.php');
-        }
+//        if(isset($_SESSION['admin'])){
+//            if ($_SESSION['user'] == 'farmer') {
+//                header('location: ./../farmer/welcome.php');
+//
+//            }
+//            if ($_SESSION['user'] == 'admin') {
+//                header('location: ./../admin/welcome.php');
+//            }
+//        }
 
 
 

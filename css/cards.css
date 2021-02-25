@@ -1,0 +1,106 @@
+/* FontAwesome for working BootSnippet :> */
+
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+
+.frontside {
+    padding: 10px;
+    border-radius: 10px;
+    min-width: 200px;
+    margin: 5px;
+}
+
+.text-danger{
+    color: red !important;
+}
+.marker {
+    display: block;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 0;
+}
+#map { position: unset; top: 0; bottom: 0; width: 100%; height: 100% !important; }
+.Cow{  background: cadetblue;}
+
+.Chicken{  background: yellowgreen;}
+.Goat{  background: dimgrey;}
+.horse{  background: lightblue;}
+
+.backside .card a {
+    font-size: 18px;
+    color: #007b5e !important;
+}
+
+.frontside .card .card-title,
+.backside .card .card-title {
+    color: #007b5e !important;
+}
+
+.frontside .card .card-body img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+}
+
+.pagination a:focus {
+    background-color: dodgerblue;
+    color: white;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+#my-map {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+
+ .tooltip {
+     position: relative;
+     display: inline-block;
+     border-bottom: 1px dotted black;
+ }
+
+.marker .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;.
+font-size: small;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.marker:hover{
+
+}
+
+.marker:hover .tooltiptext {
+    visibility: visible;
+}
+
+.tooltiptext{
+    background: black;
+    border-radius: 5px;
+    padding-left: 5px;
+    padding-left: 5px;
+}

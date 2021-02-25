@@ -5,7 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Farming Management System - Home</title>
-    <meta name="description" content="The system will allow the user to register online, then the information of the user will be validated. After registration the user will be allowed to login into the system. The user will then be allowed to choose the kind of truck she/he want to use, then the user will be required to enter the current location of his/her staff and destination location.">
+    <meta name="description" content="After doing our research, we have discovered that in the past months there has been an increase in livestock theft. With our livestock tracking system will serve the purpose of tracking, monitor and manage all your livestock at any given time and location. It develops innovative, state-of-the-art technology in the field of remote monitoring systems / IoT for cattle herds, pigs, sheep and goats.
+The purpose of the system is to prevent animal theft through GPS and Satellite tracking, provides early theft warning as well as to prevent animals straying out of the designated grazing area. The system provides an easy and automated animal counting technology that makes it even easy for farmers to count a large number of stock in a matter of minutes and is able to monitor stock. Livestock tracking system is the only operational system for monitoring animals in the market right now.
+">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script">

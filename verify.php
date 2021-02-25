@@ -1,7 +1,6 @@
 <?php
 include 'includes/session.php';
 
-session_start();
 $conn = $pdo->open();
 
 if(isset($_POST['login'])){
@@ -103,6 +102,28 @@ if(isset($_POST['message'])){
     header('location: '.$_SERVER['HTTP_REFERER']);
     exit(0);
 
+}
+
+if(isset($_POST['serial'])){
+    $serial = $_POST['serial'];
+    $stmt = $conn->prepare("SELECT *,COUNT(*) AS numrows FROM livestock WHERE serial_no = :serial");
+    $stmt->execute(['serial'=>$serial]);
+    $row = $stmt->fetch();
+
+    if($row['numrows'] > 0){
+        if($row['status'] =='online'){
+            $_SESSION['success'] = 'Tracker Already Activated ...';
+        }else{
+            $stmt = $conn->prepare("UPDATE livestock SET status='online' WHERE serial_no=:serial");
+            $stmt->execute(['serial'=>$serial]);
+
+            $_SESSION['success'] = 'Tracker Successfully Activated ...';
+        }
+    }else{
+        $_SESSION['error'] = 'Tracker Does Not Exist...';
+    }
+    header('location: '.$_SERVER['HTTP_REFERER']);
+    exit(0);
 }
 
 

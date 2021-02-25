@@ -41,7 +41,7 @@
             <?php
                     if(isset($_SESSION['error'])){
                         echo "
-                        <div class='alert btn-success beautiful' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                        <div class='alert alert-warning beautiful' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'>
                             <span aria-hidden='true'>&times;</span>
                             </button>
                            ".$_SESSION['error']."</div>
@@ -51,7 +51,7 @@
 
                     if(isset($_SESSION['success'])){
                         echo "
-                        <div class='alert alert-warning beautiful' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                        <div class='alert btn-success beautiful' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'>
                             <span aria-hidden='true'>&times;</span>
                             </button>
                            ".$_SESSION['success']."</div>
