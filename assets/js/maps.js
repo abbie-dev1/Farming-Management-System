@@ -4,12 +4,25 @@ function remaker(geo) {
     var geojson = {'type': 'FeatureCollection', 'features': []};
     geojson.features=geo;
 
-    var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11',
-        center: [geojson.features[0].geometry.coordinates[0], geojson.features[0].geometry.coordinates[1]],
-        zoom: 10
-    });
+    if(geojson.features.length ===1) {
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [geojson.features[0].geometry.coordinates[0], geojson.features[0].geometry.coordinates[1]],
+
+            zoom: 20
+
+        });
+    }else{
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [geojson.features[0].geometry.coordinates[0], geojson.features[0].geometry.coordinates[1]],
+
+            zoom: 15
+
+        });
+    }
 
 // add markers to map
     geojson.features.forEach(function (marker) {

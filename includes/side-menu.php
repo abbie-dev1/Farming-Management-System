@@ -10,9 +10,9 @@
             </div>
             
             <a href='#' id='track_all' class='anim_trace'><div class='side-options'>View All <i class='fa fa-location-arrow'></i></div></a>
-            <a href='#'><div class='side-options'>Add Tracker</div></a>
-            <a href='#'><div class='side-options profile'>Update Profile</div></a>
-            <a href='#'><div class='side-options'>Logout</div></a>
+            <a href='#'><div class='side-options'>Add Tracker <i class='fa fa-plus'></i></div></a>
+            <a href='#'><div class='side-options profile'>Update Profile <i class='fa fa-edit'></i></div></a>
+            <a href='#'><div class='side-options'>Logout <i class='glyphicon glyphicon-log-in'></i></div></a>
             
             ";
 

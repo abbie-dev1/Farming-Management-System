@@ -185,7 +185,7 @@ if($_SESSION['user'] == 'admin'){
                     $('.'+i).css('display','initial');
                 }
             } if(id == "last"){
-                $('#six').click()
+                $('#six').click();
             }
         });
 
@@ -204,20 +204,6 @@ if($_SESSION['user'] == 'admin'){
         });
 
     });
-
-    function approve(id){
-        console.log('sfn');
-        $.ajax({
-            type: 'POST',
-            url: './../lessor/lessor_handle.php',
-            data: {approve:id},
-            dataType: 'json',
-            success: function(response){
-            }
-        });
-
-        location.reload();
-    }
 
 
 
@@ -260,6 +246,7 @@ if($_SESSION['user'] == 'admin'){
     for (var i=0;i<8;i++){
         $('.'+i).css('display','initial');
     }
+
 
 </script>
 <script src="./../assets/js/maps.js"></script>

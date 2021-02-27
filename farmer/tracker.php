@@ -67,18 +67,145 @@ if(isset($_SESSION['success'])){
 
 
 ?>
+<input class="tracker_id" value="<?php if(isset($_SESSION['tracker_token'])){echo $_SESSION['tracker_token'];} ?>" hidden>
+<?php
 
-<div class="parent">
-    <div class="child">
+if(isset($_SESSION['tracker_token'])) {
+    echo '
+    <div class="parent">
+        <div class="child">
+    
+            <p><h2>Tracker: '.$_SESSION['tracker_token'].'  <i class="fa fa-circle text-success"></i></h2></p>
+            <p>
+            <form class="form-signin" method="POST" action="../verify.php" >
+            <input name="tracker_off"  value="'.$_SESSION['tracker_token'].'" hidden>
+            <i class="glyphicon glyphicon-log-in"><input type="submit" value="Deactivate"></i>
+            </form>
+            </p>
+        </div>
+    </div>';
 
-        <form class="form-signin" method="POST" action="../verify.php">
-            <div style="padding: 30px">
-                <i style="padding-bottom: 5px">Enter Serial Number To Activate Tracker</i>
-                <input style="margin-top: 10px" class="form-control" type="text" required="" placeholder="Serial Number" autofocus="" name="serial">
-                <br/>
-                <button class="btn btn-success btn-block btn-lg "type="submit">Activate</button>
-            </div>
-        </form>
-    </div>
-</div>
+}else{
+
+    echo '
+    <div class="parent">
+        <div class="child">
+             <h5 class="error-message" style="color: red"></h5>
+            <form class="form-signin" method="POST" action="../verify.php" id="form_id" onsubmit="return activateTracker()">
+                <div style="padding: 30px">
+                    <i style="padding-bottom: 5px">Enter Serial Number To Activate Tracker</i>
+                    <input style="margin-top: 10px" class="form-control" type="text" required="" placeholder="Serial Number" autofocus="" name="tracker_id">
+                    <br/>
+                    <button class="btn btn-success btn-block btn-lg" type="submit">Activate</button>
+                </div>
+            </form>
+        </div>
+    </div>';
+}
+
+?>
 </body>
+<?php include('./../includes/scripts.php') ?>
+<script>
+    $(function() {
+        $(document).on('click', '.activate', function (e) {
+
+            e.preventDefault();
+
+        });
+
+    });
+
+
+    navigator.permissions.query({name:'geolocation'})
+        .then(function(permissionStatus) {
+            localStorage.setItem('location', permissionStatus.state);
+
+            permissionStatus.onchange = function() {
+                localStorage.setItem('location', this.state);
+            };
+        });
+
+    function activateTracker() {
+        if(localStorage.getItem('location') =='prompt'){
+            $('.error-message').html('ERROR -> Allow Geo Location To Activate Tracker');
+            return false;
+        }else{
+
+            $('.error-message').html('');
+            return true;
+
+        }
+    }
+
+    if($('.tracker_id').val() !=''){
+        getLocation();
+    }
+
+
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            console.log("Geolocation is not supported by this browser.");
+        }
+    }
+
+    function showPosition(position) {
+
+        var id = $('.tracker_id').val();
+        var lat = position.coords.latitude;
+        var lng = position.coords.longitude;
+        console.log(lat);
+        $.ajax({
+            type: 'POST',
+            url: '../verify.php',
+            data: {
+                update_coords: id,
+                lat: lat,
+                lng: lng
+            },
+            dataType: 'json',
+            async: false,
+            success: function (response) {
+
+
+            }
+        });
+
+
+    }
+
+    setInterval(function () {
+
+        if($('.tracker_id').val() !=''){
+            getLocation();
+        }
+
+    },10000);
+
+    // $("#form_id").on("submit", function (e) {
+    //     e.preventDefault();//stop submit event
+    //     var self = $(this);//this form
+    //
+    //     showPosition;
+    //     $('input[name=lat]').val(lat);
+    //
+    //     $("#form_id").off("submit");//need form submit event off.
+    //     self.submit();//submit form
+    // });
+    //getLocation();
+
+    // Check for Geolocation API permissions
+
+
+
+    // navigator.geolocation.watchPosition(function(position) {
+    //         console.log("i'm tracking you!");
+    //     },
+    //     function(error) {
+    //         if (error.code == error.PERMISSION_DENIED)
+    //             console.log("you denied me :-(");
+    //     });
+</script>

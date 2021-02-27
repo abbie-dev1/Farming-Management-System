@@ -104,8 +104,8 @@ if(isset($_POST['message'])){
 
 }
 
-if(isset($_POST['serial'])){
-    $serial = $_POST['serial'];
+if(isset($_POST['tracker_id'])){
+    $serial = $_POST['tracker_id'];
     $stmt = $conn->prepare("SELECT *,COUNT(*) AS numrows FROM livestock WHERE serial_no = :serial");
     $stmt->execute(['serial'=>$serial]);
     $row = $stmt->fetch();
@@ -114,21 +114,54 @@ if(isset($_POST['serial'])){
         if($row['status'] =='online'){
             $_SESSION['success'] = 'Tracker Already Activated ...';
         }else{
-            $stmt = $conn->prepare("UPDATE livestock SET status='online' WHERE serial_no=:serial");
-            $stmt->execute(['serial'=>$serial]);
+            $stmt = $conn->prepare("UPDATE livestock SET status='online' WHERE serial_no=:id");
+            $stmt->execute(['id'=>$serial]);
 
             $_SESSION['success'] = 'Tracker Successfully Activated ...';
+            $_SESSION['tracker_token'] =$serial;
+
         }
     }else{
         $_SESSION['error'] = 'Tracker Does Not Exist...';
     }
+
     header('location: '.$_SERVER['HTTP_REFERER']);
     exit(0);
 }
 
+if(isset($_POST['serial'])){
+    header('location: '.$_SERVER['HTTP_REFERER']);
+    exit(0);
+
+}
+
+if(isset($_POST['update_coords'])){
+    $serial = $_POST['update_coords'];
+    $lat= $_POST['lat'];
+    $lng= $_POST['lng'];
+    $stmt = $conn->prepare("UPDATE livestock SET latitude=:lat,longitude=:lng WHERE serial_no=:id");
+    $stmt->execute(['lat'=>$lat,'lng'=>$lng,'id'=>$serial]);
+
+
+    header('location: '.$_SERVER['HTTP_REFERER']);
+    exit(0);
+
+}
+
+if(isset($_POST['tracker_off'])){
+    $serial = $_POST['tracker_off'];
+    $stmt = $conn->prepare("UPDATE livestock SET status='offline' WHERE serial_no=:id");
+    $stmt->execute(['id'=>$serial]);
+
+    unset($_SESSION['tracker_token']);
+
+    header('location: '.$_SERVER['HTTP_REFERER']);
+    exit(0);
+
+}
 
 $pdo->close();
 
-header('location: login.php');
+//header('location: login.php');
 
 ?>

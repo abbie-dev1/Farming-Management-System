@@ -171,21 +171,8 @@ if(isset($_POST['animal_type'])){
 
 }
 
-if(isset($_POST['approve'])){
-    $id = $_POST['approve'];
 
-    try{
-        $stmt = $conn->prepare("UPDATE booking SET status_id=1 WHERE book_id=:id");
-        $stmt->execute(['booking_id'=>$id]);
 
-        $_SESSION['success'] = 'Application accepted successfully';
-    }
-    catch(PDOException $e){
-        $_SESSION['error'] = $e->getMessage();
-    }
-    return 0;
-
-}
 
 
 if(isset($_POST['anim_delete'])){
