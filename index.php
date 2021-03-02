@@ -180,9 +180,9 @@ The purpose of the system is to prevent animal theft through GPS and Satellite t
                                                 <img class="img-responsive" src="assets/img/team/mothibi1.jpeg" alt="#" />
                                                 <h4>Mothibi II</h4>
                                             </div>
-                                        </div>
                                     </div>
                                 </div>
+                                <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="full blog_img_popular">
                                                 <img class="img-responsive" src="assets/img/team/abbie.jpeg" alt="#" />
