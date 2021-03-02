@@ -1,54 +1,35 @@
-mapboxgl.accessToken = 'pk.eyJ1IjoiZ29sZHdpbmZhbmEiLCJhIjoiY2tsamJoZHdhMjd2NDJ6bWdvemxydWMzOCJ9.N4lxy0RwuwipREz3-sDacw';
+var map = L.map('map', {
+    'center': [0, 0],
+    'zoom': 0,
+    'layers': [
+        L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
+        })
+    ]
+});
 
-function remaker(geo) {
-    var geojson = {'type': 'FeatureCollection', 'features': []};
-    geojson.features=geo;
+var markers = {};
 
-    if(geojson.features.length ===1) {
-        var map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/mapbox/streets-v11',
-            center: [geojson.features[0].geometry.coordinates[0], geojson.features[0].geometry.coordinates[1]],
+function setMarkers(data) {
 
-            zoom: 20
+    data.forEach(function (obj) {
+        if (!markers.hasOwnProperty(obj.id)) {
 
-        });
-    }else{
-        var map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/mapbox/streets-v11',
-            center: [geojson.features[0].geometry.coordinates[0], geojson.features[0].geometry.coordinates[1]],
+            var icon = L.divIcon({
+                className: 'custom-div-icon',
+                html: "<img src='./../assets/img/animals/"+obj.name.toLowerCase()+".png' width='40' height='30'>",
+                iconSize: [30, 42],
+                iconAnchor: [15, 42]
+            });
 
-            zoom: 15
+            markers[obj.id] = new L.Marker([obj.lat, obj.long],{icon: icon,title:obj.serial}).addTo(map);
+            markers[obj.id].previousLatLngs = [];
+        } else {
+            markers[obj.id].previousLatLngs.push(markers[obj.id].getLatLng());
+            markers[obj.id].setLatLng([obj.lat, obj.long]);
+        }
 
-        });
-    }
-
-// add markers to map
-    geojson.features.forEach(function (marker) {
-// create a DOM element for the marker
-        var el = document.createElement('div');
-        el.className = 'marker';
-        el.style.backgroundImage = 'url(./../assets/img/animals/'+marker.properties.message+'.png)';
-        el.style.backgroundSize = 'contain';
-        el.style.width = marker.properties.iconSize[0] + 'px';
-        el.style.height = marker.properties.iconSize[1] + 'px';
-
-        el.addEventListener('mouseover', function () {
-            var span=document.createElement('span');
-            span.className='tooltiptext';
-            span.innerHTML= '<p>'+marker.properties.message+'</p><p> SR No:'+marker.properties.serial+'</p>';
-            if(el.hasChildNodes()){
-                el.replaceChild(span,el.childNodes[0]);
-            }else{
-                el.append(span);
-            }
-
-        });
-
-// add marker to map
-        new mapboxgl.Marker(el)
-            .setLngLat(marker.geometry.coordinates)
-            .addTo(map);
     });
 }
+
+

@@ -1,4 +1,12 @@
 <!-- Add -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""/>
+<!-- Make sure you put this AFTER Leaflet's CSS -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+
 <div class="modal fade" id="addnew">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -106,7 +114,7 @@
     <div class="modal-dialog" style="height: 100%;width: 100%;">
         <div class="modal-content" >
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"style="font-size: -webkit-xxx-large;z-index: 999;position: fixed" >
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"style="font-size: -webkit-xxx-large;z-index: 999;position: fixed;color: black" >
                     <span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" label="Close" style="color: cadetblue"><b>VIEW TRACKER...</b></h4>
             </div>

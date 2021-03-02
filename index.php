@@ -34,29 +34,20 @@ The purpose of the system is to prevent animal theft through GPS and Satellite t
 
 <body id="page-top">
 <header class="top-header">
-    <nav class="navbar header-nav navbar-expand-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.php" style="font-family: 'Montserrat';font-style: oblique;font-weight: initial;">Farming Management System</a>
-            <div class="collapse navbar-collapse justify-content-end" id="navbar-wd">
-                <ul class="navbar-nav">
-                    <li><a class="nav-link" href="#about">About</a></li>
-                    <li><a class="nav-link" href="#services">Services</a></li>
-                    <li><a class="nav-link" href="#teams">Teams</a></li>
-                    <li><a class="nav-link" href="#contacts">Contact us</a></li>
-                    <li><a class="nav-link" href="login.php">Login</a></li>
-                    <li><a class="nav-link" href="register.php">Register</a></li>
-                </ul>
-            </div>
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="index.php" style="font-family: 'Montserrat';font-style: oblique;font-size: initial !important;color: white !important;">Farming Management System</a>
 
-            <button data-toggle="collapse" onclick="openNav()" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" data-toogle="collapse" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="z-index: 9"><i class="fa fa-bars"></i></button>
-            <div class="btn-react" >
-                <ul class="navbar-nav">
-                    <li><a class="nav-link" href="#about">About</a></li>
-                    <li><a class="nav-link" href="#services">Services</a></li>
-                    <li><a class="nav-link" href="#teams">Teams</a></li>
-                    <li><a class="nav-link" href="#contacts">Contact us</a></li>
-                    <li><a class="nav-link" href="login.php">Login</a></li>
-                    <li><a class="nav-link" href="register.php">Register</a></li>
+            <button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" data-toogle="collapse" aria-controls="navbarResponsive" aria-expanded="false"
+                                                                                            aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="nav navbar-nav ml-auto text-uppercase">
+                    <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="#services">Services</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="#teams">Team</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="#contacts">Contact Us</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="login.php">Login</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="register.php">Register</a></li>
                 </ul>
             </div>
     </nav>
@@ -419,13 +410,6 @@ The purpose of the system is to prevent animal theft through GPS and Satellite t
         $('#query').modal('show');
     }
 
-    function openNav(){
-        if($('.btn-react').css('display') == 'block'){
-            $('.btn-react').hide();
-        }else{
-            $('.btn-react').show();
-        }
-    }
 </script>
 </body>
 

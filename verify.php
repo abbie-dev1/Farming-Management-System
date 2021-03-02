@@ -40,6 +40,8 @@ if(isset($_POST['login'])){
                 $_SESSION["email"] = $row['email'];
                 $_SESSION['name'] = $row['firstName'];
                 $_SESSION['surname'] = $row['lastName'];
+
+                header('location: farmer/welcome.php');
             }
             else{
                 $_SESSION['error'] = 'Incorrect Password';
@@ -57,6 +59,7 @@ if(isset($_POST['login'])){
     catch(PDOException $e){
         echo "There is some problem in connection: " . $e->getMessage();
     }
+
 
 }
 
@@ -106,7 +109,9 @@ if(isset($_POST['message'])){
 
 if(isset($_POST['tracker_id'])){
     $serial = $_POST['tracker_id'];
-    $stmt = $conn->prepare("SELECT *,COUNT(*) AS numrows FROM livestock WHERE serial_no = :serial");
+    $lat= $_POST['lat'];
+    $lng= $_POST['lng'];
+    $stmt = $conn->prepare("SELECT *,COUNT(*) AS numrows FROM livestock WHERE serial_no=:serial");
     $stmt->execute(['serial'=>$serial]);
     $row = $stmt->fetch();
 
@@ -114,8 +119,8 @@ if(isset($_POST['tracker_id'])){
         if($row['status'] =='online'){
             $_SESSION['success'] = 'Tracker Already Activated ...';
         }else{
-            $stmt = $conn->prepare("UPDATE livestock SET status='online' WHERE serial_no=:id");
-            $stmt->execute(['id'=>$serial]);
+            $stmt = $conn->prepare("UPDATE livestock SET status='online',latitude=:lat,longitude=:lng WHERE serial_no=:id");
+            $stmt->execute(['lat'=>$lat,'lng'=>$lng,'id'=>$serial]);
 
             $_SESSION['success'] = 'Tracker Successfully Activated ...';
             $_SESSION['tracker_token'] =$serial;
@@ -129,23 +134,16 @@ if(isset($_POST['tracker_id'])){
     exit(0);
 }
 
-if(isset($_POST['serial'])){
-    header('location: '.$_SERVER['HTTP_REFERER']);
-    exit(0);
 
-}
 
-if(isset($_POST['update_coords'])){
-    $serial = $_POST['update_coords'];
+if(isset($_POST['update_now'])){
+    $serial = $_POST['update_now'];
     $lat= $_POST['lat'];
     $lng= $_POST['lng'];
     $stmt = $conn->prepare("UPDATE livestock SET latitude=:lat,longitude=:lng WHERE serial_no=:id");
     $stmt->execute(['lat'=>$lat,'lng'=>$lng,'id'=>$serial]);
 
-
-    header('location: '.$_SERVER['HTTP_REFERER']);
-    exit(0);
-
+    return 'updated';
 }
 
 if(isset($_POST['tracker_off'])){

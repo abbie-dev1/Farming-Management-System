@@ -42,6 +42,79 @@
         padding: 14px;
         margin: 5px;
     }
+    .full-sidebar{
+        background: black;color: gray;padding-top: 80px;padding-bottom: 10px;display: grid;padding-left: 10px;text-align: left;
+    }
+    .half-sidebar{
+        padding-top: 10%;
+        z-index: 9999999;
+        position: fixed;
+        display: none;
+    }
+    /*.side-options{*/
+    /*    border: grey solid 2px;*/
+    /*    font-size: x-large;*/
+    /*    padding: 14px;*/
+    /*    margin: 5px;*/
+    /*}*/
+    /*.side-options i{*/
+    /*    float: left;*/
+    /*}*/
+
+    /*.sidebar {*/
+    /*    margin: 0;*/
+    /*    padding: 0;*/
+    /*    width: 200px;*/
+    /*    background-color: #f1f1f1;*/
+    /*    position: fixed;*/
+    /*    height: 100%;*/
+    /*    overflow: auto;*/
+    /*}*/
+
+    /*.sidebar a {*/
+    /*    display: block;*/
+    /*    color: black;*/
+    /*    padding: 16px;*/
+    /*    text-decoration: none;*/
+    /*}*/
+
+    /*.sidebar a.active {*/
+    /*    background-color: #4CAF50;*/
+    /*    color: white;*/
+    /*}*/
+
+    /*.sidebar a:hover:not(.active) {*/
+    /*    background-color: #555;*/
+    /*    color: white;*/
+    /*}*/
+
+    /*div.content {*/
+    /*    margin-left: 200px;*/
+    /*    padding: 1px 16px;*/
+    /*    height: 1000px;*/
+    /*}*/
+
+    @media screen and (max-width: 1300px) and (min-width: 950px) {
+        .side-options{
+            font-size: unset;
+        }
+        .side-options i{
+            float: left;
+        }
+    }
+    @media screen and (min-width: 0px) and (max-width: 949px) {
+        .sidebar-menu{
+            display: none;
+        }
+        .half-sidebar{
+            display: block;
+        }
+    }
+
+    .mapboxgl-canvas{
+        width: 100% !important;
+        height: 100% !important;
+    }
 </style>
 <?php
     if(isset($_SESSION['loggedin'])){

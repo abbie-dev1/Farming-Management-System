@@ -128,7 +128,6 @@ if($_SESSION['user'] == 'admin'){
     </div>
 </div>
 
-
 </body>
 </html>
 
@@ -136,6 +135,7 @@ if($_SESSION['user'] == 'admin'){
 <?php include('./../includes/scripts.php') ?>
 
 <script>
+    var variable=null;
     $(function() {
         $(document).on('click', '.anim_delete', function (e) {
 
@@ -195,10 +195,12 @@ if($_SESSION['user'] == 'admin'){
             $('#addnew').modal('show');
         });
 
+
         $(document).on('click', '.anim_trace', function (e) {
 
             e.preventDefault();
             var id = this.id;
+            variable=id;
             getCoords(id);
            $('#maps').modal('show');
         });
@@ -208,7 +210,6 @@ if($_SESSION['user'] == 'admin'){
 
 
     function getCoords(id){
-
         var geo=[];
             $.ajax({
                 type: 'POST',
@@ -218,18 +219,15 @@ if($_SESSION['user'] == 'admin'){
                 async: false,
                 success: function(response){
                     response.forEach(function (data, i) {
-                        geo[i]={
-                            'type': 'Feature',
-                            'properties': {
-                                'message': data.animal_type,
-                                'serial': data.serial_no,
-                                'iconSize': [40, 40]
-                            },
-                            'geometry': {
-                                'type': 'Point',
-                                'coordinates': [parseFloat(data.longitude), parseFloat(data.latitude)]
-                            }
-                        }
+                        geo[i] = {
+                                "id": 'id'+i,
+                                "name": data.animal_type,
+                                "status":data.status,
+                                "serial":data.serial_no,
+                                "lat": parseFloat(data.latitude),
+                                "long": parseFloat(data.longitude)
+                                 };
+
 
                     });
 
@@ -237,8 +235,40 @@ if($_SESSION['user'] == 'admin'){
                 }
             });
 
-            remaker(geo);
+            setMarkers(geo);
     }
+
+
+    setInterval(function () {
+
+        if(variable !=null) {
+
+            var updatedJson=[];
+            $.ajax({
+                type: 'POST',
+                url: './../farmer/farmer_handle.php',
+                data: {coords:variable},
+                dataType: 'json',
+                async: false,
+                success: function(response){
+                    response.forEach(function (data, i) {
+                        updatedJson[i] = {
+                            "id": 'id'+i,
+                            "name": data.animal_type,
+                            "status":data.status,
+                            "serial":data.serial_no,
+                            "lat": parseFloat(data.latitude),
+                            "long": parseFloat(data.longitude)
+                        };
+
+                    });
+
+
+                }
+            });
+            setMarkers(updatedJson);
+            }
+    }, 10000);
 
 
 

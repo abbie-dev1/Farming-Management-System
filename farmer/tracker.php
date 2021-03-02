@@ -2,7 +2,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-        <title>Login - Farming Management System </title>
+        <title>Tracker - Farming Management System </title>
         <meta name="description" content="The system will allow the user to register online, then the information of the user will be validated. After registration the user will be allowed to login into the system. The user will then be allowed to choose the kind of truck she/he want to use, then the user will be required to enter the current location of his/her staff and destination location.">
         <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
@@ -94,6 +94,8 @@ if(isset($_SESSION['tracker_token'])) {
             <form class="form-signin" method="POST" action="../verify.php" id="form_id" onsubmit="return activateTracker()">
                 <div style="padding: 30px">
                     <i style="padding-bottom: 5px">Enter Serial Number To Activate Tracker</i>
+                    <input name="lat" hidden>
+                    <input name="lng" hidden>
                     <input style="margin-top: 10px" class="form-control" type="text" required="" placeholder="Serial Number" autofocus="" name="tracker_id">
                     <br/>
                     <button class="btn btn-success btn-block btn-lg" type="submit">Activate</button>
@@ -137,12 +139,7 @@ if(isset($_SESSION['tracker_token'])) {
 
         }
     }
-
-    if($('.tracker_id').val() !=''){
-        getLocation();
-    }
-
-
+    getLocation();
 
     function getLocation() {
         if (navigator.geolocation) {
@@ -154,37 +151,52 @@ if(isset($_SESSION['tracker_token'])) {
 
     function showPosition(position) {
 
-        var id = $('.tracker_id').val();
-        var lat = position.coords.latitude;
-        var lng = position.coords.longitude;
-        console.log(lat);
-        $.ajax({
-            type: 'POST',
-            url: '../verify.php',
-            data: {
-                update_coords: id,
-                lat: lat,
-                lng: lng
-            },
-            dataType: 'json',
-            async: false,
-            success: function (response) {
+        localStorage.setItem('lat',position.coords.latitude);
+        localStorage.setItem('lng',position.coords.longitude);
 
+    }
+    setTimeout(function () {
+        $('input[name=lat]').val(localStorage.getItem('lat'));
+        $('input[name=lng]').val(localStorage.getItem('lng'));
+    },1000);
 
-            }
-        });
+    var id, options;
 
+    function success(position) {
+        if($('.tracker_id').val() !=''){
+            var id = $('.tracker_id').val();
+            var lat = position.coords.latitude;
+            var lng = position.coords.longitude;
+
+            $.ajax({
+                type: 'POST',
+                url: '../verify.php',
+                data: {
+                    update_now: id,
+                    lat: lat,
+                    lng: lng
+                },
+                dataType: 'json',
+                success: function (response) {
+
+                    console.log('updated');
+
+                }});
+        }
 
     }
 
-    setInterval(function () {
+    function error(err) {
+        console.warn('ERROR(' + err.code + '): ' + err.message);
+    }
 
-        if($('.tracker_id').val() !=''){
-            getLocation();
-        }
+    options = {
+        enableHighAccuracy: false,
+        timeout: 5000,
+        maximumAge: 0
+    };
 
-    },10000);
-
+    navigator.geolocation.watchPosition(success, error, options);
     // $("#form_id").on("submit", function (e) {
     //     e.preventDefault();//stop submit event
     //     var self = $(this);//this form
