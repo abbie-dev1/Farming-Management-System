@@ -8,7 +8,7 @@ if (isset($_POST['coords'])) {
 
     $serial= $_POST['coords'];
     if($serial == 'track_all'){
-        $stmts = $conn->prepare("SELECT * FROM livestock WHERE status='online' AND farmer_id=:id");
+        $stmts = $conn->prepare("SELECT * FROM livestock WHERE status='online' AND (latitude IS NOT NULL) AND farmer_id=:id");
         $stmts->execute(['id'=>$_SESSION['admin']]);
         $rows = $stmts->fetchAll();
         echo json_encode($rows);
