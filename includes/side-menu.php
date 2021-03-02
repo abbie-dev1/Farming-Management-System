@@ -12,14 +12,14 @@
             <a href='#' id='track_all' class='anim_trace'><div class='side-options'>View All <i class='fa fa-location-arrow'></i></div></a>
             <a href='#' class='addnew'><div class='side-options'>Add Tracker <i class='fa fa-plus'></i></div></a>
             <a href='#'><div class='side-options profile'>Update Profile <i class='fa fa-edit'></i></div></a>
-            <a href='#'><div class='side-options'>Logout <i class='glyphicon glyphicon-log-in'></i></div></a>
+            <a href='../logout.php'><div class='side-options'>Logout <i class='glyphicon glyphicon-log-in'></i></div></a>
             </div>
             
             <div class='half-sidebar'>
                <a href='#' id='track_all' class='anim_trace'><div class='side-options'><i class='fa fa-location-arrow'></i></div></a>
-                <a href='#'><div class='side-options'><i class='fa fa-plus'></i></div></a>
+                <a href='#' class='addnew'><div class='side-options'><i class='fa fa-plus'></i></div></a>
                 <a href='#'><div class='side-options profile'><i class='fa fa-edit'></i></div></a>
-                <a href='#'><div class='side-options'><i class='glyphicon glyphicon-log-in'></i></div></a>
+                <a href='../logout.php'><div class='side-options'><i class='glyphicon glyphicon-log-in'></i></div></a>
             </div>      
             ";
 
@@ -39,7 +39,7 @@
                <a href='#' id='track_all' class='anim_trace'><div class='side-options'><i class='fa fa-location-arrow'></i></div></a>
                 <a href='#'><div class='side-options'><i class='fa fa-plus'></i></div></a>
                 <a href='#'><div class='side-options profile'><i class='fa fa-edit'></i></div></a>
-                <a href='#'><div class='side-options'><i class='glyphicon glyphicon-log-in'></i></div></a>
+                <a href='../logout.php'><div class='side-options'><i class='glyphicon glyphicon-log-in'></i></div></a>
             </div> 
             ";
         }

@@ -20,7 +20,7 @@
     cursor: pointer;
     padding: 0;
 }
-#map { position: unset; top: 0; bottom: 0; width: 100%; height: 100% !important; }
+#map { position: fixed; top: 0; bottom: 0; width: 100%; height: 100% !important; }
 .Cow{  background: cadetblue;}
 
 .Chicken{  background: yellowgreen;}
@@ -45,6 +45,7 @@
 
 
 .pagination a {
+    display: none;
     color: black;
     float: left;
     padding: 8px 16px;
@@ -72,23 +73,23 @@
      border-bottom: 1px dotted black;
  }
 
-title {
-    /*visibility: hidden;*/
-    width: 120px;
-    background-color: black !important;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;.
-font-size: small;
+/*title {*/
+/*    !*visibility: hidden;*!*/
+/*    width: 120px;*/
+/*    background-color: black !important;*/
+/*    color: #fff;*/
+/*    text-align: center;*/
+/*    border-radius: 6px;*/
+/*    padding: 5px 0;.*/
+/*font-size: small;*/
 
-    /* Position the tooltip */
-    position: absolute;
-    z-index: 1;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -60px;
-}
+/*    !* Position the tooltip *!*/
+/*    position: absolute;*/
+/*    z-index: 1;*/
+/*    bottom: 100%;*/
+/*    left: 50%;*/
+/*    margin-left: -60px;*/
+/*}*/
 
 .marker:hover{
 

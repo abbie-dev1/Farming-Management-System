@@ -2,7 +2,7 @@ var map = L.map('map', {
     'center': [0, 0],
     'zoom': 0,
     'layers': [
-        L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
         })
     ]
@@ -22,7 +22,7 @@ function setMarkers(data) {
                 iconAnchor: [15, 42]
             });
 
-            markers[obj.id] = new L.Marker([obj.lat, obj.long],{icon: icon,title:obj.serial}).addTo(map);
+            markers[obj.id] = new L.Marker([obj.lat, obj.long],{icon: icon,title:'SN: '+obj.serial}).addTo(map);
             markers[obj.id].previousLatLngs = [];
         } else {
             markers[obj.id].previousLatLngs.push(markers[obj.id].getLatLng());

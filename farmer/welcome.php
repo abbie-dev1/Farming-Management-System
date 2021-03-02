@@ -54,7 +54,7 @@ if($_SESSION['user'] == 'admin'){
 
 
     <h4 class="row" style="padding: 10px" align="center">
-        <div>
+        <div id="svgcanvas">
 <?php
         $conn = $pdo->open();
 
@@ -151,7 +151,7 @@ if($_SESSION['user'] == 'admin'){
             var id = this.id;
 
             if(id == "first"){
-                $('#one').click()
+                $('#'+$('.pagination').children('a:visible').eq(1).attr('id')).click();
             }
             if(id == "one"){
                 $('.front-btn').css('display','none');
@@ -185,7 +185,8 @@ if($_SESSION['user'] == 'admin'){
                     $('.'+i).css('display','initial');
                 }
             } if(id == "last"){
-                $('#six').click();
+                console.log();
+                $('#'+$('.pagination').children('a:visible').eq(-2).attr('id')).click();
             }
         });
 
@@ -276,6 +277,67 @@ if($_SESSION['user'] == 'admin'){
     for (var i=0;i<8;i++){
         $('.'+i).css('display','initial');
     }
+
+
+    $('#svgcanvas button').each(function(i) {
+        //var classNum=$(this).attr('class');
+
+        if(i > -1 && i < 8){
+
+            $('#one').css('display','initial');
+        }
+        if(i > 9 && i < 18){
+            $('#first').css('display','initial');
+            $('#last').css('display','initial');
+            $('#two').css('display','initial');
+        }
+        if(i > 19 && i < 28){
+            $('#three').css('display','initial');
+        }
+        if(i > 29 && i < 38){
+            $('#four').css('display','initial');
+        }
+        if(i > 39 && i < 48){
+            $('#five').css('display','initial');
+        }
+        if(i > 49 && i < 58){
+            $('#six').css('display','initial');
+        }
+
+
+
+    });
+
+
+        // for (var i=0;i<8;i++){
+        //     var classNum = $('.'+i);
+        // }
+        //
+        //
+        // for (var i=9;i<18;i++){
+        //     $('.'+i).css('display','initial');
+        // }
+        //
+        //
+        // for (var i=19;i<28;i++){
+        //     $('.'+i).css('display','initial');
+        // }
+        //
+        // $('.front-btn').css('display','none');
+        // for (var i=29;i<38;i++){
+        //     $('.'+i).css('display','initial');
+        // }
+        //
+        // $('.front-btn').css('display','none');
+        // for (var i=39;i<48;i++){
+        //     $('.'+i).css('display','initial');
+        // }
+        //
+        // $('.front-btn').css('display','none');
+        // for (var i=49;i<58;i++){
+        //     $('.'+i).css('display','initial');
+        // }
+
 
 
 </script>
