@@ -141,13 +141,10 @@ if (isset($_POST['edit_farmer'])) {
     header('location: welcome.php');
 }
 
-if (isset($_POST['course_id'])) {
+if (isset($_POST['search'])) {
 
-    $stmt = $conn->prepare("SELECT * FROM course");
-    $stmt->execute();
-    $row = $stmt->fetch();
-
-    echo json_encode($row);
+    $_SESSION['search']=$_POST['search'];
+    header('Location: welcome.php');
 }
 
 

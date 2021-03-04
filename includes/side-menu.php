@@ -30,8 +30,8 @@
             <span>" . $_SESSION['email'] . "</span>
             </div>
             
-            <a href='#'><div class='side-options'>Admins</div></a>
-            <a href='#'><div class='side-options'>Farmers</div></a>
+            <a href='../admin/admin.php'><div class='side-options'>Admins</div></a>
+            <a href='../admin/farmer.php'><div class='side-options'>Farmers</div></a>
             <a href='#'><div class='side-options profile'>Update Profile</div></a>
             <a href='../logout.php'><div class='side-options'>Logout</div></a>
             </div>

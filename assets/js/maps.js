@@ -21,8 +21,9 @@ function setMarkers(data) {
                 iconSize: [30, 42],
                 iconAnchor: [15, 42]
             });
+            console.log(obj.description);
 
-            markers[obj.id] = new L.Marker([obj.lat, obj.long],{icon: icon,title:'SN: '+obj.serial}).addTo(map);
+            markers[obj.id] = new L.Marker([obj.lat, obj.long],{icon: icon,title:'SN: '+obj.serial+' => '+obj.description}).addTo(map);
             markers[obj.id].previousLatLngs = [];
         } else {
             markers[obj.id].previousLatLngs.push(markers[obj.id].getLatLng());

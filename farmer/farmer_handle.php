@@ -155,12 +155,13 @@ if(isset($_POST['lease'])) {
 if(isset($_POST['animal_type'])){
     $id = $_SESSION['admin'];
     $type = $_POST['animal_type'];
+    $description = $_POST['description'];
     $serial_no = md5(uniqid(rand(), true));
     $serial_no= substr($serial_no,0,10);
 
     try{
-        $stmt = $conn->prepare("INSERT INTO livestock(serial_no,animal_type,farmer_id,status) VALUES(:serial_no,:animal_type,:farmer_id,:status)");
-        $stmt->execute(['serial_no'=>$serial_no,'animal_type'=>$type,'farmer_id'=>$id,'status'=>'offline']);
+        $stmt = $conn->prepare("INSERT INTO livestock(serial_no,animal_type,description,farmer_id,status) VALUES(:serial_no,:animal_type,:description,:farmer_id,:status)");
+        $stmt->execute(['serial_no'=>$serial_no,'animal_type'=>$type,'description'=>$description,'farmer_id'=>$id,'status'=>'offline']);
 
         $_SESSION['success'] = 'Tracker added successfully';
     }
