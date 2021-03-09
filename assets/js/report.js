@@ -21,33 +21,68 @@ function generateRep(){
         return;
     }
 
+    $('#text-primary').html(type+' from '+from+' to '+to);
+    $('#summery-report tbody').html('');
         $.ajax({
             type: 'POST',
-            url: './../admin/reports_row.php',
+            url: './../admin/admin_handle.php',
             data: {
-                type:type,
+                report:type,
                 startDate:from,
                 endDate:to
                 },
             success: function(response){
                 var posts = JSON.parse(response);
                 if(posts === false){
-                    $('#drivers-report tbody').html('<h2>No Data Found</h2>');
+                    $('#summery-report tbody').html('<h2>No Data Found</h2>');
                 }
                 else{
-                    $.each(posts, function() {
-
-                        $('#drivers-report tbody').html(
-                            "<tr>" +
-                            "<td>" + posts.cust_name + "</td>" +
-                            "<td>" + posts.driver_name + "</td>" +
-                            "                    <td>" + posts.pick_up + "</td>" +
-                            "                    <td>" + posts.destination + "</td>" +
-                            "                    <td>" + posts.book_date+"</td>"+
+                    if(posts[0].gender !== undefined){
+                        $('#summery-report thead').html(
+                            "<tr style='background: dimgrey'>" +
+                            "<td>Firs Name</td>" +
+                            "<td>Last Name</td>" +
+                            "<td>Gender</td>" +
+                            "<td>Email</td>" +
+                            "<td>Address</td>"+
                             "</tr>"
-
                         );
-                    });
+                        $.each(posts, function(i) {
+
+                            $('#summery-report tbody').append(
+                                "<tr>" +
+                                    "<td>" + posts[i].firstName + "</td>" +
+                                    "<td>" + posts[i].lastName + "</td>" +
+                                    "<td>" + posts[i].gender + "</td>" +
+                                    "<td>" + posts[i].email + "</td>" +
+                                    "<td>" + posts[i].address+"</td>"+
+                                "</tr>"
+
+                            );
+                        });
+                    }else{
+                        $('#summery-report thead').html(
+                            "<tr style='background: dimgrey'>" +
+                            "<td>Name</td>" +
+                            "<td>Email</td>" +
+                            "<td>Mobile</td>" +
+                            "</tr>"
+                        );
+                        $.each(posts, function(i) {
+
+                            $('#summery-report tbody').append(
+                                "<tr>" +
+                                    "<td>" + posts[i].name + "</td>" +
+                                    "<td>" + posts[i].email + "</td>" +
+                                    "<td>" + posts[i].mobile + "</td>" +
+                                "</tr>"
+
+                            );
+                        });
+                    }
+
+
+
                 }
 
             },
@@ -55,5 +90,7 @@ function generateRep(){
                 console.error(error);
             }
         });
+
+    $('#download').prop('disabled', false);
 
 }

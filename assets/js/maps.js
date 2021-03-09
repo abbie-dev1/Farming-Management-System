@@ -21,9 +21,15 @@ function setMarkers(data) {
                 iconSize: [30, 42],
                 iconAnchor: [15, 42]
             });
-            console.log(obj.description);
+            var desc;
+            if(obj.description==null){
+                desc='SN: '+obj.serial;
+            }
+            else{
+                desc= 'SN: '+obj.serial+' ['+obj.description+']';
+            }
 
-            markers[obj.id] = new L.Marker([obj.lat, obj.long],{icon: icon,title:'SN: '+obj.serial+' => '+obj.description}).addTo(map);
+            markers[obj.id] = new L.Marker([obj.lat, obj.long],{icon: icon,title:desc}).addTo(map);
             markers[obj.id].previousLatLngs = [];
         } else {
             markers[obj.id].previousLatLngs.push(markers[obj.id].getLatLng());

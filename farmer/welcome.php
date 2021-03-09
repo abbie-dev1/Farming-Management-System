@@ -153,6 +153,13 @@
             $('#amin_delete').modal('show');
         });
 
+        $(document).on('click', '.editFarmer', function (e) {
+
+            e.preventDefault();
+            editFarmer();
+            $('#edit').modal('show');
+        });
+
         $(document).on('click', '.pagination a', function (e) {
 
             e.preventDefault();
@@ -216,7 +223,26 @@
 
     });
 
+    function editFarmer(){
+        $.ajax({
+            type: 'POST',
+            url: './../farmer/farmer_handle.php',
+            data: {profile:5},
+            dataType: 'json',
+            success: function(response){
 
+                $('input[name=edit_farmer]').val(response.id);
+                $('input[name=firstname]').val(response.firstName);
+                $('input[name=lastname]').val(response.lastName);
+                $('input[name=email]').val(response.email);
+                $('input[name=gender]').val(response.gender);
+                $('input[name=mobile]').val(response.mobile);
+                $('input[name=address]').val(response.address);
+
+            }
+        });
+
+    }
 
     function getCoords(id){
         var geo=[];

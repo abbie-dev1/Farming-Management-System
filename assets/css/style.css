@@ -15,6 +15,14 @@
     width: 100%;
     padding: 50px;
 }
+
+@media (max-width: 950px) {
+    .navbar-nav{
+        display: none;
+    }
+
+}
+
 /*.side-options{*/
 /*    border: grey solid 2px;*/
 /*    font-size: x-large;*/

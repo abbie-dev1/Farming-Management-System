@@ -56,7 +56,7 @@ if(!isset($_SESSION['loggedin'])){
          <form action="./../admin/admin_handle.php" method="POST">
          <div class="" style="    display: flex;padding: 25px 250px 5px 250px;">
 
-                 <input type="text" class="form-control" id="search" name="search" required>
+                 <input type="text" class="form-control" id="search" name="search" placeholder="Search Using Email Address" required>
                  <button class="btn btn-secondary" type="submit">Search</button>
 
          </div>
@@ -71,6 +71,7 @@ if(!isset($_SESSION['loggedin'])){
             <div><table class="table" id="orderTable">
                  <tr style="background: dimgrey;">
                     <th>No #</th>
+                    <th>User ID</th>
                     <th>Name</th>
                     <th>Role</th>
                     <th>Email</th>
@@ -108,6 +109,7 @@ if(!isset($_SESSION['loggedin'])){
 
              echo '<tr>
                                  <td>' . $key . '</td>
+                                 <td>' . $row['id'] . '</td>
                                  <td>' . $row['name'] . '</td>
                                  <td>Admin</td>
                                  <td>' . $row['email'] . '</td>
@@ -132,6 +134,7 @@ if(!isset($_SESSION['loggedin'])){
 
              echo '<tr>
                                  <td>' . $key. '</td>
+                                 <td>' . $rows['id'] . '</td>
                                  <td>'.$rows['firstName'].' '. $rows['lastName'] .'</td>
                                  <td>Farmer</td>
                                  <td>' . $rows['email'] . '</td>

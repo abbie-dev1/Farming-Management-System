@@ -96,7 +96,8 @@ if(isset($_SESSION['tracker_token'])) {
                     <i style="padding-bottom: 5px">Enter Serial Number To Activate Tracker</i>
                     <input name="lat" hidden>
                     <input name="lng" hidden>
-                    <input style="margin-top: 10px" class="form-control" type="text" required="" placeholder="Serial Number" autofocus="" name="tracker_id">
+                    <div class="errorm"></div>
+                    <input style="margin-top: 10px" class="form-control" type="text" required="" placeholder="Serial Numbers" autofocus="" name="tracker_id">
                     <br/>
                     <button class="btn btn-success btn-block btn-lg" type="submit">Activate</button>
                 </div>
@@ -153,6 +154,7 @@ if(isset($_SESSION['tracker_token'])) {
 
         localStorage.setItem('lat',position.coords.latitude);
         localStorage.setItem('lng',position.coords.longitude);
+        $('.errorm').html('0');
 
     }
     setTimeout(function () {

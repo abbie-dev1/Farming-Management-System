@@ -213,19 +213,26 @@ if(isset($_POST['decline'])){
 
 }
 
-if(isset($_POST['approve'])){
-    $id = $_POST['approve'];
+if(isset($_POST['report'])){
+    $report = $_POST['report'];
 
     try{
-        $stmt = $conn->prepare("UPDATE space SET status_id=2 WHERE id=:id");
-        $stmt->execute(['id'=>$id]);
 
-        $_SESSION['success'] = 'Record accepted successfully';
+        if($report =='admins'){
+            $stmt = $conn->prepare("SELECT * FROM admin");
+            $stmt->execute();
+            $row = $stmt->fetchAll();
+        }else{
+            $stmt = $conn->prepare("SELECT * FROM farmer");
+            $stmt->execute();
+            $row = $stmt->fetchAll();
+        }
+
     }
     catch(PDOException $e){
         $_SESSION['error'] = $e->getMessage();
     }
-    return 0;
+    echo json_encode($row);
 
 }
 
