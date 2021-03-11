@@ -125,7 +125,9 @@ if(!isset($_SESSION['loggedin'])){
                      <h5 id="text-primary" class="card-title text-primary" style="float: left;text-align: initial;font-weight: bolder"></h5>
                      <table id="example1" class="table table-bordered">
                          <thead></thead>
-                         <tbody></tbody>
+                         <tbody id="tbl-body">
+
+                         </tbody>
                      </table>
                  </div>
              </div>
@@ -149,5 +151,32 @@ if(!isset($_SESSION['loggedin'])){
 <?php include('./files/admin_modal.php') ?>
 
 <script type="application/javascript" src="../assets/js/report.js"></script>
+<script>
+    function myFunction() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("search");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("tbl-body");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
 
+        var check = $('#tbl-body tr:visible');
+        if(check.length==0){
+            $('.just').show();
+        }else{
+            $('.just').hide();
+        }
+
+    }
+</script>
 

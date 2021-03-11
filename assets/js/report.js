@@ -73,6 +73,10 @@ function generateRep(){
 
                             );
                         });
+                        $('#summery-report tbody').append(
+                            "<tr  class='just' style='position: absolute;background: white;font-size: xx-large;' hidden>" +
+                            "<td > NO RECORDS FOUND</td>" +
+                            "</tr>");
                     }else{
                         $('#summery-report thead').html(
                             "<tr style='background: dimgrey'>" +
@@ -92,10 +96,12 @@ function generateRep(){
 
                             );
                         });
+
+                        $('#summery-report tbody').append(
+                            "<tr  class='just' style='position: absolute;background: white;font-size: xx-large;' hidden>" +
+                            "<td > NO RECORDS FOUND</td>" +
+                            "</tr>");
                     }
-
-
-
                 }
 
             },
@@ -160,6 +166,10 @@ function changeLivestock(){
 
                         );
                     });
+                $('#summery-report tbody').append(
+                    "<tr  class='just' style='position: absolute;background: white;font-size: xx-large;' hidden>" +
+                    "<td > NO RECORDS FOUND</td>" +
+                    "</tr>");
 
             }
 
