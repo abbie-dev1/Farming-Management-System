@@ -213,6 +213,23 @@ if(isset($_POST['decline'])){
 
 }
 
+if(isset($_POST['livestockID'])){
+    $id = $_POST['livestockID'];
+
+    try{
+
+        $stmt = $conn->prepare("SELECT * FROM livestock WHERE farmer_id=:id");
+        $stmt->execute(['id'=>$id]);
+        $row = $stmt->fetchAll();
+
+    }
+    catch(PDOException $e){
+        $_SESSION['error'] = $e->getMessage();
+    }
+    echo json_encode($row);
+
+}
+
 if(isset($_POST['report'])){
     $report = $_POST['report'];
 

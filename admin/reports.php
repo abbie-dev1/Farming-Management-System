@@ -63,11 +63,11 @@ if(!isset($_SESSION['loggedin'])){
                              <label for="type" class="col-sm-3 control-label">Report Type</label>
 
                              <div class="col-sm-9">
-                                 <select name="type" id="type" class="form-control" required>
+                                 <select name="type" id="type" class="form-control" onchange="changeSelection()" required>
                                      <option selected disabled>Select report type</option>
                                      <option value="admins">Admins</option>
                                      <option value="farmers">Farmers</option>
-<!--                                     <option value="bookings">Booking</option>-->
+                                     <option value="livestock">Livestock</option>
 <!--                                     <option value="history">History</option>-->
                                  </select>
                              </div>
@@ -94,8 +94,35 @@ if(!isset($_SESSION['loggedin'])){
                      <button id="download" name="download" class="btn btn-warning" onclick="" disabled><i class="fa fa-download"></i> Download Report</button>
                  </div>
 
+                 <div class="col-sm-5 farmer-option" style="padding: 5px" hidden>
+                 <select name="farmers" id="farmers" class="form-control" onchange="changeLivestock()" required>
+                     <option selected disabled>Select Farmer</option>
+                     <!--                                     <option value="history">History</option>-->
+                     <?php
+                             $conn = $pdo->open();
+                             try {
+                                     $stmt = $conn->prepare("SELECT * from farmer");
+                                     $stmt->execute();
+
+                             }
+                             catch (Exception $e){
+                                 print_r($e->getMessage());
+                             }
+                     if($stmt->rowCount() > 0) {
+
+                         foreach ($stmt as $row) {
+
+                             echo '<option value="'.$row['id'].'" >'.$row['firstName'].' '.$row['lastName'].' ['.$row['email'].'] '.'</option>';
+                         }
+
+                     }
+                     ?>
+                 </select>
+                 </div>
+
                  <div class="box-body" id="summery-report" >
-                     <h5 id="text-primary" class="card-title text-primary"></h5>
+                     <div id="img-report"></div>
+                     <h5 id="text-primary" class="card-title text-primary" style="float: left;text-align: initial;font-weight: bolder"></h5>
                      <table id="example1" class="table table-bordered">
                          <thead></thead>
                          <tbody></tbody>
@@ -107,11 +134,20 @@ if(!isset($_SESSION['loggedin'])){
          </section>
 
  </div>
+
+ <div class="modal" id="reloadDownload" style="background: #000000e8">
+
+     <div class="fa-5x" style="padding-top: 25%;">
+         <i class="fa fa-download fa-spin" style="color: white;font-size: 250px;"></i>
+     </div>
+
+ </div>
+
  </body>
  </html>
 <?php include('./../includes/scripts.php') ?>
 <?php include('./files/admin_modal.php') ?>
 
 <script type="application/javascript" src="../assets/js/report.js"></script>
-<script type="application/javascript" src="../assets/js/pdf.js"></script>
+
 

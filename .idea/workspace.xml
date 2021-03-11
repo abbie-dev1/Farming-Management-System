@@ -22,16 +22,10 @@
     <list default="true" id="ea09d5c0-4f51-4fd4-a42f-abe1522c9309" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/admin_handle.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_handle.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/welcome.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/welcome.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/reports.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/reports.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/maps.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/maps.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/pdf.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pdf.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/report.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/report.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/css/responsive.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/css/responsive.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/farmer/farmer_handle.php" beforeDir="false" afterPath="$PROJECT_DIR$/farmer/farmer_handle.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/farmer/files/farmer_modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/farmer/files/farmer_modal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/farmer/tracker.php" beforeDir="false" afterPath="$PROJECT_DIR$/farmer/tracker.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/farmer/welcome.php" beforeDir="false" afterPath="$PROJECT_DIR$/farmer/welcome.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/side-menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/side-menu.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,22 +57,22 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/admin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets/img" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\fms\assets\img\team" />
-      <recent name="C:\xampp\htdocs\collage-system" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\fms\admin" />
       <recent name="C:\xampp\htdocs\fms\assets\img" />
+      <recent name="C:\xampp\htdocs\fms\admin" />
       <recent name="C:\xampp\htdocs\fms\assets\js" />
       <recent name="C:\xampp\htdocs\fms\css\css" />
       <recent name="C:\xampp\htdocs\fms" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\fms\assets\img\team" />
+      <recent name="C:\xampp\htdocs\collage-system" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -104,7 +98,7 @@
       <workItem from="1614700545977" duration="618000" />
       <workItem from="1614808040239" duration="19889000" />
       <workItem from="1615185160680" duration="4281000" />
-      <workItem from="1615308893803" duration="4660000" />
+      <workItem from="1615308893803" duration="20108000" />
     </task>
     <servers />
   </component>
@@ -132,13 +126,15 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="604" y="336" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1614206357596" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1614858906717">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1615313860340">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824/-1920.0.1280.680@0.0.1536.824" timestamp="1615313860340" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1614858906717" />
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1614857358357">
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1615313852811">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824/-1920.0.1280.680@0.0.1536.824" timestamp="1615313852811" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1614857358357" />
     <state x="425" y="189" key="run.anything.popup" timestamp="1614687170702">
       <screen x="0" y="0" width="1536" height="824" />
@@ -148,5 +144,17 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1614102197357" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/assets/js/report.js</url>
+          <line>35</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
