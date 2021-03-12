@@ -1,9 +1,16 @@
 <?php include './../includes/session.php'; ?>
 <?php include './../includes/navbar.php';
 
-if($_SESSION['user'] == 'admin'){
-    header('location: ./../admin/welcome.php');
-}
+//if(isset($_SESSION['user']) == 'admin'){
+//    header('location: ./../admin/welcome.php');
+//}
+//
+//
+//if(!isset($_SESSION['loggedin'])){
+//    header('location: ./../login.php');
+//}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -59,8 +66,8 @@ if($_SESSION['user'] == 'admin'){
         $conn = $pdo->open();
 
         try {
-            $stmt = $conn->prepare("SELECT * FROM livestock");
-            $stmt->execute();
+            $stmt = $conn->prepare("SELECT * FROM livestock WHERE farmer_id=:id");
+            $stmt->execute(['id'=>$_SESSION['admin']]);
         }
         catch (Exception $e){
             print_r($e->getMessage());
@@ -145,6 +152,14 @@ if($_SESSION['user'] == 'admin'){
             $('.anim_delete').val(id);
             $('#amin_delete').modal('show');
         });
+
+        $(document).on('click', '.editFarmer', function (e) {
+
+            e.preventDefault();
+            editFarmer();
+            $('#edit').modal('show');
+        });
+
         $(document).on('click', '.pagination a', function (e) {
 
             e.preventDefault();
@@ -208,7 +223,26 @@ if($_SESSION['user'] == 'admin'){
 
     });
 
+    function editFarmer(){
+        $.ajax({
+            type: 'POST',
+            url: './../farmer/farmer_handle.php',
+            data: {profile:5},
+            dataType: 'json',
+            success: function(response){
 
+                $('input[name=edit_farmer]').val(response.id);
+                $('input[name=firstname]').val(response.firstName);
+                $('input[name=lastname]').val(response.lastName);
+                $('input[name=email]').val(response.email);
+                $('input[name=gender]').val(response.gender);
+                $('input[name=mobile]').val(response.mobile);
+                $('input[name=address]').val(response.address);
+
+            }
+        });
+
+    }
 
     function getCoords(id){
         var geo=[];
@@ -222,6 +256,7 @@ if($_SESSION['user'] == 'admin'){
                     response.forEach(function (data, i) {
                         geo[i] = {
                                 "id": 'id'+i,
+                                "description": data.description,
                                 "name": data.animal_type,
                                 "status":data.status,
                                 "serial":data.serial_no,
@@ -255,6 +290,7 @@ if($_SESSION['user'] == 'admin'){
                     response.forEach(function (data, i) {
                         updatedJson[i] = {
                             "id": 'id'+i,
+                            "description": data.description,
                             "name": data.animal_type,
                             "status":data.status,
                             "serial":data.serial_no,

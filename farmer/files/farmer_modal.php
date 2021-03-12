@@ -33,6 +33,14 @@
                     </div>
                 </div>
 
+                    <div class="form-group">
+                        <label for="description" class="col-sm-3 control-label">Description</label>
+
+                        <div class="col-sm-9">
+                            <textarea type="text" class="form-control" id="description" name="description"></textarea>
+                        </div>
+                    </div>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
@@ -48,48 +56,76 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title"><b>Edit Lessor</b></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><b>Edit User</b></h4>
             </div>
             <div class="modal-body">
-              <form class="form-horizontal" method="POST" action="./../lessor/students_handle.php">
-                <input type="hidden" class="userid" name="userid">
-                <div class="form-group">
-                    <label for="edit_email" class="col-sm-3 control-label">Email</label>
+                <form class="form-horizontal" method="POST" action="./../farmer/farmer_handle.php">
+                    <input type="hidden" id="edit_id" name="edit_farmer">
+                                        <div class="form-group">
+                                               <label for="firstname" class="col-sm-3 control-label">Firstname</label>
 
-                    <div class="col-sm-9">
-                      <input type="email" class="form-control" id="edit_email" name="email">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="edit_password" class="col-sm-3 control-label">Password</label>
+                                                <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="firstname" name="firstname" required>
+                                                    </div>
+                                           </div>
+                                        <div class="form-group">
+                                               <label for="lastname" class="col-sm-3 control-label">Lastname</label>
 
-                    <div class="col-sm-9">
-                      <input type="password" class="form-control" id="edit_password" name="password">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="edit_firstname" class="col-sm-3 control-label">Firstname</label>
+                                                <div class="col-sm-9">
+                                                       <input type="text" class="form-control" id="lastname" name="lastname" required>
+                                                    </div>
+                                           </div>
+                                       <div class="form-group">
+                                                <label for="email" class="col-sm-3 control-label">Email</label>
 
-                    <div class="col-sm-9">
-                      <input type="text" class="form-control" id="edit_firstname" name="firstname" onkeypress="return /[a-z]/i.test(event.key)">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="edit_lastname" class="col-sm-3 control-label">Lastname</label>
+                                               <div class="col-sm-9">
+                                                       <input type="email" class="form-control" id="email" name="email" required>
+                                                   </div>
+                                            </div>
+                                        <div class="form-group">
+                                                <label for="password" class="col-sm-3 control-label">Password</label>
 
-                    <div class="col-sm-9">
-                      <input type="text" class="form-control" id="edit_lastname" name="lastname" onkeypress="return /[a-z]/i.test(event.key)">
-                    </div>
-                </div>
+                                                <div class="col-sm-9">
+                                                        <input type="password" class="form-control" id="password" name="password" required>
+                                                    </div>
+                                            </div>
 
+                                        <div class="form-group">
+                                                <label for="mobile" class="col-sm-3 control-label">Mobile</label>
+
+                                                <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="mobile" name="mobile" required>
+                                                    </div>
+                                            </div>
+
+                                        <div class="form-group">
+                                                <label for="gender" class="col-sm-3 control-label">Gender</label>
+
+                                                <div class="col-sm-9">
+                                                        <select class="form-control" id="gender" name="gender" required>
+                                                                <option value="" selected hidden>Select Gender</option>
+                                                                <option value="male">Male</option>
+                                                                <option value="female">Female</option>
+                                                               <option value="other">Other</option>
+                                                            </select>
+                                                   </div>
+                                            </div>
+
+                                        <div class="form-group">
+                                                <label for="address" class="col-sm-3 control-label">Home Address</label>
+
+                                                <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="address" name="address" required>
+                                                    </div>
+                                            </div>
 
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
-              <button type="submit" class="btn btn-success btn-flat" name="edit"><i class="fa fa-check-square-o"></i> Update</button>
-              </form>
+                <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+                <button type="submit" class="btn btn-success btn-flat" name="edit"><i class="fa fa-check-square-o"></i> Update</button>
+                </form>
             </div>
         </div>
     </div>

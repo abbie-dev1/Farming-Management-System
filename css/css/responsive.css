@@ -46,134 +46,161 @@ a.navbar-brand img {
 }
 /* only small tablets */
  @media (min-width: 768px) and (max-width: 991px) {
-     .top-header .navbar .navbar-collapse ul li a{
+     .top-header .navbar .navbar-collapse ul li a {
          padding: 5px 15px;
-    }
-     .btn-react{
+     }
+
+     .btn-react {
          display: none;
      }
-     .about-img{
+
+     .about-img {
          margin-bottom: 30px;
          margin-top: 30px;
-    }
-     .gallery-box ul li{
+     }
+
+     .gallery-box ul li {
          width: 33.33%;
-    }
-     .top-header{
+     }
+
+     .top-header {
          position: relative;
-    }
-     .lbox-details{
+     }
+
+     .lbox-details {
          display: block;
          position: relative;
          width: 100%;
-    }
-     .countdown #timer div#days, .countdown #timer div#hours, .countdown #timer div#minutes, .countdown #timer div#seconds{
+     }
+
+     .countdown #timer div#days, .countdown #timer div#hours, .countdown #timer div#minutes, .countdown #timer div#seconds {
          position: inherit;
          margin: 12px 0px;
-    }
-     .lbox-details::before{
-         background: rgba(0,0,0,0.9);
-    }
-     .countdown{
+     }
+
+     .lbox-details::before {
+         background: rgba(0, 0, 0, 0.9);
+     }
+
+     .countdown {
          height: 188px;
          border-radius: 0px;
-    }
-     .countdown #timer div{
+     }
+
+     .countdown #timer div {
          width: 23%;
          font-size: 24px;
-    }
-     figure.effect-service h2{
+     }
+
+     figure.effect-service h2 {
          font-size: 12px;
-    }
+     }
+
      .top-header {
          background-image: none;
          background-color: #fff;
-    }
+     }
+
      .search-box {
          top: 1px;
          right: 75px;
-    }
+     }
+
      .search-btn {
          background: #111;
-    }
+     }
+
      .search-box:hover .search-txt {
          width: 240px;
          padding: 0 10px;
          border: solid #000 1px;
          height: 41px;
-    }
+     }
+
      .top-header .navbar .navbar-collapse ul li a:hover, .top-header .navbar .navbar-collapse ul li a:focus {
          color: #0892fd;
-    }
+     }
+
      .slide_text p {
          display: none;
-    }
+     }
+
      .contact_bt {
          margin-top: 10px;
-    }
+     }
+
      .slide_text {
          margin-top: 60px;
-    }
+     }
+
      .section.layout_padding h4 {
          text-align: left;
-    }
-	#demo .img-responsive {
-       width: 100%;
-       margin-bottom: 30px;
-    }
-	.carousel a.carousel-control-prev {
-      left: 20px;
-    }
-	.carousel a.carousel-control-next {
-      right: 20px;
-    }
-	.team_member_img img {
+     }
 
-    border: solid #ece9e2 10px;
-    border-radius: 100%;
-    width: 210px;
-    height: 210px;
+     #demo .img-responsive {
+         width: 100%;
+         margin-bottom: 30px;
+     }
 
-}
-.team_member_img .social_icon_team {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
+     .carousel a.carousel-control-prev {
+         left: 20px;
+     }
 
-#team_slider p {
-    padding: 0;
-}
+     .carousel a.carousel-control-next {
+         right: 20px;
+     }
 
-.social_icon {
-    margin-bottom: 30px;
-}
+     .team_member_img img {
 
-.heading_main h2 {
-    font-size: 35px;
-}
-	.top-header #navbar-wd {
+         border: solid #ece9e2 10px;
+         border-radius: 100%;
+         width: 210px;
+         height: 210px;
+
+     }
+
+     .team_member_img .social_icon_team {
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+     }
+
+     #team_slider p {
+         padding: 0;
+     }
+
+     .social_icon {
+         margin-bottom: 30px;
+     }
+
+     .heading_main h2 {
+         font-size: 35px;
+     }
+
+     .top-header #navbar-wd {
          padding-right: 0;
-    }
+     }
+
      footer.footer-box p {
          margin-top: 5px;
          font-size: 13px;
-    }
-	.tab_menu {
-    overflow-y: hidden !important;
-    padding: 0 30px;
-}
+     }
 
-.blog_img_popular h4 {
-	text-align: center;
-    font-size: 13px;
-    min-height: 55px;
-    line-height: 55px !important;
- 
-}
+     .tab_menu {
+         overflow-y: hidden !important;
+         padding: 0 30px;
+     }
 
-}
+     .blog_img_popular h4 {
+         text-align: center;
+         font-size: 13px;
+         min-height: 55px;
+         line-height: 55px !important;
+
+     }
+ }
+
 /* mobile or only mobile */
  @media (max-width: 767px) {
      .navbar-brand{
