@@ -77,7 +77,7 @@ if(!isset($_SESSION['loggedin'])){
             print_r($e->getMessage());
         }
 
-        $key=0;
+        $key=1;
 
         if($stmts->rowCount() > 0) {
             foreach ($stmts as $rows) {
