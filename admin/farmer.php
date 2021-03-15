@@ -62,7 +62,6 @@ if(!isset($_SESSION['loggedin'])){
                     <th>No #</th>
                      <th>User ID</th>
                     <th>Name</th>
-                    <th>Role</th>
                     <th>Email</th>
                     <th>Mobile</th>
                     <th>Gender</th>
@@ -88,7 +87,6 @@ if(!isset($_SESSION['loggedin'])){
                                  <td>' . $key. '</td>
                                  <td>' . $rows['id'] . '</td>
                                  <td>'.$rows['firstName'].' '. $rows['lastName'] .'</td>
-                                 <td>Farmer</td>
                                  <td>' . $rows['email'] . '</td>
                                  <td>' . $rows['mobile'] . '</td>
                                  <td>' . $rows['gender'] . '</td>
