@@ -60,6 +60,7 @@ if(!isset($_SESSION['loggedin'])){
             <table class="table" id="orderTable">
                  <tr style="background: dimgrey;">
                     <th>No #</th>
+                     <th>User ID</th>
                     <th>Name</th>
                     <th>Role</th>
                     <th>Email</th>
@@ -84,6 +85,7 @@ if(!isset($_SESSION['loggedin'])){
 
                 echo '<tr>
                                  <td>' . $key . '</td>
+                                 <td>' . $row['id'] . '</td>
                                  <td>' . $row['name'] . '</td>
                                  <td>Admin</td>
                                  <td>' . $row['email'] . '</td>
