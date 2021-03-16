@@ -393,7 +393,7 @@
                 '     <option value="" disabled selected>Select Breed Type ...</option>\n' +
                 '     <option value="chicken/dual-purpose.jpg">Dual Purpose</option>\n' +
                 '     <option value="chicken/egg-laying.jpg">Eggs Laying</option>\n' +
-                '     <option value="chicken/meat-production.jpg">Meat Producing</option>\n' +
+                '     <option value="chicken/meat-producing.jpg">Meat Producing</option>\n' +
                 '</select>'
             ) ;
 
