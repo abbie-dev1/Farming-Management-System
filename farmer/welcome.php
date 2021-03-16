@@ -382,8 +382,8 @@
            $('.breed_select').html(
                '<select name="breed_type" class="form-control" onchange="changeImg()" required>\n' +
                '     <option value="" disabled selected>Select Breed Type ...</option>\n' +
-               '     <option value="pigs/duroc.jpg">Doroc</option>\n' +
-               '     <option value="pigs/landrace.jpeg">Landrace</option>\n' +
+               '     <option value="pig/duroc.jpg">Doroc</option>\n' +
+               '     <option value="pig/landrace.jpeg">Landrace</option>\n' +
                '</select>'
            ) ;
         }
@@ -461,6 +461,36 @@
             $('#description').text('Saanen dairy goat is the most widely distributed dairy goat in the world and is valued for ' +
                 'its abundant milk production, hardiness and calm, sweet nature, pure white in color. It is considered the largest breed of dairy goats.');
         }
+        // Cattle
+        if(breed =='cattle/holstein.jpeg') {
+            $('#description').text('The Boer goat is a breed of goat that was developed in South Africa in the early ' +
+                '1900s and is popular breed for meat production. Their name derived from the Afrikaans word boer, meaning farmer..');
+        }
+        if(breed =='cattle/holstein.jpeg') {
+            $('#description').text('The Anglo-Nubian is a British breed of domestic goat. It originated in the 19th century ' +
+                'from cross-breeding between native British goats and a mixed population of large lop-eared goats imported from India.');
+        }
+
+        // Horses
+        if(breed =='horse/draft.jpeg') {
+            $('#description').text('The Boer goat is a breed of goat that was developed in South Africa in the early ' +
+                '1900s and is popular breed for meat production. Their name derived from the Afrikaans word boer, meaning farmer..');
+        }
+        if(breed =='horse/pony.jpg') {
+            $('#description').text('The Anglo-Nubian is a British breed of domestic goat. It originated in the 19th century ' +
+                'from cross-breeding between native British goats and a mixed population of large lop-eared goats imported from India.');
+        }
+
+        // Pigs
+        if(breed =='pig/duroc.jpg') {
+            $('#description').text('The Boer goat is a breed of goat that was developed in South Africa in the early ' +
+                '1900s and is popular breed for meat production. Their name derived from the Afrikaans word boer, meaning farmer..');
+        }
+        if(breed =='pig/landrace.jpeg') {
+            $('#description').text('The Anglo-Nubian is a British breed of domestic goat. It originated in the 19th century ' +
+                'from cross-breeding between native British goats and a mixed population of large lop-eared goats imported from India.');
+        }
+
     }
 
 
