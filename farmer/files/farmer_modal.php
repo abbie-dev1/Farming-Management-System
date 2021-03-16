@@ -35,7 +35,7 @@
                 </div>
 
                     <div class="form-group breed_container" hidden>
-                        <label for="breed_type" class="col-sm-3 control-label">Bread Type</label>
+                        <label for="breed_type" class="col-sm-3 control-label">Breed Type</label>
 
                         <div class="col-sm-9 breed_select">
 
@@ -53,7 +53,7 @@
                         <label for="description" class="col-sm-3 control-label">Description</label>
 
                         <div class="col-sm-9">
-                            <textarea type="text" class="form-control" id="description" name="description"></textarea>
+                            <textarea type="input" class="form-control" id="description" name="description" style="border: none;height: 20%;" readonly></textarea>
                         </div>
                     </div>
 

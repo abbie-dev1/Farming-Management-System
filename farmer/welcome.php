@@ -430,7 +430,35 @@
     }
 
     function changeImg() {
-        $('.breed_img').attr('src','../assets/img/info_animals/'+$('select[name=breed_type]').val());
+        var breed = $('select[name=breed_type]').val();
+        $('.breed_img').attr('src','../assets/img/info_animals/'+breed);
+        // Goats
+        if(breed =='goat/anglo-nubian.jpeg') {
+            $('#description').text('The Boer goat is a breed of goat that was developed in South Africa in the early ' +
+                '1900s and is popular breed for meat production. Their name derived from the Afrikaans word boer, meaning farmer..');
+        }
+        if(breed =='goat/saanen.jpeg') {
+            $('#description').text('The Anglo-Nubian is a British breed of domestic goat. It originated in the 19th century ' +
+                'from cross-breeding between native British goats and a mixed population of large lop-eared goats imported from India.');
+        }
+        if(breed =='goat/saanen.jpeg') {
+            $('#description').text('Saanen dairy goat is the most widely distributed dairy goat in the world and is valued for ' +
+                'its abundant milk production, hardiness and calm, sweet nature, pure white in color. It is considered the largest breed of dairy goats.');
+        }
+
+        // Chickens
+        if(breed =='chicken/dual-purpose.jpg') {
+            $('#description').text('The Boer goat is a breed of goat that was developed in South Africa in the early ' +
+                '1900s and is popular breed for meat production. Their name derived from the Afrikaans word boer, meaning farmer..');
+        }
+        if(breed =='chicken/egg-laying.jpg') {
+            $('#description').text('The Anglo-Nubian is a British breed of domestic goat. It originated in the 19th century ' +
+                'from cross-breeding between native British goats and a mixed population of large lop-eared goats imported from India.');
+        }
+        if(breed =='chicken/meat-producing.jpg') {
+            $('#description').text('Saanen dairy goat is the most widely distributed dairy goat in the world and is valued for ' +
+                'its abundant milk production, hardiness and calm, sweet nature, pure white in color. It is considered the largest breed of dairy goats.');
+        }
     }
 
 
