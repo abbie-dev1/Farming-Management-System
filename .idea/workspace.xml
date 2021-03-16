@@ -20,8 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ea09d5c0-4f51-4fd4-a42f-abe1522c9309" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/farmer/files/farmer_modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/farmer/files/farmer_modal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/farmer/welcome.php" beforeDir="false" afterPath="$PROJECT_DIR$/farmer/welcome.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +99,7 @@
       <workItem from="1615531311037" duration="1678000" />
       <workItem from="1615744692942" duration="5317000" />
       <workItem from="1615882096184" duration="2947000" />
-      <workItem from="1615906938202" duration="14307000" />
+      <workItem from="1615906938202" duration="15079000" />
     </task>
     <servers />
   </component>
@@ -127,16 +127,16 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="604" y="336" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1614206357596" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1615934278282">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1615934952760">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824/-1920.0.1280.680@0.0.1536.824" timestamp="1615484611454" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1615934278282" />
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1615934478367">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1615934952760" />
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1615934947208">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824/-1920.0.1280.680@0.0.1536.824" timestamp="1615484598556" />
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1615934478367" />
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1615934947208" />
     <state x="425" y="189" key="run.anything.popup" timestamp="1614687170702">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

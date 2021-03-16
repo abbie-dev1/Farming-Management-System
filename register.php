@@ -58,7 +58,7 @@
                     <div class="form-group"><label for="lastname">Last Name</label><input class="form-control" type="text" id="lastname" name="lastName" placeholder="Enter your surnname" onkeypress="return /[a-z]/i.test(event.key)" required></div>
                     <div class="form-group"><label for="mobile">Contact no.</label><input class="form-control" type="text" id="mobile" name="mobile"  placeholder="Cellphone no." onkeypress="return i.test(event.key)" onkeyup="ValueKeyPress('mobile');" required></div>
                      <span id="verify"></span>
-                    <div class="form-group"><label for="address">Address</label><input class="form-control" type="text" id="address" name="address" placeholder="Your Residencial address" onkeypress="return i.test(event.key)" required></div>
+                    <div class="form-group"><label for="address">Address</label><input class="form-control" type="text" id="address" name="address" placeholder="Your Residencial address" required></div>
                     <div class="form-group"><label for="email">Email&nbsp;</label><input class="form-control" type="email" id="email" name="email" placeholder="e.g example@gmail.com" onkeyup="emailValidate('register')" required></div>
 
                      <div class="form-group">

@@ -57,6 +57,14 @@
                         </div>
                     </div>
 
+                    <div class="form-group">
+                        <label for="weight" class="col-sm-3 control-label">Weight</label>
+
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="weight" name="weight" maxlength="4" onkeypress="return /[0-9]/i.test(event.key)" required>
+                        </div>
+                    </div>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
