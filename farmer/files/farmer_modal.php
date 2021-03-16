@@ -20,19 +20,35 @@
                 <form class="form-horizontal" method="POST" action="./../farmer/farmer_handle.php" enctype="multipart/form-data">
 
                 <div class="form-group">
-                    <label for="type" class="col-sm-3 control-label">Type</label>
+                    <label for="type" class="col-sm-3 control-label">Animal Type</label>
 
                     <div class="col-sm-9">
-                        <select name="animal_type" class="form-control" required>
+                        <select name="animal_type" class="form-control" onchange="changeBreed()" required>
                             <option value="" disabled selected>Select Animal Type ...</option>
-                            <option value="Cow">Cow</option>
-                            <option value="Goat">Goat</option>
-                            <option value="Chicken">Chicken</option>
-                            <option value="Horse">Horse</option>
+                            <option value="cattle">Cattle</option>
+                            <option value="goat">Goat</option>
+                            <option value="chicken">Chicken</option>
+                            <option value="horse">Horse</option>
+                            <option value="pig">Pig</option>
                         </select>
                     </div>
                 </div>
 
+                    <div class="form-group breed_container" hidden>
+                        <label for="breed_type" class="col-sm-3 control-label">Bread Type</label>
+
+                        <div class="col-sm-9 breed_select">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <div class="col-sm-9">
+
+                            <img class="breed_img"  width="300">
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label for="description" class="col-sm-3 control-label">Description</label>
 

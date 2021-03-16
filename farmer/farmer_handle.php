@@ -90,13 +90,18 @@ if (isset($_POST['edit_farmer'])) {
 if(isset($_POST['animal_type'])){
     $id = $_SESSION['admin'];
     $type = $_POST['animal_type'];
+    $image = $_POST['breed_type'];
     $description = $_POST['description'];
     $serial_no = md5(uniqid(rand(), true));
     $serial_no= substr($serial_no,0,10);
+    $breed_type= substr($image,strrpos($image,'/')+1);
+    $breed_type= substr($breed_type,0,strrpos($breed_type,'.'));
 
     try{
-        $stmt = $conn->prepare("INSERT INTO livestock(serial_no,animal_type,description,farmer_id,status) VALUES(:serial_no,:animal_type,:description,:farmer_id,:status)");
-        $stmt->execute(['serial_no'=>$serial_no,'animal_type'=>$type,'description'=>$description,'farmer_id'=>$id,'status'=>'offline']);
+        $stmt = $conn->prepare("INSERT INTO livestock(serial_no,animal_type,breed_type,description,image,farmer_id,status) 
+                                        VALUES(:serial_no,:animal_type,:breed_type,:description,:image,:farmer_id,:status)");
+        $stmt->execute(['serial_no'=>$serial_no,'animal_type'=>$type,'breed_type'=>$breed_type,'description'=>$description,'image'=>
+                        $image,'farmer_id'=>$id,'status'=>'offline']);
 
         $_SESSION['success'] = 'Tracker added successfully';
     }

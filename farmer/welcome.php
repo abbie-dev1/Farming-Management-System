@@ -84,7 +84,7 @@
                 <button class="front-btn '.$count.'" style="margin: 5px"><div class="frontside '.$row["animal_type"].'  ">
                             <div class="card">
                                 <div class="card-body">
-                                    <p><img src="../assets/img/avatar_2x.png"></p>
+                                    <p><img src="../assets/img/info_animals/'.$row["image"].'"></p>
                                     <h4 class="card-title">'.$row["animal_type"].' ';
                                         if($row["status"] =="online")
                                         {
@@ -374,6 +374,64 @@
         //     $('.'+i).css('display','initial');
         // }
 
+    function changeBreed() {
+        var type =  $('select[name=animal_type]').val();
+        $('.breed_container').show();
+
+        if(type == 'pig'){
+           $('.breed_select').html(
+               '<select name="breed_type" class="form-control" onchange="changeImg()" required>\n' +
+               '     <option value="" disabled selected>Select Breed Type ...</option>\n' +
+               '     <option value="pigs/duroc.jpg">Doroc</option>\n' +
+               '     <option value="pigs/landrace.jpeg">Landrace</option>\n' +
+               '</select>'
+           ) ;
+        }
+        if(type == 'chicken'){
+            $('.breed_select').html(
+                '<select name="breed_type" class="form-control" onchange="changeImg()" required>\n' +
+                '     <option value="" disabled selected>Select Breed Type ...</option>\n' +
+                '     <option value="chicken/dual-purpose.jpg">Dual Purpose</option>\n' +
+                '     <option value="chicken/egg-laying.jpg">Eggs Laying</option>\n' +
+                '     <option value="chicken/meat-production.jpg">Meat Producing</option>\n' +
+                '</select>'
+            ) ;
+
+        }
+        if(type == 'horse'){
+            $('.breed_select').html(
+                '<select name="breed_type" class="form-control" onchange="changeImg()" required>\n' +
+                '     <option value="" disabled selected>Select Breed Type ...</option>\n' +
+                '     <option value="horse/draft.jpeg">Draft</option>\n' +
+                '     <option value="horse/pony.jpg">Pony</option>\n' +
+                '</select>'
+            ) ;
+        }
+        if(type == 'cattle'){
+            $('.breed_select').html(
+                '<select name="breed_type" class="form-control" onchange="changeImg()" required>\n' +
+                '     <option value="" disabled selected>Select Breed Type ...</option>\n' +
+                '     <option value="cattle/angus.jpeg">Angus</option>\n' +
+                '     <option value="cattle/holstein.jpeg">Holstein</option>\n' +
+                '</select>'
+            ) ;
+        }
+        if(type == 'goat'){
+            $('.breed_select').html(
+                '<select name="breed_type" class="form-control" onchange="changeImg()" required>\n' +
+                '     <option value="" disabled selected>Select Breed Type ...</option>\n' +
+                '     <option value="goat/anglo-nubian.jpeg">Anglo Nubian</option>\n' +
+                '     <option value="goat/boer.jpeg">Boer</option>\n' +
+                '     <option value="goat/saanen.jpeg">Saanen</option>\n' +
+                '</select>'
+            ) ;
+        }
+
+    }
+
+    function changeImg() {
+        $('.breed_img').attr('src','../assets/img/info_animals/'+$('select[name=breed_type]').val());
+    }
 
 
 </script>
