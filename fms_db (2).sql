@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2021 at 07:40 AM
+-- Generation Time: Mar 16, 2021 at 08:48 PM
 -- Server version: 10.4.16-MariaDB
 -- PHP Version: 7.4.12
 
@@ -78,7 +78,9 @@ INSERT INTO `farmer` (`id`, `firstName`, `lastName`, `gender`, `email`, `passwor
 CREATE TABLE `livestock` (
   `serial_no` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
   `animal_type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `breed_type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `farmer_id` int(11) NOT NULL,
   `latitude` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `longitude` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -89,11 +91,15 @@ CREATE TABLE `livestock` (
 -- Dumping data for table `livestock`
 --
 
-INSERT INTO `livestock` (`serial_no`, `animal_type`, `description`, `farmer_id`, `latitude`, `longitude`, `status`) VALUES
-('70a303c847', 'Goat', NULL, 5, '-25.753869599999998', '28.1963926', 'online'),
-('7ba67830ba', 'Horse', '', 2, '-25.746', '28.1871', 'online'),
-('b2acc930d2', 'Goat', '4 Liters', 2, '-26.270759299999998', '28.1122679', 'online'),
-('b4911fc2fe', 'Chicken', NULL, 2, '-25.746', '28.1871', 'offline');
+INSERT INTO `livestock` (`serial_no`, `animal_type`, `breed_type`, `description`, `image`, `farmer_id`, `latitude`, `longitude`, `status`) VALUES
+('1ed9b48e2c', 'pony', 'horse', '', 'horse/pony.jpg', 3, NULL, NULL, 'offline'),
+('70a303c847', 'Goat', '', NULL, '0', 5, '-25.753869599999998', '28.1963926', 'online'),
+('79c5221aab', 'horse', 'draft', '', 'horse/draft.jpeg', 3, NULL, NULL, 'offline'),
+('7ba67830ba', 'Horse', '', '', '0', 2, '-25.746', '28.1871', 'online'),
+('8561b4e991', 'goat', '', '', 'goat/saanen.jpeg', 3, NULL, NULL, 'offline'),
+('b2acc930d2', 'Goat', '', '4 Liters', '0', 2, '-26.270759299999998', '28.1122679', 'online'),
+('b4911fc2fe', 'Chicken', '', NULL, '0', 2, '-25.746', '28.1871', 'offline'),
+('bff9c19364', 'pig', '', '', 'pigs/duroc.jpg', 3, NULL, NULL, 'offline');
 
 --
 -- Indexes for dumped tables
