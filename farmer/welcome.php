@@ -430,6 +430,8 @@
     }
 
     function changeImg() {
+
+        $('.anim_desc').show();
         var breed = $('select[name=breed_type]').val();
         $('.breed_img').attr('src','../assets/img/info_animals/'+breed);
         // Goats

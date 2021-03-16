@@ -49,7 +49,7 @@
                             <img class="breed_img"  width="300">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group anim_desc" hidden>
                         <label for="description" class="col-sm-3 control-label">Description</label>
 
                         <div class="col-sm-9">
