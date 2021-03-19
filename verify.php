@@ -134,6 +134,37 @@ if(isset($_POST['tracker_id'])){
     exit(0);
 }
 
+if(isset($_POST['checkValues'])){
+    $stmt = $conn->prepare("SELECT *,COUNT(*) AS numrows FROM farmer WHERE mobile=:email OR email=:email");
+    $stmt->execute(['email'=>$_POST['checkValues']]);
+    $row = $stmt->fetch();
+
+    $stmtA = $conn->prepare("SELECT *,COUNT(*) AS numrows FROM admin WHERE mobile=:email OR email=:email");
+    $stmtA->execute(['email'=>$_POST['checkValues']]);
+    $rowA = $stmtA->fetch();
+
+    if($row['numrows'] >0){
+        echo json_encode($row);
+    }
+    else if($rowA['numrows'] >0){
+        echo json_encode($rowA);
+    }else{
+        echo json_encode(null);
+    }
+
+
+}
+
+if(isset($_POST['checkFarmName'])){
+    $stmt = $conn->prepare("SELECT * FROM farm WHERE name=:name");
+    $stmt->execute(['name'=>$_POST['checkFarmName']]);
+    $row = $stmt->fetch();
+
+    echo json_encode($row);
+
+
+
+}
 
 
 if(isset($_POST['update_now'])){

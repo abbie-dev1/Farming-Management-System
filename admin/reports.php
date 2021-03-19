@@ -81,13 +81,13 @@ if(!isset($_SESSION['loggedin'])){
                  </div>
 
                  <div style="padding-left: 30%;">
-                     <div class="input-group calenda">
-                         Start Date: <span class="fromdate"><span class="fa fa-calendar-times-o"></span></span>
-                         <input type="date" name="fromD" class="form-control" placeholder="Date" required />
-                         <br/>
-                         End Date: <span class="todate"><span class="fa fa-calendar-times-o"></span></span>
-                         <input type="date" name="toD" class="form-control" placeholder="Date" required />
-                     </div>
+<!--                     <div class="input-group calenda">-->
+<!--                         Start Date: <span class="fromdate"><span class="fa fa-calendar-times-o"></span></span>-->
+<!--                         <input type="date" name="fromD" class="form-control" placeholder="Date" required />-->
+<!--                         <br/>-->
+<!--                         End Date: <span class="todate"><span class="fa fa-calendar-times-o"></span></span>-->
+<!--                         <input type="date" name="toD" class="form-control" placeholder="Date" required />-->
+<!--                     </div>-->
                      <br/>
                      <span class="date-error"></span><br/>
                      <button name="generate" class="btn btn-success" onclick="generateRep()"><i class="fa fa-gears"></i> Generate Report</button>

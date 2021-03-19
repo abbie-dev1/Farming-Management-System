@@ -52,15 +52,16 @@
                 <div class="intro-lead-in"></div>
                 <h2>Registration</h2>
                 <div class="intro-heading text-uppercase"></div>
-                 <form class="bootstrap-form-with-validation" action="signup.php" method="POST" onsubmit="sendForm();" enctype="multipart/form-data">
+                 <form class="bootstrap-form-with-validation" action="signup.php" method="POST" onsubmit="sendForm();">
 
-                    <div class="form-group"><label for="firstname">First Name</label><input class="form-control" type="text" id="firstname" name="firstName" placeholder="Enter your name" onkeypress="return /[a-z]/i.test(event.key)" required></div>
-                    <div class="form-group"><label for="lastname">Last Name</label><input class="form-control" type="text" id="lastname" name="lastName" placeholder="Enter your surnname" onkeypress="return /[a-z]/i.test(event.key)" required></div>
-                    <div class="form-group"><label for="mobile">Contact no.</label><input class="form-control" type="text" id="mobile" name="mobile"  placeholder="Cellphone no." onkeypress="return i.test(event.key)" onkeyup="ValueKeyPress('mobile');" required></div>
+
+                     <div class="form-group"><label for="firstname">First Name</label><input class="form-control" type="text" id="firstname" name="firstName" placeholder="Enter your name" onkeypress="return /[a-z]/i.test(event.key)" required></div>
+                    <div class="form-group"><label for="lastname">Last Name</label><input class="form-control" type="text" id="lastname" name="lastName" placeholder="Enter your surname" onkeypress="return /[a-z]/i.test(event.key)" required></div>
+                    <div class="form-group"><label for="mobile">Contact no.</label><input class="form-control" type="text" id="mobile" name="mobile"  placeholder="Cellphone no." onkeyup="ValueKeyPress('mobile');" required></div>
                      <span id="verify"></span>
                     <div class="form-group"><label for="address">Address</label><input class="form-control" type="text" id="address" name="address" placeholder="Your Residencial address" required></div>
                     <div class="form-group"><label for="email">Email&nbsp;</label><input class="form-control" type="email" id="email" name="email" placeholder="e.g example@gmail.com" onkeyup="emailValidate('register')" required></div>
-
+                     <span id="verifyEmail"></span>
                      <div class="form-group">
                          <label for="gender">Gender</label>
                              <select class="form-control" id="gender" name="gender" required>
@@ -76,6 +77,15 @@
                     <span class="tooltiptext"><label id="miniCharacters">* 8 Characters minimum</label><br><label id="special_character" >* Has special character</label><br><label id="lowercase" >* Has lowercase character</label><br><label id="uppercase" >* Has uppercase character</label><br><label id="hasNumber" >* Has a number</label></span>
                     <div class="form-group"><label for="password-input">Confirm Password&nbsp;</label><input class="form-control inputTxt" type="password"  placeholder="Confirm Password"id="password-input" name="current_password" onkeyup="matchPassword()" required></div>
                     <span id="passwordMatch"></span>
+                     <br/>
+                     <div style="padding: 10px; background: grey;color: white">
+                         <label>Farm Information</label>
+                         <div class="form-group"><label for="farm_name">Farm Name</label><input class="form-control" type="text" id="farm_name" name="farm_name" placeholder="Enter name of your farm" onkeypress="return /[a-z]/i.test(event.key)" onkeyup="verifyFName()" required></div>
+                         <span id="verifyFarm"></span>
+                         <div class="form-group"><label for="location">Location&nbsp;</label><input class="form-control" type="address" id="location" name="location" placeholder="Enter farm location"required></div>
+                     </div>
+
+                     <br/>
                     <div class="form-group"><button class="btn btn-primary" name="signup" type="submit">Register</button></div>
                 </form>
     </header>

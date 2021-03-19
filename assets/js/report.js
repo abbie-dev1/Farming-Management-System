@@ -1,8 +1,8 @@
 function generateRep(){
 
     let type = $('#type').val();
-    let from = $('[name=fromD]').val();
-    let to = $('[name=toD]').val();
+    // let from = $('[name=fromD]').val();
+    // let to = $('[name=toD]').val();
 
     if (type == null){
         $('#type').focus();
@@ -18,21 +18,21 @@ function generateRep(){
         $('#search').attr('placeholder', 'Search by animal type');
         return;
     }
-    if (from == ''){
-        $('[name=fromD]').focus();
-        return;
-    }
-    if (to == ''){
-        $('[name=toD]').focus();
-        return;
-    }
+    // if (from == ''){
+    //     $('[name=fromD]').focus();
+    //     return;
+    // }
+    // if (to == ''){
+    //     $('[name=toD]').focus();
+    //     return;
+    // }
+    //
+    // if (from > to){
+    //     $('.date-error').css('color','red').html('Start Date can not be greater than End Date !!');
+    //     return;
+    // }
 
-    if (from > to){
-        $('.date-error').css('color','red').html('Start Date can not be greater than End Date !!');
-        return;
-    }
-
-    $('#text-primary').html(type+' from '+from+' to '+to);
+    // $('#text-primary').html(type+' from '+from+' to '+to);
     $('#summery-report tbody').html('');
         $.ajax({
             type: 'POST',

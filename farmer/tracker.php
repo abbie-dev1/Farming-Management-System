@@ -94,8 +94,8 @@ if(isset($_SESSION['tracker_token'])) {
             <form class="form-signin" method="POST" action="../verify.php" id="form_id" onsubmit="return activateTracker()">
                 <div style="padding: 30px">
                     <i style="padding-bottom: 5px">Enter Serial Number To Activate Tracker</i>
-                    <input name="lat" hidden>
-                    <input name="lng" hidden>
+                    <input name="lat" >
+                    <input name="lng" >
                     <div class="errorm"></div>
                     <input style="margin-top: 10px" class="form-control" type="text" required="" placeholder="Serial Numbers" autofocus="" name="tracker_id">
                     <br/>

@@ -11,47 +11,50 @@ $return = $_SERVER['HTTP_REFERER'];
             $email = $_POST['email'];
             $mobile= $_POST['mobile'];
             $password = $_POST['password'];
-            $repassword = $_POST['current_password'];
             $gender =$_POST['gender'];
             $address=$_POST['address'];
+            $location =$_POST['location'];
+            $farm_name=$_POST['farm_name'];
 
-            $stmt = $conn->prepare("SELECT COUNT(*) AS numrows FROM farmer,admin WHERE farmer.email=:email OR admin.email=:email");
-            $stmt->execute(['email'=>$email]);
-            $row = $stmt->fetch();
-            if($row['numrows'] > 0){
-                $_SESSION['error'] = 'Email already taken';
-                header('location: register.php');
-                exit();
-            }
-			else{
 
-				try{
 
-					$stmt = $conn->prepare("INSERT INTO farmer (firstName, lastName,gender, mobile, address, email, password) 
+                    try {
+
+                        $stmt = $conn->prepare("INSERT INTO farmer (firstName, lastName,gender, mobile, address, email, password) 
 						VALUES (:firstName, :lastName,:gender, :mobile, :address, :email,:password)");
-					$stmt->execute(['firstName'=>$firstName, 'lastName'=>$lastName, 'gender'=>$gender,'mobile'=>$mobile, 'address'=>$address, 'email'=>$email, 'password'=>$password]);
-					$userid = $conn->lastInsertId();
-
-					// $message = "
-					// 	<h2>Thank you for Registering.</h2>
-					// 	<p>Your Account:</p>
-					// 	<p>Email: ".$email."</p>
-					// 	<p>Password: ".$_POST['password']."</p>
-					// 	<p>Please click the link below to proceed to the login page</p>
-					// 	<a href='http://localhost/Truber/login.php>Login to your Account</a>
-					// ";
-
-					$_SESSION['success'] = 'Account created. Proceed to Login';
-					header('location: login.php');
+                        $stmt->execute(['firstName' => $firstName, 'lastName' => $lastName, 'gender' => $gender, 'mobile' => $mobile, 'address' => $address, 'email' => $email, 'password' => $password]);
+                        $userid = $conn->lastInsertId();
 
 
-				}
-				catch(PDOException $e){
-					$_SESSION['error'] = $e->getMessage();
-					header('location: register.php');
-				}
 
-			}
+
+                            try {
+                                $stmts = $conn->prepare("SELECT * FROM farmer WHERE email=:email");
+                                $stmts->execute(['email' => $email]);
+                                $row = $stmts->fetch();
+
+
+                                $stmt = $conn->prepare("INSERT INTO farm(name,farmer_id,location) VALUES (:name,:farmer_id, :location)");
+                                $stmt->execute(['name' => $farm_name, 'farmer_id' => $row['id'], 'location' => $location]);
+
+                            } catch (PDOException $e) {
+                                $_SESSION['error'] = $e->getMessage();
+                                header('location: register.php');
+                                exit();
+                            }
+
+
+
+
+                        $_SESSION['success'] = 'Account created. Proceed to Login';
+                        header('location: login.php');
+
+
+                    } catch (PDOException $e) {
+                        $_SESSION['error'] = $e->getMessage();
+                        header('location: register.php');
+                    }
+
 
     }
 	else{

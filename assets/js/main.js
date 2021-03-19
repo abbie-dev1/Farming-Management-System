@@ -3,6 +3,7 @@ let emailvalidation = false;
 let validatedpassword = false;
 let strongpassword = false;
 let contactValidated = false;
+let farmName = false;
 
 function ValueKeyPress(trigger) {
 
@@ -20,14 +21,40 @@ function ValueKeyPress(trigger) {
 
         if ((contact.length === 10 && contact[0] === "0" && (contact[1] === "6" || contact[1] === "7" || contact[1] === "8"))
             || (contact.length === 11 && contact[0] === "2" && contact[1] === "7")) {
-            $('#verify').css('color', 'Green').html(' <i>the number is valid</i>');
-            contactValidated = true;
+
+
+            $.ajax({
+                type: 'POST',
+                url: './verify.php',
+                data: {
+                    checkValues:contact},
+                dataType: 'json',
+                success: function(response){
+                        if(response !=null){
+
+                            $('#verify').css('color', 'red').html(' <i>the number already exist</i>');
+                            contactValidated = false;
+                        }
+                        else{
+
+                            $('#verify').css('color', 'Green').html(' <i>the number is valid</i>');
+                            contactValidated = true;
+                        }
+                }
+            });
+
+
         } else if (contact.length > 10) {
             $('#verify').css('color', 'red').html('<i>**the number is invalid!**</i>');
             contactValidated = false;
         }
         else {
             $('#verify').css('color', 'red').html('<i>**the number is invalid!**</i>');
+            contactValidated = false;
+        }
+
+
+        if ( $('#verify').css('color') == 'red' ){
             contactValidated = false;
         }
     }
@@ -52,12 +79,54 @@ function emailValidate(n) {
 
         //
         if (atpos > 1 && dotpos > atpos && email.length > dotpos + 1 && count == 1) {
-            emailvalidation = true;
-            document.getElementById('email').style.borderColor = "#ced4da";
+
+            $.ajax({
+                type: 'POST',
+                url: './verify.php',
+                data: {
+                    checkValues:email},
+                dataType: 'json',
+                success: function(response){
+                    if(response !=null){
+
+                        emailvalidation = false;
+                        $('#verifyEmail').css('color', 'red').html('<i>**the email already exist!**</i>');
+                        document.getElementById('email').style.borderColor = "#ced4da";
+                    }
+                    else{
+
+                        emailvalidation = true;
+                        $('#verifyEmail').css('color', 'green').html('<i>**the email is valid!**</i>');
+                        document.getElementById('email').style.borderColor = "#ced4da";
+                    }
+                }
+            });
+
+
         } else if (email.length === 0) {
-            document.getElementById('email').style.borderColor = "#ced4da";
-            emailvalidation = true;
+            $.ajax({
+                type: 'POST',
+                url: './verify.php',
+                data: {
+                    checkValues:email},
+                dataType: 'json',
+                success: function(response){
+                    if(response !=null){
+
+                        emailvalidation = false;
+                        $('#verifyEmail').css('color', 'red').html('<i>**the email already exist!**</i>');
+                        document.getElementById('email').style.borderColor = "#ced4da";
+                    }
+                    else{
+
+                        emailvalidation = true;
+                        $('#verifyEmail').css('color', 'green').html('<i>**the email is valid!**</i>');
+                        document.getElementById('email').style.borderColor = "#ced4da";
+                    }
+                }
+            });
         } else {
+            $('#verifyEmail').css('color', 'red').html('<i>**the email already exist!**</i>');
             document.getElementById('email').style.borderColor = "red";
             emailvalidation = false;
         }
@@ -65,6 +134,7 @@ function emailValidate(n) {
         //Checking if the last character after dot
         if(afterDot !== '.com'&& afterDot !== '.za'&& afterDot !== '.org'&& afterDot !== '.net'&& afterDot !== '.uk'){
             document.getElementById('email').style.borderColor = "red";
+            $('#verifyEmail').css('color', 'red').html('<i>**the email already exist!**</i>');
             emailvalidation = false;
         }
 
@@ -73,9 +143,14 @@ function emailValidate(n) {
         for (var i = 0; i < email.length; i++) {
             if (iChars.indexOf(email.charAt(i)) != -1) {
 
+                $('#verifyEmail').css('color', 'red').html('<i>**the email already exist!**</i>');
                 document.getElementById('email').style.borderColor = "red";
                 emailvalidation = false;
             }
+        }
+
+        if ( $('#verifyEmail').css('color') == 'red'){
+            emailvalidation = false;
         }
     }
 }
@@ -150,27 +225,57 @@ function matchPassword(){
     }
 }
 
+function verifyFName(){
+    let name = $('#farm_name').val();
+    $.ajax({
+        type: 'POST',
+        url: './verify.php',
+        data: {
+            checkFarmName:name},
+        dataType: 'json',
+        success: function(response){
+            if(response){
+                farmName =false;
+                $('#verifyFarm').css('color', 'red').html('<i>**the farmer name already exist!**</i>');
+            }
+            else{
+                farmName =true;
+                $('#verifyFarm').html('');
+            }
+        }
+    });
+
+
+}
+
 function sendForm(){
+
+
+    if (!farmName){
+        $('#farm_name').focus();
+        return false;
+    }
+    if (!validatedpassword){
+        $('#password-input').focus();
+        return false;
+    }
+    if (!emailvalidation){
+        $('#email').focus();
+        return false;
+    }
+    if (!strongpassword){
+        $('#password').focus();
+        return false;
+    }
+    if (!contactValidated) {
+        $('#pNumber').focus();
+        return false;
+    }
     if (validatedpassword && emailvalidation && strongpassword && contactValidated){
         Validation = true;
         return true;
     }
-        if (!validatedpassword){
-            $('#password-input').focus();
-            return false;
-        }
-        if (!emailvalidation){
-            $('#email').focus();
-            return false;
-        }
-        if (!strongpassword){
-            $('#password').focus();
-            return false;
-        }
-        if (!contactValidated) {
-            $('#pNumber').focus();
-            return false;
-        }
+
 
 }
 
