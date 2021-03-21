@@ -18,6 +18,16 @@ function generateRep(){
         $('#search').attr('placeholder', 'Search by animal type');
         return;
     }
+
+    if (type == 'farm'){
+        if ($('#farm').val() == null){
+            $('#farm').focus();
+            return;
+        }
+        $('#download').prop('disabled', false);
+        $('#search').attr('placeholder', 'Search by animal type');
+        return;
+    }
     // if (from == ''){
     //     $('[name=fromD]').focus();
     //     return;
@@ -38,9 +48,7 @@ function generateRep(){
             type: 'POST',
             url: './../admin/admin_handle.php',
             data: {
-                report:type,
-                startDate:from,
-                endDate:to
+                report:type
                 },
             success: function(response){
                 var posts = JSON.parse(response);
@@ -116,9 +124,13 @@ function generateRep(){
 
 function changeSelection(){
     let type = $('#type').val();
+    $('#farmer').val($('#farmer option:first').val());
+    $('#farm').val($('#farm option:first').val());
     if(type =='livestock'){
         $('.farmer-option').show();
+        $('.farm-option').hide();
     }else{
+        $('.farm-option').show();
         $('.farmer-option').hide();
     }
 }
@@ -182,6 +194,7 @@ function changeLivestock(){
 
 function changeFarm(){
     let id = $('select[name=farm]').val();
+console.log(id);
 
     $.ajax({
         type: 'POST',

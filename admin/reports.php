@@ -95,7 +95,7 @@ if(!isset($_SESSION['loggedin'])){
 
                  <div class="col-sm-5 farmer-option" style="padding: 5px" hidden>
                  <select name="farmers" id="farmers" class="form-control" onchange="changeLivestock()" required>
-                     <option selected disabled>Select Farmer</option>
+                     <option value="" selected disabled>Select Farmer</option>
                      <!--                                     <option value="history">History</option>-->
                      <?php
                              $conn = $pdo->open();
@@ -120,9 +120,9 @@ if(!isset($_SESSION['loggedin'])){
                  </div>
 
 
-                 <div class="col-sm-5 farmer-option" style="padding: 5px" >
+                 <div class="col-sm-5 farm-option" style="padding: 5px" hidden>
                      <select name="farm" id="farm" class="form-control" onchange="changeFarm()" required>
-                         <option selected disabled>Select Farm Name</option>
+                         <option value="" selected disabled>Select Farm Name</option>
                          <!--                                     <option value="history">History</option>-->
                          <?php
                          $conn = $pdo->open();

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2021 at 08:48 PM
+-- Generation Time: Mar 21, 2021 at 04:51 PM
 -- Server version: 10.4.16-MariaDB
 -- PHP Version: 7.4.12
 
@@ -47,6 +47,26 @@ INSERT INTO `admin` (`id`, `name`, `email`, `password`, `mobile`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `farm`
+--
+
+CREATE TABLE `farm` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `farmer_id` int(11) DEFAULT NULL,
+  `location` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `farm`
+--
+
+INSERT INTO `farm` (`id`, `name`, `farmer_id`, `location`) VALUES
+(1, 'Good guy', 2, '258 visagie street, Pta');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `farmer`
 --
 
@@ -56,7 +76,7 @@ CREATE TABLE `farmer` (
   `lastName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `gender` varchar(9) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `password` int(11) NOT NULL,
+  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `address` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `mobile` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -66,8 +86,11 @@ CREATE TABLE `farmer` (
 --
 
 INSERT INTO `farmer` (`id`, `firstName`, `lastName`, `gender`, `email`, `password`, `address`, `mobile`) VALUES
-(2, 'zuma', 'jacob', 'other', 'zuma.jacob@gmail.com', 12345, 'block p', '0715554367'),
-(3, 'fana', 'badjie', 'male', 'gd@gmail.com', 1234, '123 sisulu pta', '0611122222');
+(2, 'zuma', 'jacob', 'other', 'zuma.jacob@gmail.com', '12345', 'block p', '0715554367'),
+(3, 'fana', 'badjie', 'male', 'gd@gmail.com', '1234', '123 sisulu pta', '0611122222'),
+(4, 'farmer', 'guy', 'male', 'farm@gmail.com', '1234', '123 sisulu pta', '0611111111'),
+(5, 'fana', 'ff', 'male', 'test@gmail.com', '1234', '490 Andries street', '0611111112'),
+(6, 'gun', 'show', 'male', 'gdaaa@gmail.com', '1234@Abc', '123 sisulu pta', '0781118604');
 
 -- --------------------------------------------------------
 
@@ -112,6 +135,12 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `farm`
+--
+ALTER TABLE `farm`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `farmer`
 --
 ALTER TABLE `farmer`
@@ -134,10 +163,16 @@ ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `farm`
+--
+ALTER TABLE `farm`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `farmer`
 --
 ALTER TABLE `farmer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
