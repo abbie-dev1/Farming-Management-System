@@ -180,6 +180,80 @@ function changeLivestock(){
     });
 }
 
+function changeFarm(){
+    let id = $('select[name=farm]').val();
+
+    $.ajax({
+        type: 'POST',
+        url: './../admin/admin_handle.php',
+        data: {
+            farmerID:id},
+        dataType: 'json',
+        success: function(response){
+
+            $('#text-primary').html(
+                '<span>Farm Name: '+$('#farm option:selected').text()+'</span><hr/>'+
+                '<span style="color: red">Owner Name: '+response.firstName+' '+response.lastName+'</span><br/>'+
+                '<span style="color: red">Owner Email: '+response.email+'</span><br/>'+
+            '<span style="color: red">Owner Contacts: '+response.mobile+'</span><br/>'
+            );
+
+        }
+    });
+
+
+
+    $('#summery-report tbody').html('');
+    $.ajax({
+        type: 'POST',
+        url: './../admin/admin_handle.php',
+        data: {
+            livestockID:id,
+        },
+        success: function(response){
+            var posts = JSON.parse(response);
+            if(posts.length === 0){
+                $('#summery-report tbody').html('<h2>No Data Found</h2>');
+            }
+            else{
+                $('#summery-report thead').html(
+                    "<tr style='background: dimgrey'>" +
+                    "<td>Serial No</td>" +
+                    "<td>Animal</td>" +
+                    "<td>Description</td>" +
+                    "<td>Status</td>" +
+                    "</tr>"
+                );
+                $.each(posts, function(i) {
+                    if(posts[i].status == 'online'){
+                        var test = "<td style='color: green'>" + posts[i].status + "</td>";
+                    }else{
+                        var test = "<td style='color: red'>" + posts[i].status + "</td>";
+                    }
+                    $('#summery-report tbody').append(
+                        "<tr>" +
+                        "<td>" + posts[i].serial_no + "</td>" +
+                        "<td>" + posts[i].animal_type + "</td>" +
+                        "<td>" + posts[i].description + "</td>" +
+                        test+
+                        "</tr>"
+
+                    );
+                });
+                $('#summery-report tbody').append(
+                    "<tr  class='just' style='position: absolute;background: white;font-size: xx-large;' hidden>" +
+                    "<td > NO RECORDS FOUND</td>" +
+                    "</tr>");
+
+            }
+
+        },
+        error: function (error){
+            console.error(error);
+        }
+    });
+}
+
 window.onload = function () {
     document.getElementById("download")
         .addEventListener("click", () => {

@@ -65,8 +65,7 @@ if(!isset($_SESSION['loggedin'])){
                              <div class="col-sm-9">
                                  <select name="type" id="type" class="form-control" onchange="changeSelection()" required>
                                      <option selected disabled>Select report type</option>
-                                     <option value="admins">Admins</option>
-                                     <option value="farmers">Farmers</option>
+                                     <option value="farm">Farm</option>
                                      <option value="livestock">Livestock</option>
 <!--                                     <option value="history">History</option>-->
                                  </select>
@@ -120,6 +119,36 @@ if(!isset($_SESSION['loggedin'])){
                  </select>
                  </div>
 
+
+                 <div class="col-sm-5 farmer-option" style="padding: 5px" >
+                     <select name="farm" id="farm" class="form-control" onchange="changeFarm()" required>
+                         <option selected disabled>Select Farm Name</option>
+                         <!--                                     <option value="history">History</option>-->
+                         <?php
+                         $conn = $pdo->open();
+                         try {
+                             $stmt = $conn->prepare("SELECT * from farm");
+                             $stmt->execute();
+
+                         }
+                         catch (Exception $e){
+                             print_r($e->getMessage());
+                         }
+                         if($stmt->rowCount() > 0) {
+
+                             foreach ($stmt as $row) {
+
+                                 echo '<option value="'.$row['farmer_id'].'" >'.$row['name'].'</option>';
+                             }
+
+                         }
+                         ?>
+                     </select>
+
+
+                 </div>
+
+                 <div style="width: 100%;display: -webkit-inline-box;visibility: hidden;">.</div>
                  <div class="box-body" id="summery-report" >
                      <div id="img-report"></div>
                      <h5 id="text-primary" class="card-title text-primary" style="float: left;text-align: initial;font-weight: bolder"></h5>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <style>
+        body{
+            margin: 10px;
+            background: black;
+        }
+        .col-lg-3{
+            width: 33%;
+        }
+        .small-box{
+            color: white;
+            border: gray solid;
+            padding: 10px;
+        }
+
+        .row{
+            padding: 10px;
+        }
+    </style>
+
+</head>
+<header style="width: 100%;background: black;">
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+
+        <ul class="nav navbar-nav ml-auto text-uppercase">
+            <l>
+                <h4 style="color: white">VODACOM FS - PORTAL</h4>
+            </l>
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">Home</a></li>
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">NPS</a></li>
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#teams">Account</a></li>
+            <li class="nav-item" ><a class="nav-link s-scroll-trigger" href="logout.html">Logout</a></li>
+        </ul>
+    </div>
+
+</header>
+<body >
+
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" style="border: gray 5px solid;">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li class="active">Dashboard</li>
+            </ol>
+        </section>
+
+
+
+    <!-- Small boxes (Stat box) -->
+    <div class="row" >
+
+
+
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-red">
+                <div class="inner">
+                    <p>TOTAL SHOUTOUTS</p>
+                    <p>4</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-barcode"></i>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-red">
+                <div class="inner">
+                    <p>PENDING SHOUTOUTS</p>
+                    <p>1</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-bars"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-red">
+                <div class="inner">
+                    <p>IN_PROGRESS SHOUTOUTS</p>
+                    <p>3</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-spinner"></i>
+                </div>
+            </div>
+        </div>
+
+    </div>
+        <div style="background: lightgray;">
+            <div class="col-sm-9" style="display: flex;width: 100%;">
+                <input type="text" class="form-control" id="search" name="search" placeholder="Search by Ticket Ref or Description" required>
+                <button><i class="fa fa-search"></i></button>
+            </div>
+
+            <div class="col-sm-9">
+                <button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#ticket">Create Shoutout <i class="fa fa-plus"></i></button>
+            </div>
+            <table id="example1" class="table table-bordered">
+                <thead>
+                <th>No#</th>
+                <th>Ticket No</th>
+                <th>Subject</th>
+                <th>Status</th>
+                <th>Creator</th>
+                <th>Date Created</th>
+                <th>Action</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>255887555hhhj</td>
+                    <td>CCTV not visible enough</td>
+                    <td>OPEN</td>
+                    <td>ADMIN</td>
+                    <td>18/03/2021</td>
+                    <td >
+                        <button class="btn btn-success" data-toggle="modal" data-target="#view"><i class='fa fa-eye'></i> View</button>
+                        <button class="btn btn-warning" data-toggle="modal" data-target="#edit"><i class='fa fa-edit'></i> Edit</button>
+                        <button class="btn btn-danger" data-toggle="modal" data-target="#delete"><i class='fa fa-trash'></i> Delete</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>25588hhhj</td>
+                    <td>WIFI keeps disconnecting</td>
+                    <td>OPEN</td>
+                    <td>ADMIN</td>
+                    <td>18/03/2021</td>
+                    <td >
+                        <button class="btn btn-success"><i class='fa fa-eye'></i> View</button>
+                        <button class="btn btn-warning"><i class='fa fa-edit'></i> Edit</button>
+                        <button class="btn btn-danger"><i class='fa fa-trash'></i> Delete</button>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+</div>
+
+
+<!-- right col -->
+</div>
+</body>
+</html>
+
+
+
+<div class="modal fade" id="ticket">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 style="color: gold">Create Ticket</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" method="POST" action="create.html" enctype="multipart/form-data">
+
+                    <div class="form-group">
+                        <label for="subject" class="col-sm-3 control-label">Subject</label>
+
+                        <div class="col-sm-9">
+                            <input class="form-control" type="text" id="subject" name="subject" placeholder="Subject Matter"  onkeypress="return /[a-z]/i.test(event.key)" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message" class="col-sm-3 control-label">Message</label>
+
+                        <div class="col-sm-9">
+                                <textarea style="height: 150px" class="form-control" id="message" name="message" placeholder="Type your message here..." required>
+                                </textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="upload" class="col-sm-3 control-label">Upload image/ video</label>
+
+                        <div class="col-sm-9">
+                            <input type="file" class="form-control" id="upload" name="upload" placeholder="" required>
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success btn-flat" ><i class="fa fa-check-square-o"></i> Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="view">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><b>Shoutout</b></h4>
+            </div>
+            <div class="modal-body">
+                <p>CCTV not visible enough</p>
+                   <img src="cctv.jpg" width="300">
+
+                <p>19/03/2021| <span style="color: red">OPEN</span></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="delete">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><b>DELETING ...</b></h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" method="POST" action="" enctype="multipart/form-data">
+                    <h4>Delete Ticket No: 255887555hhhj? </h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+                <button type="submit" class="btn btn-danger btn-flat" ><i class="fa fa-trash-o"></i> DELETE</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="edit">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><b>EDITING ...</b></h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" method="POST" action="" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <h3>Ticket No: 255887555hhhj</h3>
+                        <label for="status" class="col-sm-3 control-label">Status</label>
+
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="status" name="status" required>
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+                <button type="submit" class="btn btn-success btn-flat" ><i class="fa fa-check-circle"></i> UPDATE</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
