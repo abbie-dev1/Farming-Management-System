@@ -185,8 +185,31 @@
 </div>
 
 
+<div class="modal fade" id="anim_view">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" style="color: gray"><b>View Animal</b></h4>
+            </div>
+            <div class="modal-body" style="display:  inline-grid;font-size: x-large">
+                <span class="anim-ser"></span>
+                <span class="anim-type"></span>
+                <span class="anim-btype"></span>
+                <span class="anim-desc"></span>
+                <span class="anim-weight"></span>
+                <img class="anim-img" width="300">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-<div class="modal fade" id="amin_delete">
+
+<div class="modal fade" id="anim_delete">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

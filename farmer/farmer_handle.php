@@ -22,30 +22,16 @@ if (isset($_POST['coords'])) {
 
 }
 
-if (isset($_POST['userid'])) {
-    $id = $_POST['userid'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $firstname = $_POST['firstname'];
-    $lastname = $_POST['lastname'];
+if (isset($_POST['viewAnim'])) {
 
-    $stmt = $conn->prepare("SELECT COUNT(*) AS numrows FROM lessor WHERE email=:email AND id <>:id");
-    $stmt->execute(['email'=>$email, 'id'=>$id]);
-    $row = $stmt->fetch();
-    if($row['numrows'] > 0){
-        $_SESSION['error'] = 'Email already exits';
-    }
-    else {
+    $serial= $_POST['viewAnim'];
+    $stmts = $conn->prepare("SELECT * FROM livestock WHERE serial_no=:serial_no");
+    $stmts->execute(['serial_no'=>$serial]);
+    $rows = $stmts->fetch();
+    echo json_encode($rows);
 
-        $stmt = $conn->prepare("UPDATE lessor SET email=:email,
-    password=:password, first_name=:first_name, last_name=:last_name WHERE id=:id");
-        $stmt->execute(['email' => $email, 'password' => $password, 'first_name' =>
-            $firstname, 'last_name' => $lastname, 'id' => $id]);
-
-        $_SESSION['success'] = 'Venue updated successfully';
-    }
-    header('location: welcome.php');
 }
+
 
 if (isset($_POST['profile'])) {
 
@@ -91,6 +77,7 @@ if(isset($_POST['animal_type'])){
     $id = $_SESSION['admin'];
     $type = $_POST['animal_type'];
     $image = $_POST['breed_type'];
+    $weight = $_POST['weight'];
     $description = $_POST['description'];
     $serial_no = md5(uniqid(rand(), true));
     $serial_no= substr($serial_no,0,10);
@@ -98,9 +85,9 @@ if(isset($_POST['animal_type'])){
     $breed_type= substr($breed_type,0,strrpos($breed_type,'.'));
 
     try{
-        $stmt = $conn->prepare("INSERT INTO livestock(serial_no,animal_type,breed_type,description,image,farmer_id,status) 
-                                        VALUES(:serial_no,:animal_type,:breed_type,:description,:image,:farmer_id,:status)");
-        $stmt->execute(['serial_no'=>$serial_no,'animal_type'=>$type,'breed_type'=>$breed_type,'description'=>$description,'image'=>
+        $stmt = $conn->prepare("INSERT INTO livestock(serial_no,animal_type,breed_type,description,weight,image,farmer_id,status) 
+                                        VALUES(:serial_no,:animal_type,:breed_type,:description,:weight,:image,:farmer_id,:status)");
+        $stmt->execute(['serial_no'=>$serial_no,'animal_type'=>$type,'breed_type'=>$breed_type,'description'=>$description,'weight'=>$weight,'image'=>
                         $image,'farmer_id'=>$id,'status'=>'offline']);
 
         $_SESSION['success'] = 'Tracker added successfully';

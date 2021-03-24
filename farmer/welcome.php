@@ -84,7 +84,7 @@
                 <button class="front-btn '.$count.'" style="margin: 5px"><div class="frontside '.$row["animal_type"].'  ">
                             <div class="card">
                                 <div class="card-body">
-                                    <p><img src="../assets/img/info_animals/'.$row["image"].'"></p>
+                                    <p id="'.$row["serial_no"].'" class="anim_view"><img src="../assets/img/info_animals/'.$row["image"].'"></p>
                                     <h4 class="card-title">'.$row["animal_type"].' ';
                                         if($row["status"] =="online")
                                         {
@@ -144,6 +144,14 @@
 <script>
     var variable=null;
     $(function() {
+        $(document).on('click', '.anim_view', function (e) {
+
+            e.preventDefault();
+            var id = this.id;
+            viewAnim(id);
+            $('#anim_view').modal('show');
+        });
+
         $(document).on('click', '.anim_delete', function (e) {
 
             e.preventDefault();
@@ -222,6 +230,26 @@
         });
 
     });
+
+    function viewAnim(id){
+        $.ajax({
+            type: 'POST',
+            url: './../farmer/farmer_handle.php',
+            data: {viewAnim:id},
+            dataType: 'json',
+            success: function(response){
+
+                $('.anim-ser').html('Serial No: '+response.serial_no);
+                $('.anim-type').html('Type: '+response.animal_type);
+                $('.anim-btype').html('Breed Type: '+ response.breed_type);
+                $('.anim-desc').html('Description: '+response.description);
+                $('.anim-weight').html('Weight: '+response.weight);
+                $('.anim-img').attr('src','../assets/img/info_animals/'+response.image);
+
+            }
+        });
+
+    }
 
     function editFarmer(){
         $.ajax({
